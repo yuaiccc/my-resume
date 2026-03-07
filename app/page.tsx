@@ -1,10 +1,34 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function Resume() {
   const [showEmail, setShowEmail] = useState(false);
   const [showPhone, setShowPhone] = useState(false);
+
+  useEffect(() => {
+    const handleContextMenu = (e: MouseEvent) => {
+      e.preventDefault();
+    };
+    
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's')) {
+        e.preventDefault();
+      }
+    };
+
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('keydown', handleKeyDown);
+    document.body.style.userSelect = 'none';
+    document.body.style.webkitUserSelect = 'none';
+
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.userSelect = '';
+      document.body.style.webkitUserSelect = '';
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 font-sans text-gray-800">
@@ -15,11 +39,13 @@ export default function Resume() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
             <div className="flex items-center gap-6">
               {/* 头像 */}
-              <div className="w-32 h-32 overflow-hidden">
+              <div className="w-32 h-32 overflow-hidden" onContextMenu={(e) => e.preventDefault()}>
                 <img 
                   src="/profile.jpg" 
                   alt="许君山" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover pointer-events-none"
+                  draggable={false}
+                  onContextMenu={(e) => e.preventDefault()}
                 />
               </div>
               <div>
