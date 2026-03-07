@@ -44,11 +44,12 @@ export default function Resume() {
       <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 shadow-2xl rounded-xl overflow-hidden transition-colors duration-300">
         
         {/* === 头部信息 === */}
-        <header className="bg-slate-800 text-white p-8 md:p-12">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
-            <div className="flex items-center gap-6">
+        <header className="bg-slate-800 dark:bg-slate-950 text-white p-8 md:p-12 transition-colors duration-300">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            {/* 左侧：头像 + 基本信息 */}
+            <div className="flex flex-col md:flex-row items-center gap-6">
               {/* 头像 */}
-              <div className="w-32 h-32 overflow-hidden" onContextMenu={(e) => e.preventDefault()}>
+              <div className="w-18 h-18 rounded-xl overflow-hidden flex-shrink-0 shadow-lg" onContextMenu={(e) => e.preventDefault()}>
                 <img 
                   src="/profile.jpg" 
                   alt="许君山" 
@@ -57,21 +58,17 @@ export default function Resume() {
                   onContextMenu={(e) => e.preventDefault()}
                 />
               </div>
-              <div>
+              <div className="text-center md:text-left">
                 <h1 className="text-3xl font-bold tracking-tight">许君山</h1>
-                <p className="mt-2 text-xl text-blue-400 font-medium">26届本科应届毕业生 / AI</p>
-                <div className="mt-4 flex flex-wrap gap-4 text-sm text-gray-300">
-                  <div className="flex items-center gap-1">
-                    <span> 华北水利水电大学 (人工智能)</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <span> 期望城市：大连, 杭州, 合肥, 全国主要城市</span>
-                  </div>
+                <p className="mt-1 text-lg text-blue-400 font-medium">26届本科应届毕业生 / AI</p>
+                <div className="mt-3 flex flex-wrap justify-center md:justify-start gap-4 text-sm text-gray-300">
+                  <span>🎓 华北水利水电大学 (人工智能)</span>
+                  <span>📍 期望城市：大连, 杭州, 合肥</span>
                 </div>
               </div>
             </div>
-            {/* 联系方式 - 右侧 */}
-            <div className="mt-6 md:mt-0 flex flex-col gap-2 text-sm text-gray-300 md:text-right">
+            {/* 右侧：联系方式 */}
+            <div className="flex flex-col gap-2 text-sm text-gray-300 text-center md:text-right">
               <a 
                 href="mailto:yuaiccc@aliyun.com" 
                 className="hover:text-white transition cursor-pointer select-none"
