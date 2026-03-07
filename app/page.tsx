@@ -40,20 +40,31 @@ export default function Resume() {
         </header>
 
         <div className="p-8 md:p-12 space-y-10">
+          {/* === 下载 PDF === */}
+          <div className="flex justify-end">
+            <a 
+              href="/Xu_Junshan_Resume.pdf" 
+              className="inline-flex items-center gap-2 bg-blue-400 text-white px-6 py-2 rounded-lg hover:bg-blue-500 transition-colors shadow-md"
+              download
+            >
+              <span>📄</span>
+              <span>下载 PDF</span>
+            </a>
+          </div>
           
           {/* === 个人优势 (亮点前置) === */}
           <section>
-            <h2 className="text-2xl font-bold text-slate-800 border-l-4 border-blue-600 pl-4 mb-6">个人优势</h2>
+            <h2 className="text-2xl font-bold text-slate-800 border-l-4 border-blue-400 pl-4 mb-6">个人优势</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-blue-50 p-5 rounded-lg border border-blue-100">
-                <h3 className="font-bold text-blue-800 mb-2">语言能力</h3>
+                <h3 className="font-bold text-blue-700 mb-2">语言能力</h3>
                 <p className="text-sm text-gray-700 leading-relaxed">
                   <span className="font-bold text-slate-900">英语 CET-6 (538分)</span>：可熟练作为工作语言进行日常沟通与会议。<br/>
                   <span className="font-bold text-slate-900">日语 N3</span>：能阅读基本日文技术文档，适应对日开发环境。
                 </p>
               </div>
               <div className="bg-blue-50 p-5 rounded-lg border border-blue-100">
-                <h3 className="font-bold text-blue-800 mb-2">工程化能力</h3>
+                <h3 className="font-bold text-blue-700 mb-2">工程化能力</h3>
                 <p className="text-sm text-gray-700 leading-relaxed">
                   熟练运用 <span className="font-bold">Git/Linux/Docker</span> 工作流；具备跨平台依赖排错能力；熟练使用 AI IDE (Trae/Claude) 提升研发效能。
                 </p>
@@ -63,7 +74,7 @@ export default function Resume() {
 
           {/* === 教育经历 === */}
           <section>
-            <h2 className="text-2xl font-bold text-slate-800 border-l-4 border-blue-600 pl-4 mb-6">教育经历</h2>
+            <h2 className="text-2xl font-bold text-slate-800 border-l-4 border-blue-400 pl-4 mb-6">教育经历</h2>
             <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
               <h3 className="text-lg font-bold text-slate-900">华北水利水电大学</h3>
               <span className="text-sm text-gray-500 font-mono">2022.09 - 2026.06</span>
@@ -79,15 +90,15 @@ export default function Resume() {
 
           {/* === 专业技能 (核心竞争力) === */}
           <section>
-            <h2 className="text-2xl font-bold text-slate-800 border-l-4 border-blue-600 pl-4 mb-6">专业技能</h2>
+            <h2 className="text-2xl font-bold text-slate-800 border-l-4 border-blue-400 pl-4 mb-6">专业技能</h2>
             <div className="space-y-4">
               <div>
                 <h3 className="font-bold text-slate-900 mb-1">Java 后端核心</h3>
-                <p className="text-sm text-gray-600">熟悉 Java 基础 (HashMap/JUC/JVM)；熟练使用 <span className="font-medium text-blue-600">Spring Boot + MyBatis</span> 开发企业级应用；理解 MVC 与 RESTful 规范。</p>
+                <p className="text-sm text-gray-600">熟悉 Java 基础 (HashMap/JUC/JVM)；熟练使用 <span className="font-medium text-blue-500">Spring Boot + MyBatis</span> 开发企业级应用；理解 MVC 与 RESTful 规范。</p>
               </div>
               <div>
                 <h3 className="font-bold text-slate-900 mb-1">数据库与中间件</h3>
-                <p className="text-sm text-gray-600">熟悉 <span className="font-medium text-blue-600">MySQL</span> (索引/事务/SQL优化)；掌握 <span className="font-medium text-blue-600">Redis</span> 核心数据结构与缓存场景；了解 RabbitMQ 异步解耦。</p>
+                <p className="text-sm text-gray-600">熟悉 <span className="font-medium text-blue-500">MySQL</span> (索引/事务/SQL优化)；掌握 <span className="font-medium text-blue-500">Redis</span> 核心数据结构与缓存场景；了解 RabbitMQ 异步解耦。</p>
               </div>
               <div>
                 <h3 className="font-bold text-slate-900 mb-1">DevOps 与部署</h3>
@@ -98,7 +109,7 @@ export default function Resume() {
 
           {/* === 项目经历 === */}
           <section>
-            <h2 className="text-2xl font-bold text-slate-800 border-l-4 border-blue-600 pl-4 mb-6">项目经历</h2>
+            <h2 className="text-2xl font-bold text-slate-800 border-l-4 border-blue-400 pl-4 mb-6">项目经历</h2>
             
             {/* 项目 1 */}
             <div className="mb-8">
@@ -106,7 +117,7 @@ export default function Resume() {
                 <h3 className="text-lg font-bold text-slate-900">Mall 电商后台管理系统</h3>
                 <span className="text-sm text-gray-500 font-mono">2026.01 - 2026.02</span>
               </div>
-              <p className="text-sm text-blue-600 font-medium mb-3">Java 后端开发 | Spring Boot + Redis + JWT + MySQL</p>
+              <p className="text-sm text-blue-500 font-medium mb-3">Java 后端开发 | Spring Boot + Redis + JWT + MySQL</p>
               <ul className="list-disc list-outside ml-5 space-y-1 text-sm text-gray-700">
                 <li><span className="font-bold text-slate-800">环境搭建：</span>独立配置 MySQL/Redis/Maven 环境，解决端口冲突与跨域问题，保障本地开发环境稳定。</li>
                 <li><span className="font-bold text-slate-800">接口开发：</span>基于 Controller-Service-Mapper 架构，实现商品管理与用户认证接口，使用 Swagger 进行联调。</li>
@@ -120,7 +131,7 @@ export default function Resume() {
                 <h3 className="text-lg font-bold text-slate-900">多语言自然场景文本识别系统 (毕业设计)</h3>
                 <span className="text-sm text-gray-500 font-mono">2025.12 - 至今</span>
               </div>
-              <p className="text-sm text-blue-600 font-medium mb-3">全生命周期负责人 | Python + PyTorch + Linux</p>
+              <p className="text-sm text-blue-500 font-medium mb-3">全生命周期负责人 | Python + PyTorch + Linux</p>
               <ul className="list-disc list-outside ml-5 space-y-1 text-sm text-gray-700">
                 <li><span className="font-bold text-slate-800">数据工程：</span>清洗构建 <span className="font-bold">113万行</span> 语料库；修复开源工具渲染 Bug，生成 10万+ 高质量仿真训练集。</li>
                 <li><span className="font-bold text-slate-800">性能优化：</span>将海量小图转存为 LMDB 数据库，优化 Batch Size 至 768，将验证耗时从小时级压缩至分钟级。</li>
@@ -131,7 +142,7 @@ export default function Resume() {
 
           {/* === 实习经历 === */}
           <section>
-            <h2 className="text-2xl font-bold text-slate-800 border-l-4 border-blue-600 pl-4 mb-6">实习经历</h2>
+            <h2 className="text-2xl font-bold text-slate-800 border-l-4 border-blue-400 pl-4 mb-6">实习经历</h2>
             
             <div className="mb-6">
               <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
@@ -158,16 +169,6 @@ export default function Resume() {
 
           {/* === 页脚 === */}
           <footer className="mt-12 pt-8 border-t border-gray-200 text-center text-sm text-gray-400">
-            <div className="mb-4">
-              <a 
-  href="/Xu_Junshan_Resume.pdf" 
-  className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors shadow-md"
-  download
->
-  <span>📄</span>
-  <span>Download PDF</span>
-</a>
-            </div>
             <p>© 2026 Xu Junshan. Powered by Next.js & Vercel.</p>
           </footer>
 
