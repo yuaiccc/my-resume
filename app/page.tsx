@@ -8,23 +8,33 @@ export default function Resume() {
         {/* === 头部信息 === */}
         <header className="bg-slate-900 text-white p-8 md:p-12">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
-            <div>
-              <h1 className="text-4xl font-bold tracking-tight">许 君山</h1>
-              <p className="mt-2 text-xl text-blue-400 font-medium">26届本科应届生 / 软件开发</p>
-              <div className="mt-4 flex flex-wrap gap-4 text-sm text-gray-300">
-                <div className="flex items-center gap-1">
-                  <span>🎓 华北水利水电大学 (人工智能)</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <span>📍 期望城市：大连, 杭州, 合肥</span>
+            <div className="flex items-center gap-6">
+              {/* 头像 */}
+              <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-blue-400">
+                <img 
+                  src="/profile.jpg" 
+                  alt="许君山" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div>
+                <h1 className="text-4xl font-bold tracking-tight">许君山</h1>
+                <p className="mt-2 text-xl text-blue-400 font-medium">26届本科应届毕业生 / 软件开发</p>
+                <div className="mt-4 flex flex-wrap gap-4 text-sm text-gray-300">
+                  <div className="flex items-center gap-1">
+                    <span>�� 华北水利水电大学 (人工智能)</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <span>�� 期望城市：大连, 杭州, 合肥</span>
+                  </div>
                 </div>
               </div>
             </div>
             {/* 联系方式 - 右侧 */}
             <div className="mt-6 md:mt-0 flex flex-col gap-2 text-sm text-gray-300 md:text-right">
-              <a href="mailto:yuaiccc@aliyun.com" className="hover:text-white transition">📧 yuaiccc@aliyun.com</a>
-              <span className="hover:text-white transition">📱 157-7937-5847</span>
-              <a href="https://xj3.tech" target="_blank" className="text-blue-400 hover:text-blue-300 font-bold">🌐 xj3.tech</a>
+              <a href="mailto:yuaiccc@aliyun.com" className="hover:text-white transition">�� yuaiccc@aliyun.com</a>
+              <span className="hover:text-white transition">�� 157-7937-5847</span>
+              <a href="https://xj3.tech" target="_blank" className="text-blue-400 hover:text-blue-300 font-bold">�� xj3.tech</a>
             </div>
           </div>
         </header>
