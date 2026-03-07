@@ -158,7 +158,17 @@ export default function Resume() {
 
           {/* === 页脚 === */}
           <footer className="mt-12 pt-8 border-t border-gray-200 text-center text-sm text-gray-400">
-            <p>© 2026 Xu Junshan.</p>
+            <div className="mb-4">
+              <a 
+  href="/Xu_Junshan_Resume.pdf" 
+  className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors shadow-md"
+  download
+>
+  <span>📄</span>
+  <span>Download PDF</span>
+</a>
+            </div>
+            <p>© 2026 Xu Junshan. Powered by Next.js & Vercel.</p>
           </footer>
 
         </div>
