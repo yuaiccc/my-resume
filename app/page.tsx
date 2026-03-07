@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function Resume() {
+  const [showEmail, setShowEmail] = useState(false);
+  const [showPhone, setShowPhone] = useState(false);
+
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 font-sans text-gray-800">
       <div className="max-w-4xl mx-auto bg-white shadow-2xl rounded-xl overflow-hidden">
         
         {/* === 头部信息 === */}
-        <header className="bg-slate-900 text-white p-8 md:p-12">
+        <header className="bg-slate-800 text-white p-8 md:p-12">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
             <div className="flex items-center gap-6">
               {/* 头像 */}
-              <div className="w-40 h-40 overflow-hidden">
+              <div className="w-32 h-32 overflow-hidden">
                 <img 
                   src="/profile.jpg" 
                   alt="许君山" 
@@ -18,23 +21,38 @@ export default function Resume() {
                 />
               </div>
               <div>
-                <h1 className="text-4xl font-bold tracking-tight">许君山</h1>
-                <p className="mt-2 text-xl text-blue-400 font-medium">26届本科应届毕业生 / 软件开发</p>
+                <h1 className="text-3xl font-bold tracking-tight">许君山</h1>
+                <p className="mt-2 text-xl text-blue-400 font-medium">26届本科应届毕业生 / AI</p>
                 <div className="mt-4 flex flex-wrap gap-4 text-sm text-gray-300">
                   <div className="flex items-center gap-1">
                     <span> 华北水利水电大学 (人工智能)</span>
                   </div>
                   <div className="flex items-center gap-1">
-                    <span> 期望城市：大连, 杭州, 合肥</span>
+                    <span> 期望城市：大连, 杭州, 合肥, 全国主要城市</span>
                   </div>
                 </div>
               </div>
             </div>
             {/* 联系方式 - 右侧 */}
             <div className="mt-6 md:mt-0 flex flex-col gap-2 text-sm text-gray-300 md:text-right">
-              <a href="mailto:yuaiccc@aliyun.com" className="hover:text-white transition"> yuaiccc@aliyun.com</a>
-              <span className="hover:text-white transition"> 157-7937-5847</span>
-              <a href="https://xj3.tech" target="_blank" className="text-blue-400 hover:text-blue-300 font-bold"> xj3.tech</a>
+              <a 
+                href="mailto:yuaiccc@aliyun.com" 
+                className="hover:text-white transition cursor-pointer select-none"
+                onMouseEnter={() => setShowEmail(true)}
+                onMouseLeave={() => setShowEmail(false)}
+                onClick={() => setShowEmail(!showEmail)}
+              >
+                {showEmail ? '📧 yuaiccc@aliyun.com' : '📧 ****@aliyun.com'}
+              </a>
+              <span 
+                className="hover:text-white transition cursor-pointer select-none"
+                onMouseEnter={() => setShowPhone(true)}
+                onMouseLeave={() => setShowPhone(false)}
+                onClick={() => setShowPhone(!showPhone)}
+              >
+                {showPhone ? '📱 157-7937-5847' : '📱 157****5847'}
+              </span>
+              <a href="https://xj3.tech" target="_blank" className="text-blue-400 hover:text-blue-300 font-bold">🌐 xj3.tech</a>
             </div>
           </div>
         </header>
@@ -169,7 +187,7 @@ export default function Resume() {
 
           {/* === 页脚 === */}
           <footer className="mt-12 pt-8 border-t border-gray-200 text-center text-sm text-gray-400">
-            <p>© 2026 Xu Junshan. Powered by Next.js & Vercel.</p>
+            <p>© 2026 Xu Junshan.</p>
           </footer>
 
         </div>
