@@ -10,7 +10,7 @@ export default function Resume() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
             <div className="flex items-center gap-6">
               {/* 头像 */}
-              <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-blue-400">
+              <div className="w-40 h-40 overflow-hidden">
                 <img 
                   src="/profile.jpg" 
                   alt="许君山" 
@@ -22,10 +22,10 @@ export default function Resume() {
                 <p className="mt-2 text-xl text-blue-400 font-medium">26届本科应届毕业生 / 软件开发</p>
                 <div className="mt-4 flex flex-wrap gap-4 text-sm text-gray-300">
                   <div className="flex items-center gap-1">
-                    <span>�� 华北水利水电大学 (人工智能)</span>
+                    <span> 华北水利水电大学 (人工智能)</span>
                   </div>
                   <div className="flex items-center gap-1">
-                    <span>�� 期望城市：大连, 杭州, 合肥</span>
+                    <span> 期望城市：大连, 杭州, 合肥</span>
                   </div>
                 </div>
               </div>
@@ -158,7 +158,7 @@ export default function Resume() {
 
           {/* === 页脚 === */}
           <footer className="mt-12 pt-8 border-t border-gray-200 text-center text-sm text-gray-400">
-            <p>© 2026 Xu Junshan. Powered by Next.js & Vercel.</p>
+            <p>© 2026 Xu Junshan.</p>
           </footer>
 
         </div>
