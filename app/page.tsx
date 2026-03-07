@@ -60,10 +60,10 @@ export default function Resume() {
               </div>
               <div className="text-center md:text-left">
                 <h1 className="text-3xl font-bold tracking-tight">许君山</h1>
-                <p className="mt-1 text-lg text-blue-400 font-medium">26届本科应届毕业生 / AI</p>
+                <p className="mt-1 text-lg text-blue-400 font-medium">26届·应届本科 / AI</p>
                 <div className="mt-3 flex flex-wrap justify-center md:justify-start gap-4 text-sm text-gray-300">
                   <span>🎓 华北水利水电大学 (人工智能)</span>
-                  <span>📍 期望城市：大连, 杭州, 合肥</span>
+                  <span>📍 期望城市：杭州, 大连, 合肥</span>
                 </div>
               </div>
             </div>
@@ -76,7 +76,7 @@ export default function Resume() {
                 onMouseLeave={() => setShowEmail(false)}
                 onClick={() => setShowEmail(!showEmail)}
               >
-                {showEmail ? '📧 yuaiccc@aliyun.com' : '📧 ****@aliyun.com'}
+                {showEmail ? '📧 yuaiccc@aliyun.com' : '📧 ****@aliyun.com（按住显示）'}
               </a>
               <span 
                 className="hover:text-white transition cursor-pointer select-none"
@@ -140,7 +140,7 @@ export default function Resume() {
             </div>
             <p className="text-gray-700 dark:text-gray-300 mb-2">人工智能 / 本科 / <span className="font-medium">GPA: 3.16</span> / 共青团员</p>
             <p className="text-sm text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 inline-block px-3 py-1 rounded">
-              🏆 获校级优秀学生奖学金
+              🏆 校级优秀学生奖学金
             </p>
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
               主修：操作系统、数据结构、线性代数、自然语言处理、计算机网络、软件工程
