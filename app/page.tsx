@@ -32,9 +32,9 @@ export default function Resume() {
             </div>
             {/* 联系方式 - 右侧 */}
             <div className="mt-6 md:mt-0 flex flex-col gap-2 text-sm text-gray-300 md:text-right">
-              <a href="mailto:yuaiccc@aliyun.com" className="hover:text-white transition">�� yuaiccc@aliyun.com</a>
-              <span className="hover:text-white transition">�� 157-7937-5847</span>
-              <a href="https://xj3.tech" target="_blank" className="text-blue-400 hover:text-blue-300 font-bold">�� xj3.tech</a>
+              <a href="mailto:yuaiccc@aliyun.com" className="hover:text-white transition"> yuaiccc@aliyun.com</a>
+              <span className="hover:text-white transition"> 157-7937-5847</span>
+              <a href="https://xj3.tech" target="_blank" className="text-blue-400 hover:text-blue-300 font-bold"> xj3.tech</a>
             </div>
           </div>
         </header>
