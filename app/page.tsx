@@ -130,7 +130,20 @@ export default function Resume() {
               </div>
             </div>
           </section>
-
+{/* === 技术栈展示 (图标墙) === */}
+          <section>
+            <h2 className="text-2xl font-bold text-slate-800 border-l-4 border-blue-400 pl-4 mb-6"></h2>
+            <div className="bg-slate-50 p-6 rounded-lg text-center">
+              {/* 图标生成器：https://skillicons.dev */}
+              <a href="https://skillicons.dev" target="_blank">
+                <img 
+                  src="https://skillicons.dev/icons?i=java,spring,mysql,redis,nextjs,react,ts,tailwindcss,vercel,docker,git,linux,idea,vscode&perline=20"
+                  alt="My Tech Stack"
+                  className="mx-auto"
+                />
+              </a>
+            </div>
+          </section>
           {/* === 教育经历 === */}
           <section>
             <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">教育经历</h2>
