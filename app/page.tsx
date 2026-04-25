@@ -63,7 +63,7 @@ export default function Resume() {
                 <p className="mt-1 text-lg text-blue-400 font-medium">26届·应届本科 / AI</p>
                 <div className="mt-3 flex flex-wrap justify-center md:justify-start gap-4 text-sm text-gray-300">
                   <span>🎓 华北水利水电大学 (人工智能)</span>
-                  <span>📍 期望城市：杭州, 大连, 合肥</span>
+                  <span>📍 期望城市：北京, 上海, 深圳, 杭州</span>
                 </div>
               </div>
             </div>
@@ -128,7 +128,7 @@ export default function Resume() {
               <div className="bg-blue-50 dark:bg-blue-900/30 p-5 rounded-lg border border-blue-100 dark:border-blue-800 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                 <h3 className="font-bold text-blue-700 dark:text-blue-300 mb-2 flex items-center gap-2"><span>⚙️</span> 工程化能力</h3>
                 <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                  熟练运用 <span className="font-bold">Git/Linux/Docker</span> 工作流；具备跨平台依赖排错能力；熟练使用 AI IDE (Trae/Claude) 提升研发效能。
+                  熟练运用 <span className="font-bold">Git/Linux/Docker</span> 工作流；具备跨平台依赖排错能力；熟练使用 AI IDE 与 Agent (Trae, Claude Code, Codex) 提升研发效能。
                 </p>
               </div>
             </div>
