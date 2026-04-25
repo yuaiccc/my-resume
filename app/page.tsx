@@ -137,24 +137,45 @@ export default function Resume() {
           {/* === 技术栈展示 (图标墙) === */}
           <section className="animate-fade-in-up delay-200">
             <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">技术栈</h2>
-            <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-lg text-center border border-gray-100 dark:border-gray-700 hover:shadow-sm transition-shadow">
-              {/* 图标生成器：由于国内网络环境，改用 shields.io 方案 */}
-              <div className="flex flex-wrap justify-center gap-3">
-                <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java" className="h-8 hover:scale-105 transition-transform" />
-                <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white" alt="Spring" className="h-8 hover:scale-105 transition-transform" />
-                <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" className="h-8 hover:scale-105 transition-transform" />
-                <img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" alt="Redis" className="h-8 hover:scale-105 transition-transform" />
-                <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" className="h-8 hover:scale-105 transition-transform" />
-                <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" className="h-8 hover:scale-105 transition-transform" />
-                <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" className="h-8 hover:scale-105 transition-transform" />
-                <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind" className="h-8 hover:scale-105 transition-transform" />
-                <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" className="h-8 hover:scale-105 transition-transform" />
-                <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" className="h-8 hover:scale-105 transition-transform" />
-                <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" className="h-8 hover:scale-105 transition-transform" />
-                <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux" className="h-8 hover:scale-105 transition-transform" />
-                <img src="https://img.shields.io/badge/IntelliJ_IDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white" alt="IDEA" className="h-8 hover:scale-105 transition-transform" />
-                <img src="https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" alt="VSCode" className="h-8 hover:scale-105 transition-transform" />
+            <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-sm transition-shadow space-y-6">
+              
+              {/* 后端 & 数据 */}
+              <div>
+                <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3 uppercase tracking-wider">Backend & Data</h3>
+                <div className="flex flex-wrap gap-3">
+                  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java" className="h-8 hover:scale-105 transition-transform" />
+                  <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white" alt="Spring" className="h-8 hover:scale-105 transition-transform" />
+                  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" className="h-8 hover:scale-105 transition-transform" />
+                  <img src="https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white" alt="R" className="h-8 hover:scale-105 transition-transform" />
+                  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" className="h-8 hover:scale-105 transition-transform" />
+                  <img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" alt="Redis" className="h-8 hover:scale-105 transition-transform" />
+                </div>
               </div>
+
+              {/* 前端 */}
+              <div>
+                <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3 uppercase tracking-wider">Frontend</h3>
+                <div className="flex flex-wrap gap-3">
+                  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" className="h-8 hover:scale-105 transition-transform" />
+                  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" className="h-8 hover:scale-105 transition-transform" />
+                  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" className="h-8 hover:scale-105 transition-transform" />
+                  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind" className="h-8 hover:scale-105 transition-transform" />
+                </div>
+              </div>
+
+              {/* DevOps & Tools */}
+              <div>
+                <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3 uppercase tracking-wider">DevOps & Tools</h3>
+                <div className="flex flex-wrap gap-3">
+                  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" className="h-8 hover:scale-105 transition-transform" />
+                  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux" className="h-8 hover:scale-105 transition-transform" />
+                  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" className="h-8 hover:scale-105 transition-transform" />
+                  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" className="h-8 hover:scale-105 transition-transform" />
+                  <img src="https://img.shields.io/badge/IntelliJ_IDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white" alt="IDEA" className="h-8 hover:scale-105 transition-transform" />
+                  <img src="https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" alt="VSCode" className="h-8 hover:scale-105 transition-transform" />
+                </div>
+              </div>
+
             </div>
           </section>
 
