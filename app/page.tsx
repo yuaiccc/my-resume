@@ -136,12 +136,13 @@ export default function Resume() {
 
           {/* === 技术栈展示 (图标墙) === */}
           <section className="animate-fade-in-up delay-200">
-            <h2 className="text-2xl font-bold text-slate-800 border-l-4 border-blue-400 pl-4 mb-6">技术栈</h2>
+            <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">技术栈</h2>
             <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-lg text-center border border-gray-100 dark:border-gray-700 hover:shadow-sm transition-shadow">
               {/* 图标生成器：https://skillicons.dev */}
-              <a href="https://skillicons.dev" target="_blank" className="inline-block hover:scale-[1.02] transition-transform duration-300">
+              <a href="https://skillicons.dev" target="_blank" className="inline-block hover:scale-[1.02] transition-transform duration-300" rel="noreferrer">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img 
-                  src="https://skillicons.dev/icons?i=java,spring,mysql,redis,nextjs,react,ts,tailwindcss,vercel,docker,git,linux,idea,vscode&perline=20"
+                  src={`https://skillicons.dev/icons?i=java,spring,mysql,redis,nextjs,react,ts,tailwindcss,vercel,docker,git,linux,idea,vscode&perline=20${darkMode ? '&theme=dark' : ''}`}
                   alt="My Tech Stack"
                   className="mx-auto"
                 />
