@@ -225,8 +225,56 @@ export default function Resume() {
             </div>
           </section>
 
-          {/* === 实习经历 === */}
+          {/* === 开源项目 (Pinned Projects) === */}
           <section className="animate-fade-in-up delay-600">
+            <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">开源项目</h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              {/* Project 1 */}
+              <a href="https://github.com/SillyTavern/SillyTavern" target="_blank" className="block p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group bg-slate-50 dark:bg-slate-800/50">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors flex items-center gap-2 truncate">
+                    <svg className="w-4 h-4 text-gray-500 flex-shrink-0" fill="currentColor" viewBox="0 0 16 16"><path fillRule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path></svg>
+                    <span className="truncate">SillyTavern/SillyTavern</span>
+                  </h3>
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 line-clamp-2 h-10">
+                  LLM Frontend for Power Users.
+                </p>
+                <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
+                  <span className="flex items-center gap-1">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#f1e05a]"></span> JavaScript
+                  </span>
+                  <span className="flex items-center gap-1">
+                    ⭐ Public
+                  </span>
+                </div>
+              </a>
+
+              {/* Project 2 */}
+              <a href="https://github.com/yuaiccc/japanese-verb-master" target="_blank" className="block p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group bg-slate-50 dark:bg-slate-800/50">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors flex items-center gap-2 truncate">
+                    <svg className="w-4 h-4 text-gray-500 flex-shrink-0" fill="currentColor" viewBox="0 0 16 16"><path fillRule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path></svg>
+                    <span className="truncate">yuaiccc/japanese-verb-master</span>
+                  </h3>
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 line-clamp-2 h-10">
+                  一个精准的日语动词活用在线工具和文档网站，支持五段、一段及不规则动词的自动变换。
+                </p>
+                <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
+                  <span className="flex items-center gap-1">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#41b883]"></span> Vue
+                  </span>
+                  <span className="flex items-center gap-1">
+                    ⭐ Public
+                  </span>
+                </div>
+              </a>
+            </div>
+          </section>
+
+          {/* === 实习经历 === */}
+          <section className="animate-fade-in-up delay-700">
             <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">实习经历</h2>
             
             <div className="mb-6 p-5 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700 relative">
