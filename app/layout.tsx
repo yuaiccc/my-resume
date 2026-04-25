@@ -1,10 +1,30 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
+import { JetBrains_Mono, Noto_Sans_SC } from "next/font/google";
 import "./globals.css";
+
+const notoSansSC = Noto_Sans_SC({
+  subsets: ["latin"],
+  variable: "--font-noto-sans-sc",
+  weight: ["400", "500", "700"],
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+  weight: ["400", "500", "700"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "许君山的CV | Xu Junshan", 
   description: "全栈开发工程师 / Java 开发者", 
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -14,9 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
-      <body
-        className="antialiased"
-      >
+      <body className={`${notoSansSC.variable} ${jetbrainsMono.variable} antialiased`}>
         {children}
         <Analytics />
       </body>
