@@ -129,7 +129,17 @@ const FileDownIcon = ({ className = 'w-4 h-4' }: IconProps) => (
 export default function Resume() {
   const [showEmail, setShowEmail] = useState(false);
   const [showPhone, setShowPhone] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  // 默认设置为 true (Dark Mode)
+  const [darkMode, setDarkMode] = useState(true);
+  const [expandedProjects, setExpandedProjects] = useState<Record<string, boolean>>({});
+
+  const toggleProject = (e: React.MouseEvent, projectId: string) => {
+    e.preventDefault(); // 阻止 <a> 标签的默认跳转
+    setExpandedProjects(prev => ({
+      ...prev,
+      [projectId]: !prev[projectId]
+    }));
+  };
 
   useEffect(() => {
     if (darkMode) {
@@ -249,20 +259,30 @@ export default function Resume() {
             <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">开源项目</h2>
             <div className="grid md:grid-cols-2 gap-4">
               {/* Project 1 */}
-              <a 
-                href="https://github.com/SillyTavern/SillyTavern" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="block p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group bg-slate-50 dark:bg-slate-800/50"
-                title="SillyTavern 是一个功能强大的本地 LLM（大语言模型）前端界面，专为高级用户设计，支持多模型 API 接入、角色扮演卡片、丰富的高级格式化与扩展插件。我在该项目中提交了 21 个已合并的 PR，深度参与了核心功能与体验的优化。"
+              <div 
+                className="block p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group bg-slate-50 dark:bg-slate-800/50 cursor-pointer relative"
+                onClick={(e) => toggleProject(e, 'sillytavern')}
               >
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors flex items-center gap-2 truncate">
                     <svg className="w-4 h-4 text-gray-500 flex-shrink-0" fill="currentColor" viewBox="0 0 16 16"><path fillRule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path></svg>
                     <span className="truncate">SillyTavern/SillyTavern</span>
                   </h3>
+                  <svg className={`w-4 h-4 text-gray-400 transform transition-transform duration-300 ${expandedProjects['sillytavern'] ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                 </div>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 line-clamp-2 h-10">
+                
+                <div className={`overflow-hidden transition-all duration-300 ${expandedProjects['sillytavern'] ? 'max-h-[500px] opacity-100 mb-4' : 'max-h-0 opacity-0 m-0'}`}>
+                  <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed bg-white dark:bg-gray-800 p-3 rounded border border-gray-100 dark:border-gray-700 shadow-inner">
+                    SillyTavern 是一个功能强大的本地 LLM（大语言模型）前端界面，专为高级用户设计，支持多模型 API 接入、角色扮演卡片、丰富的高级格式化与扩展插件。我在该项目中提交了 21 个已合并的 PR，深度参与了核心功能与体验的优化。
+                  </p>
+                  <div className="mt-3 text-right">
+                    <a href="https://github.com/SillyTavern/SillyTavern" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-blue-500 hover:text-blue-600 font-medium px-2 py-1 rounded bg-blue-50 dark:bg-blue-900/30 transition-colors" onClick={(e) => e.stopPropagation()}>
+                      前往 GitHub <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                  </div>
+                </div>
+
+                <p className={`text-sm text-gray-600 dark:text-gray-300 transition-all duration-300 ${expandedProjects['sillytavern'] ? 'hidden' : 'mb-4 line-clamp-2 h-10'}`}>
                   LLM Frontend for Power Users.
                 </p>
                 <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
@@ -274,23 +294,33 @@ export default function Resume() {
                     21 Merged PRs
                   </span>
                 </div>
-              </a>
+              </div>
 
               {/* Project 2 */}
-              <a 
-                href="https://github.com/yuaiccc/japanese-verb-master" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="block p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group bg-slate-50 dark:bg-slate-800/50"
-                title="独立开发的一款日语动词活用变形工具。通过 Vue 构建响应式界面，精准实现五段、一段、サ变、カ变等各类型动词的自动变形及详尽的规则说明，帮助日语学习者快速掌握语法变化。"
+              <div 
+                className="block p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group bg-slate-50 dark:bg-slate-800/50 cursor-pointer relative"
+                onClick={(e) => toggleProject(e, 'japanese-verb')}
               >
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors flex items-center gap-2 truncate">
                     <svg className="w-4 h-4 text-gray-500 flex-shrink-0" fill="currentColor" viewBox="0 0 16 16"><path fillRule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path></svg>
                     <span className="truncate">yuaiccc/japanese-verb-master</span>
                   </h3>
+                  <svg className={`w-4 h-4 text-gray-400 transform transition-transform duration-300 ${expandedProjects['japanese-verb'] ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                 </div>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 line-clamp-2 h-10">
+                
+                <div className={`overflow-hidden transition-all duration-300 ${expandedProjects['japanese-verb'] ? 'max-h-[500px] opacity-100 mb-4' : 'max-h-0 opacity-0 m-0'}`}>
+                  <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed bg-white dark:bg-gray-800 p-3 rounded border border-gray-100 dark:border-gray-700 shadow-inner">
+                    独立开发的一款日语动词活用变形工具。通过 Vue 构建响应式界面，精准实现五段、一段、サ变、カ变等各类型动词的自动变形及详尽的规则说明，帮助日语学习者快速掌握语法变化。
+                  </p>
+                  <div className="mt-3 text-right">
+                    <a href="https://github.com/yuaiccc/japanese-verb-master" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-blue-500 hover:text-blue-600 font-medium px-2 py-1 rounded bg-blue-50 dark:bg-blue-900/30 transition-colors" onClick={(e) => e.stopPropagation()}>
+                      前往 GitHub <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                  </div>
+                </div>
+
+                <p className={`text-sm text-gray-600 dark:text-gray-300 transition-all duration-300 ${expandedProjects['japanese-verb'] ? 'hidden' : 'mb-4 line-clamp-2 h-10'}`}>
                   一个精准的日语动词活用在线工具和文档网站，支持五段、一段及不规则动词的自动变换。
                 </p>
                 <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
@@ -301,7 +331,7 @@ export default function Resume() {
                     ⭐ Public
                   </span>
                 </div>
-              </a>
+              </div>
             </div>
           </section>
 
