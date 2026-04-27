@@ -65,9 +65,9 @@ const toneClassMap: Record<TechTone, string> = {
 
 const TechBadge = ({ name, short, tone }: TechItem) => (
   <li className="group/list-item">
-    <span className="inline-flex items-center gap-3 rounded-xl border border-slate-200/80 bg-white px-3 py-2.5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md dark:border-slate-700 dark:bg-slate-900/80">
+    <span className="inline-flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2 transition-colors duration-200 hover:border-slate-300 dark:border-slate-700 dark:bg-slate-900">
       <span
-        className={`inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br ${toneClassMap[tone]} text-[11px] font-semibold tracking-wide text-white ring-1 ring-white/25`}
+        className={`inline-flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br ${toneClassMap[tone]} text-[10px] font-semibold tracking-wide text-white`}
         aria-hidden="true"
       >
         {short}
@@ -164,15 +164,11 @@ export default function Resume() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-slate-50 via-sky-50 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-900 py-12 px-4 sm:px-6 lg:px-8 font-sans text-gray-800 dark:text-gray-100 transition-colors duration-300">
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-blue-300/20 blur-3xl dark:bg-blue-600/20" />
-        <div className="absolute top-1/3 -left-20 h-72 w-72 rounded-full bg-cyan-200/20 blur-3xl dark:bg-cyan-500/10" />
-      </div>
-      <div className="resume-card relative max-w-4xl mx-auto bg-white/95 dark:bg-gray-800/95 shadow-2xl rounded-2xl overflow-hidden transition-colors duration-300 ring-1 ring-white/70 dark:ring-gray-700">
+    <div className="min-h-screen bg-slate-100 dark:bg-slate-950 py-10 px-4 sm:px-6 lg:px-8 font-sans text-gray-800 dark:text-gray-100 transition-colors duration-300">
+      <div className="resume-card relative max-w-4xl mx-auto bg-white dark:bg-gray-900 shadow-lg rounded-xl overflow-hidden transition-colors duration-300 ring-1 ring-slate-200 dark:ring-slate-800">
         
         {/* === 头部信息 === */}
-        <header className="bg-slate-800 dark:bg-slate-950 text-white p-8 md:p-12 transition-colors duration-300">
+        <header className="bg-slate-900 text-white p-8 md:p-10 transition-colors duration-300">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             {/* 左侧：头像 + 基本信息 */}
             <div className="flex flex-col md:flex-row items-center gap-6">
@@ -188,7 +184,7 @@ export default function Resume() {
               </div>
               <div className="text-center md:text-left">
                 <h1 className="text-3xl font-bold tracking-tight">许君山</h1>
-                <p className="mt-1 text-lg text-blue-400 font-medium">26届·应届本科 / AI</p>
+                <p className="mt-1 text-base text-blue-300 font-medium font-mono">26届·应届本科 / AI</p>
                 <div className="mt-3 flex flex-wrap justify-center md:justify-start gap-4 text-sm text-gray-300">
                   <span>🎓 华北水利水电大学 (人工智能)</span>
                   <span>📍 期望城市：北京, 上海, 深圳, 杭州</span>
@@ -253,7 +249,13 @@ export default function Resume() {
             <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">开源项目</h2>
             <div className="grid md:grid-cols-2 gap-4">
               {/* Project 1 */}
-              <a href="https://github.com/SillyTavern/SillyTavern" target="_blank" rel="noopener noreferrer" className="block p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group bg-slate-50 dark:bg-slate-800/50">
+              <a 
+                href="https://github.com/SillyTavern/SillyTavern" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="block p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group bg-slate-50 dark:bg-slate-800/50"
+                title="SillyTavern 是一个功能强大的本地 LLM（大语言模型）前端界面，专为高级用户设计，支持多模型 API 接入、角色扮演卡片、丰富的高级格式化与扩展插件。我在该项目中提交了 21 个已合并的 PR，深度参与了核心功能与体验的优化。"
+              >
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors flex items-center gap-2 truncate">
                     <svg className="w-4 h-4 text-gray-500 flex-shrink-0" fill="currentColor" viewBox="0 0 16 16"><path fillRule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path></svg>
@@ -275,7 +277,13 @@ export default function Resume() {
               </a>
 
               {/* Project 2 */}
-              <a href="https://github.com/yuaiccc/japanese-verb-master" target="_blank" rel="noopener noreferrer" className="block p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group bg-slate-50 dark:bg-slate-800/50">
+              <a 
+                href="https://github.com/yuaiccc/japanese-verb-master" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="block p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group bg-slate-50 dark:bg-slate-800/50"
+                title="独立开发的一款日语动词活用变形工具。通过 Vue 构建响应式界面，精准实现五段、一段、サ变、カ变等各类型动词的自动变形及详尽的规则说明，帮助日语学习者快速掌握语法变化。"
+              >
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors flex items-center gap-2 truncate">
                     <svg className="w-4 h-4 text-gray-500 flex-shrink-0" fill="currentColor" viewBox="0 0 16 16"><path fillRule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path></svg>
@@ -320,91 +328,19 @@ export default function Resume() {
           {/* === 技术栈展示 (图标墙) === */}
           <section className="animate-fade-in-up delay-300">
             <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">技术栈</h2>
-            <div className="bg-slate-50/90 dark:bg-slate-800/55 p-6 rounded-xl border border-gray-200/80 dark:border-gray-700 transition-shadow space-y-6">
-              {/* 后端 & 数据 */}
-              <div>
-                <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3 uppercase tracking-wider">Backend & Data</h3>
-                <div className="flex flex-wrap gap-3">
-                  <div className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md hover:scale-105 transition-transform shadow-sm">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" className="w-5 h-5" alt="Java" />
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Java</span>
-                  </div>
-                  <div className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md hover:scale-105 transition-transform shadow-sm">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" className="w-5 h-5" alt="Spring" />
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Spring</span>
-                  </div>
-                  <div className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md hover:scale-105 transition-transform shadow-sm">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" className="w-5 h-5" alt="Python" />
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Python</span>
-                  </div>
-                  <div className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md hover:scale-105 transition-transform shadow-sm">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/r/r-original.svg" className="w-5 h-5" alt="R" />
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">R</span>
-                  </div>
-                  <div className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md hover:scale-105 transition-transform shadow-sm">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" className="w-5 h-5" alt="MySQL" />
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">MySQL</span>
-                  </div>
-                  <div className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md hover:scale-105 transition-transform shadow-sm">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg" className="w-5 h-5" alt="Redis" />
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Redis</span>
-                  </div>
+            <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-gray-200 dark:border-gray-800 space-y-6">
+              {TECH_GROUPS.map((group) => (
+                <div key={group.title} className="space-y-3">
+                  <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-[0.14em] font-mono">
+                    {group.title}
+                  </h3>
+                  <ul className="flex flex-wrap gap-3" aria-label={group.title}>
+                    {group.items.map((item) => (
+                      <TechBadge key={item.name} {...item} />
+                    ))}
+                  </ul>
                 </div>
-              </div>
-
-              {/* 前端 */}
-              <div>
-                <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3 uppercase tracking-wider">Frontend</h3>
-                <div className="flex flex-wrap gap-3">
-                  <div className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md hover:scale-105 transition-transform shadow-sm">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" className="w-5 h-5" alt="TypeScript" />
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">TypeScript</span>
-                  </div>
-                  <div className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md hover:scale-105 transition-transform shadow-sm">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" className="w-5 h-5" alt="React" />
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">React</span>
-                  </div>
-                  <div className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md hover:scale-105 transition-transform shadow-sm">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" className="w-5 h-5 dark:invert" alt="Next.js" />
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Next.js</span>
-                  </div>
-                  <div className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md hover:scale-105 transition-transform shadow-sm">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" className="w-5 h-5" alt="Tailwind" />
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Tailwind CSS</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* DevOps & Tools */}
-              <div>
-                <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3 uppercase tracking-wider">DevOps & Tools</h3>
-                <div className="flex flex-wrap gap-3">
-                  <div className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md hover:scale-105 transition-transform shadow-sm">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" className="w-5 h-5" alt="Git" />
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Git</span>
-                  </div>
-                  <div className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md hover:scale-105 transition-transform shadow-sm">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" className="w-5 h-5" alt="Linux" />
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Linux</span>
-                  </div>
-                  <div className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md hover:scale-105 transition-transform shadow-sm">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" className="w-5 h-5" alt="Docker" />
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Docker</span>
-                  </div>
-                  <div className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md hover:scale-105 transition-transform shadow-sm">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg" className="w-5 h-5 dark:invert" alt="Vercel" />
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Vercel</span>
-                  </div>
-                  <div className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md hover:scale-105 transition-transform shadow-sm">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/intellij/intellij-original.svg" className="w-5 h-5" alt="IDEA" />
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">IntelliJ IDEA</span>
-                  </div>
-                  <div className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md hover:scale-105 transition-transform shadow-sm">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" className="w-5 h-5" alt="VSCode" />
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">VSCode</span>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </section>
 
