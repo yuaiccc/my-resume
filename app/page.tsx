@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 type IconProps = { className?: string };
 const THEME_STORAGE_KEY = 'resume-theme';
@@ -187,11 +188,14 @@ export default function Resume() {
             {/* 左侧：头像 + 基本信息 */}
             <div className="flex flex-col md:flex-row items-center gap-6">
               {/* 头像 */}
-              <div className="hero-avatar-glow w-18 h-18 rounded-xl overflow-hidden flex-shrink-0 shadow-lg ring-1 ring-white/10">
-                <img 
+              <div className="hero-avatar-glow relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden flex-shrink-0 shadow-lg ring-1 ring-white/10">
+                <Image 
                   src="/profile.jpg" 
                   alt="许君山" 
-                  className="w-full h-full object-cover"
+                  fill
+                  sizes="(max-width: 768px) 80px, 96px"
+                  className="object-cover"
+                  priority
                 />
               </div>
               <div className="text-center md:text-left">
