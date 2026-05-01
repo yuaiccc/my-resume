@@ -2,6 +2,7 @@ import Image from 'next/image';
 import InteractiveEffects from './InteractiveEffects';
 import OpenSourceProjects from './OpenSourceProjects';
 import ScrollProgress from './ScrollProgress';
+import { PERSON_SCHEMA } from './site';
 import ThemeToggle from './ThemeToggle';
 import VisitorBadge from './VisitorBadge';
 
@@ -105,6 +106,10 @@ const FileDownIcon = ({ className = 'w-4 h-4' }: IconProps) => (
 export default function Resume() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_SCHEMA) }}
+      />
       <ScrollProgress />
       <InteractiveEffects />
       <div className="min-h-screen bg-slate-100 dark:bg-slate-950 py-10 px-4 sm:px-6 lg:px-8 font-sans text-gray-800 dark:text-gray-100 transition-colors duration-300">
@@ -134,7 +139,6 @@ export default function Resume() {
                   <p className="mt-1 text-base text-blue-300 font-medium font-mono">26届·应届本科 / AI</p>
                   <div className="mt-3 flex flex-wrap justify-center md:justify-start gap-4 text-sm text-gray-300">
                     <span>🎓 华北水利水电大学 (人工智能)</span>
-                    <span>📍 期望城市：北京, 上海, 深圳, 杭州</span>
                   </div>
                 </div>
               </div>
