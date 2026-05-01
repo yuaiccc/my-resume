@@ -7,18 +7,21 @@
   --foreground: #171717;
 }
 
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  color-scheme: dark;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-noto-sans-sc);
   --font-mono: var(--font-jetbrains-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
@@ -65,5 +68,65 @@ a {
 .resume-card {
   -webkit-backdrop-filter: saturate(110%) blur(2px);
   backdrop-filter: saturate(110%) blur(2px);
+}
+
+.interactive-card {
+  position: relative;
+  overflow: hidden;
+  --spotlight-x: 50%;
+  --spotlight-y: 50%;
+}
+
+.interactive-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      260px circle at var(--spotlight-x) var(--spotlight-y),
+      rgba(96, 165, 250, 0.18),
+      transparent 42%
+    );
+  opacity: 0;
+  transition: opacity 220ms ease;
+  pointer-events: none;
+}
+
+.interactive-card:hover::before {
+  opacity: 1;
+}
+
+.hero-avatar-glow {
+  position: relative;
+}
+
+.hero-avatar-glow::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  z-index: -1;
+  border-radius: 1rem;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.38), transparent 68%);
+  filter: blur(12px);
+  opacity: 0.8;
+}
+
+@keyframes ambientFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0) scale(1.04);
+  }
+}
+
+.ambient-orb {
+  animation: ambientFloat 8s ease-in-out infinite;
+}
+
+.ambient-orb-delayed {
+  animation: ambientFloat 10s ease-in-out infinite;
+  animation-delay: 1.5s;
 }
 

@@ -1,7 +1,20 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import { JetBrains_Mono, Noto_Sans_SC } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
+
+const themeInitScript = `
+  try {
+    const storedTheme = window.localStorage.getItem('resume-theme');
+    const isDark = storedTheme !== 'light';
+    document.documentElement.classList.toggle('dark', isDark);
+    document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+  } catch (error) {
+    document.documentElement.classList.add('dark');
+    document.documentElement.style.colorScheme = 'dark';
+  }
+`;
 
 const notoSansSC = Noto_Sans_SC({
   subsets: ["latin"],
@@ -33,8 +46,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN">
+    <html lang="zh-CN" suppressHydrationWarning>
       <body className={`${notoSansSC.variable} ${jetbrainsMono.variable} antialiased`}>
+        <Script id="theme-init" strategy="beforeInteractive">
+          {themeInitScript}
+        </Script>
         {children}
         <Analytics />
       </body>

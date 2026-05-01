@@ -4,11 +4,12 @@ import React, { useState, useEffect } from 'react';
 
 type IconProps = { className?: string };
 type TechTone = 'amber' | 'emerald' | 'blue' | 'cyan' | 'sky' | 'red' | 'indigo' | 'slate' | 'orange' | 'violet';
+const THEME_STORAGE_KEY = 'resume-theme';
 
 type TechItem = {
   name: string;
-  short: string;
-  tone: TechTone;
+  icon: string;
+  invertDark?: boolean;
 };
 
 type TechGroup = {
@@ -20,59 +21,46 @@ const TECH_GROUPS: TechGroup[] = [
   {
     title: 'Backend & Data',
     items: [
-      { name: 'Java', short: 'JV', tone: 'amber' },
-      { name: 'Spring', short: 'SP', tone: 'emerald' },
-      { name: 'Python', short: 'PY', tone: 'blue' },
-      { name: 'R', short: 'R', tone: 'sky' },
-      { name: 'MySQL', short: 'MY', tone: 'cyan' },
-      { name: 'Redis', short: 'RD', tone: 'red' },
+      { name: 'Java', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg' },
+      { name: 'Spring', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg' },
+      { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
+      { name: 'R', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/r/r-original.svg' },
+      { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg' },
+      { name: 'Redis', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg' },
     ],
   },
   {
     title: 'Frontend',
     items: [
-      { name: 'TypeScript', short: 'TS', tone: 'blue' },
-      { name: 'React', short: 'RC', tone: 'cyan' },
-      { name: 'Next.js', short: 'NX', tone: 'slate' },
-      { name: 'Tailwind CSS', short: 'TW', tone: 'sky' },
+      { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg' },
+      { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
+      { name: 'Next.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg', invertDark: true },
+      { name: 'Tailwind CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg' },
     ],
   },
   {
     title: 'DevOps & Tools',
     items: [
-      { name: 'Git', short: 'GT', tone: 'orange' },
-      { name: 'Linux', short: 'LX', tone: 'amber' },
-      { name: 'Docker', short: 'DK', tone: 'blue' },
-      { name: 'Vercel', short: 'VC', tone: 'slate' },
-      { name: 'IntelliJ IDEA', short: 'IJ', tone: 'violet' },
-      { name: 'VS Code', short: 'VS', tone: 'indigo' },
+      { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg' },
+      { name: 'Linux', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg' },
+      { name: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
+      { name: 'Vercel', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg', invertDark: true },
+      { name: 'IntelliJ IDEA', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/intellij/intellij-original.svg' },
+      { name: 'VS Code', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg' },
     ],
   },
 ];
 
-const toneClassMap: Record<TechTone, string> = {
-  amber: 'from-amber-500 to-orange-500',
-  emerald: 'from-emerald-500 to-lime-500',
-  blue: 'from-blue-500 to-indigo-500',
-  cyan: 'from-cyan-500 to-blue-500',
-  sky: 'from-sky-500 to-cyan-500',
-  red: 'from-red-500 to-rose-500',
-  indigo: 'from-indigo-500 to-blue-500',
-  slate: 'from-slate-700 to-slate-900',
-  orange: 'from-orange-500 to-red-500',
-  violet: 'from-violet-500 to-fuchsia-500',
-};
-
-const TechBadge = ({ name, short, tone }: TechItem) => (
+const TechBadge = ({ name, icon, invertDark }: TechItem) => (
   <li className="group/list-item">
-    <span className="inline-flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2 transition-colors duration-200 hover:border-slate-300 dark:border-slate-700 dark:bg-slate-900">
-      <span
-        className={`inline-flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br ${toneClassMap[tone]} text-[10px] font-semibold tracking-wide text-white`}
-        aria-hidden="true"
-      >
-        {short}
-      </span>
-      <span className="text-sm font-medium text-slate-700 dark:text-slate-200">{name}</span>
+    <span className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 transition-all duration-300 hover:scale-105 hover:border-slate-300 hover:shadow-sm dark:border-slate-700 dark:bg-slate-800 dark:hover:border-slate-600">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img 
+        src={icon} 
+        alt={name} 
+        className={`w-5 h-5 ${invertDark ? 'dark:invert' : ''}`}
+      />
+      <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{name}</span>
     </span>
   </li>
 );
@@ -127,10 +115,9 @@ const FileDownIcon = ({ className = 'w-4 h-4' }: IconProps) => (
 );
 
 export default function Resume() {
-  const [showEmail, setShowEmail] = useState(false);
-  const [showPhone, setShowPhone] = useState(false);
-  // 默认设置为 true (Dark Mode)
   const [darkMode, setDarkMode] = useState(true);
+  const [themeReady, setThemeReady] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [expandedProjects, setExpandedProjects] = useState<Record<string, boolean>>({});
 
   const toggleProject = (e: React.MouseEvent, projectId: string) => {
@@ -141,55 +128,71 @@ export default function Resume() {
     }));
   };
 
+  const updateCardSpotlight = (event: React.MouseEvent<HTMLElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    event.currentTarget.style.setProperty('--spotlight-x', `${event.clientX - rect.left}px`);
+    event.currentTarget.style.setProperty('--spotlight-y', `${event.clientY - rect.top}px`);
+  };
+
   useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
+    const isDark = document.documentElement.classList.contains('dark');
+    setDarkMode(isDark);
+    setThemeReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!themeReady) {
+      return;
     }
-  }, [darkMode]);
+
+    document.documentElement.classList.toggle('dark', darkMode);
+    document.documentElement.style.colorScheme = darkMode ? 'dark' : 'light';
+    window.localStorage.setItem(THEME_STORAGE_KEY, darkMode ? 'dark' : 'light');
+  }, [darkMode, themeReady]);
 
   useEffect(() => {
-    const handleContextMenu = (e: MouseEvent) => {
-      e.preventDefault();
-    };
-    
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's')) {
-        e.preventDefault();
-      }
+    const handleScroll = () => {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollHeight > 0 ? (window.scrollY / scrollHeight) * 100 : 0;
+      setScrollProgress(Math.min(100, Math.max(0, progress)));
     };
 
-    document.addEventListener('contextmenu', handleContextMenu);
-    document.addEventListener('keydown', handleKeyDown);
-    document.body.style.userSelect = 'none';
-    document.body.style.webkitUserSelect = 'none';
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
-      document.removeEventListener('contextmenu', handleContextMenu);
-      document.removeEventListener('keydown', handleKeyDown);
-      document.body.style.userSelect = '';
-      document.body.style.webkitUserSelect = '';
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-100 dark:bg-slate-950 py-10 px-4 sm:px-6 lg:px-8 font-sans text-gray-800 dark:text-gray-100 transition-colors duration-300">
-      <div className="resume-card relative max-w-4xl mx-auto bg-white dark:bg-gray-900 shadow-lg rounded-xl overflow-hidden transition-colors duration-300 ring-1 ring-slate-200 dark:ring-slate-800">
+    <>
+      <div className="fixed inset-x-0 top-0 z-50 h-1 bg-transparent">
+        <div
+          className="h-full origin-left bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500 shadow-[0_0_18px_rgba(59,130,246,0.65)] transition-transform duration-150"
+          style={{ transform: `scaleX(${scrollProgress / 100})` }}
+        />
+      </div>
+      <div className="min-h-screen bg-slate-100 dark:bg-slate-950 py-10 px-4 sm:px-6 lg:px-8 font-sans text-gray-800 dark:text-gray-100 transition-colors duration-300">
+        <div className="resume-card relative max-w-4xl mx-auto bg-white dark:bg-gray-900 shadow-lg rounded-xl overflow-hidden transition-colors duration-300 ring-1 ring-slate-200 dark:ring-slate-800">
         
         {/* === 头部信息 === */}
-        <header className="bg-slate-900 text-white p-8 md:p-10 transition-colors duration-300">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+        <header className="hero-ambient relative isolate overflow-hidden bg-slate-900 text-white p-8 md:p-10 transition-colors duration-300">
+          <div className="pointer-events-none absolute inset-0">
+            <div className="absolute -left-10 top-0 h-36 w-36 rounded-full bg-cyan-400/20 blur-3xl" />
+            <div className="ambient-orb absolute right-0 top-6 h-40 w-40 rounded-full bg-blue-500/20 blur-3xl" />
+            <div className="ambient-orb-delayed absolute left-1/3 bottom-[-2.5rem] h-44 w-44 rounded-full bg-violet-500/20 blur-3xl" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_45%),linear-gradient(135deg,rgba(148,163,184,0.08),transparent_55%)]" />
+          </div>
+          <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-6">
             {/* 左侧：头像 + 基本信息 */}
             <div className="flex flex-col md:flex-row items-center gap-6">
               {/* 头像 */}
-              <div className="w-18 h-18 rounded-xl overflow-hidden flex-shrink-0 shadow-lg" onContextMenu={(e) => e.preventDefault()}>
+              <div className="hero-avatar-glow w-18 h-18 rounded-xl overflow-hidden flex-shrink-0 shadow-lg ring-1 ring-white/10">
                 <img 
                   src="/profile.jpg" 
                   alt="许君山" 
-                  className="w-full h-full object-cover pointer-events-none"
-                  draggable={false}
-                  onContextMenu={(e) => e.preventDefault()}
+                  className="w-full h-full object-cover"
                 />
               </div>
               <div className="text-center md:text-left">
@@ -205,23 +208,18 @@ export default function Resume() {
             <div className="flex flex-col gap-2 text-sm text-gray-300 text-center md:text-right">
               <a 
                 href="mailto:yuaiccc@aliyun.com" 
-                className="hover:text-white transition cursor-pointer select-none inline-flex items-center justify-center md:justify-end gap-2"
-                onMouseEnter={() => setShowEmail(true)}
-                onMouseLeave={() => setShowEmail(false)}
-                onClick={() => setShowEmail(!showEmail)}
+                className="hover:text-white transition inline-flex items-center justify-center md:justify-end gap-2"
               >
                 <MailIcon />
-                <span>{showEmail ? 'yuaiccc@aliyun.com' : '****@aliyun.com（按住显示）'}</span>
+                <span>yuaiccc@aliyun.com</span>
               </a>
-              <span 
-                className="hover:text-white transition cursor-pointer select-none inline-flex items-center justify-center md:justify-end gap-2"
-                onMouseEnter={() => setShowPhone(true)}
-                onMouseLeave={() => setShowPhone(false)}
-                onClick={() => setShowPhone(!showPhone)}
+              <a 
+                href="tel:157-7937-5847" 
+                className="hover:text-white transition inline-flex items-center justify-center md:justify-end gap-2"
               >
                 <PhoneIcon />
-                <span>{showPhone ? '157-7937-5847' : '157****5847'}</span>
-              </span>
+                <span>157-7937-5847</span>
+              </a>
               <a href="https://github.com/yuaiccc" target="_blank" rel="noopener noreferrer" className="hover:text-white transition inline-flex items-center justify-center md:justify-end gap-2">
                 <GithubIcon />
                 <span>github.com/yuaiccc</span>
@@ -238,11 +236,11 @@ export default function Resume() {
           {/* === 工具栏 === */}
           <div className="flex justify-between items-center">
             <button 
-              onClick={() => setDarkMode(!darkMode)}
+              onClick={() => setDarkMode((current) => !current)}
               className="inline-flex items-center gap-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors shadow-md text-sm"
             >
-              {darkMode ? <SunIcon /> : <MoonIcon />}
-              <span>{darkMode ? '浅色模式' : '深色模式'}</span>
+              {themeReady ? (darkMode ? <SunIcon /> : <MoonIcon />) : <SunIcon />}
+              <span>{themeReady ? (darkMode ? '浅色模式' : '深色模式') : '主题切换'}</span>
             </button>
             <a 
               href="/Xu_Junshan_Resume.pdf" 
@@ -260,8 +258,9 @@ export default function Resume() {
             <div className="grid md:grid-cols-2 gap-4">
               {/* Project 1 */}
               <div 
-                className="block p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group bg-slate-50 dark:bg-slate-800/50 cursor-pointer relative"
+                className="interactive-card block p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group bg-slate-50 dark:bg-slate-800/50 cursor-pointer relative"
                 onClick={(e) => toggleProject(e, 'sillytavern')}
+                onMouseMove={updateCardSpotlight}
               >
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors flex items-center gap-2 truncate">
@@ -298,8 +297,9 @@ export default function Resume() {
 
               {/* Project 2 */}
               <div 
-                className="block p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group bg-slate-50 dark:bg-slate-800/50 cursor-pointer relative"
+                className="interactive-card block p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group bg-slate-50 dark:bg-slate-800/50 cursor-pointer relative"
                 onClick={(e) => toggleProject(e, 'japanese-verb')}
+                onMouseMove={updateCardSpotlight}
               >
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors flex items-center gap-2 truncate">
@@ -339,14 +339,20 @@ export default function Resume() {
           <section className="animate-fade-in-up delay-200">
             <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">个人优势</h2>
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-blue-50 dark:bg-blue-900/30 p-5 rounded-lg border border-blue-100 dark:border-blue-800 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+              <div
+                className="interactive-card bg-blue-50 dark:bg-blue-900/30 p-5 rounded-lg border border-blue-100 dark:border-blue-800 hover:shadow-md hover:-translate-y-1 transition-all duration-300"
+                onMouseMove={updateCardSpotlight}
+              >
                 <h3 className="font-bold text-blue-700 dark:text-blue-300 mb-2 flex items-center gap-2"><span>🌍</span> 语言能力</h3>
                 <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
                   <span className="font-bold text-slate-900 dark:text-slate-100">英语 CET-6 (538分)</span>：可熟练作为工作语言进行日常沟通与会议。<br/>
                   <span className="font-bold text-slate-900 dark:text-slate-100">日语 N3</span>：能阅读基本日文技术文档，适应对日开发环境。
                 </p>
               </div>
-              <div className="bg-blue-50 dark:bg-blue-900/30 p-5 rounded-lg border border-blue-100 dark:border-blue-800 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+              <div
+                className="interactive-card bg-blue-50 dark:bg-blue-900/30 p-5 rounded-lg border border-blue-100 dark:border-blue-800 hover:shadow-md hover:-translate-y-1 transition-all duration-300"
+                onMouseMove={updateCardSpotlight}
+              >
                 <h3 className="font-bold text-blue-700 dark:text-blue-300 mb-2 flex items-center gap-2"><span>⚙️</span> 工程化能力</h3>
                 <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
                   熟练运用 <span className="font-bold">Git/Linux/Docker</span> 工作流；具备跨平台依赖排错能力；熟练使用 AI IDE 与 Agent (Trae, Claude Code, Codex) 提升研发效能。
@@ -358,7 +364,10 @@ export default function Resume() {
           {/* === 技术栈展示 (图标墙) === */}
           <section className="animate-fade-in-up delay-300">
             <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">技术栈</h2>
-            <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-gray-200 dark:border-gray-800 space-y-6">
+            <div
+              className="interactive-card bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-gray-200 dark:border-gray-800 space-y-6"
+              onMouseMove={updateCardSpotlight}
+            >
               {TECH_GROUPS.map((group) => (
                 <div key={group.title} className="space-y-3">
                   <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-[0.14em] font-mono">
@@ -416,7 +425,10 @@ export default function Resume() {
             <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">项目经历</h2>
             
             {/* 项目 1 */}
-            <div className="mb-6 p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group">
+            <div
+              className="interactive-card mb-6 p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group"
+              onMouseMove={updateCardSpotlight}
+            >
               <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
                 <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors">Mall 电商后台管理系统</h3>
                 <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded mt-2 sm:mt-0">2026.01 - 2026.02</span>
@@ -433,7 +445,10 @@ export default function Resume() {
             </div>
 
             {/* 项目 2 */}
-            <div className="p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group">
+            <div
+              className="interactive-card p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group"
+              onMouseMove={updateCardSpotlight}
+            >
               <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
                 <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors">多语言自然场景文本识别系统 (毕业设计)</h3>
                 <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded mt-2 sm:mt-0">2025.12 - 至今</span>
@@ -487,7 +502,8 @@ export default function Resume() {
           </footer>
 
         </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
