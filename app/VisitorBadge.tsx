@@ -26,26 +26,13 @@ export default function VisitorBadge() {
     fetch('https://ipapi.co/json/')
       .then(res => res.json())
       .then(data => {
-        const visitorData = {
+        setInfo({
           country: data.country_name,
           city: data.city,
           browser,
           os,
           isLoading: false
-        };
-        setInfo(visitorData);
-
-        // 3. 将信息发送给后端 API 进行记录
-        fetch('/api/visitor', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            country: visitorData.country,
-            city: visitorData.city,
-            browser: visitorData.browser,
-            os: visitorData.os
-          })
-        }).catch(err => console.error('Failed to log visitor:', err));
+        });
       })
       .catch(err => {
         console.error('Failed to fetch visitor info:', err);
@@ -55,16 +42,6 @@ export default function VisitorBadge() {
           isLoading: false,
           error: true
         });
-
-        // 即使 IP 定位失败，也尽量记录浏览器和 OS 信息
-        fetch('/api/visitor', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            browser,
-            os
-          })
-        }).catch(err => console.error('Failed to log visitor:', err));
       });
   }, []);
 
