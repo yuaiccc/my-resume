@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 
 type IconProps = { className?: string };
-type TechTone = 'amber' | 'emerald' | 'blue' | 'cyan' | 'sky' | 'red' | 'indigo' | 'slate' | 'orange' | 'violet';
 const THEME_STORAGE_KEY = 'resume-theme';
 
 type TechItem = {
