@@ -29,6 +29,14 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), "PingFang SC", "Microsoft YaHei", sans-serif;
   scroll-behavior: smooth;
+  /* 隐藏滚动条 */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* 隐藏 Webkit 浏览器的滚动条 (Chrome, Safari, Edge) */
+body::-webkit-scrollbar {
+  display: none;
 }
 
 a {

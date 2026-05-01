@@ -2,6 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
+
+// 动态导入 VisitorBadge 以避免服务端渲染错误
+const VisitorBadge = dynamic(() => import('./VisitorBadge'), { ssr: false });
 
 type IconProps = { className?: string };
 const THEME_STORAGE_KEY = 'resume-theme';
@@ -500,7 +504,10 @@ export default function Resume() {
           </section>
 
           {/* === 页脚 === */}
-          <footer className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-400">
+          <footer className="mt-12 pt-8 pb-4 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-400 space-y-6">
+            <div className="flex justify-center">
+              <VisitorBadge />
+            </div>
             <p>© 2026 Xu Junshan.</p>
           </footer>
 
