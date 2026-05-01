@@ -3,24 +3,14 @@ import { Analytics } from "@vercel/analytics/react";
 import { JetBrains_Mono, Noto_Sans_SC } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-
-const themeInitScript = `
-  try {
-    const storedTheme = window.localStorage.getItem('resume-theme');
-    const isDark = storedTheme !== 'light';
-    document.documentElement.classList.toggle('dark', isDark);
-    document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
-  } catch (error) {
-    document.documentElement.classList.add('dark');
-    document.documentElement.style.colorScheme = 'dark';
-  }
-`;
+import { themeInitScript } from "./theme";
 
 const notoSansSC = Noto_Sans_SC({
   subsets: ["latin"],
   variable: "--font-noto-sans-sc",
   weight: ["400", "500", "700"],
   display: "swap",
+  preload: false,
 });
 
 const jetbrainsMono = JetBrains_Mono({
