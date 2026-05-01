@@ -38,10 +38,10 @@ export default function ThemeToggle() {
       type="button"
       onClick={() => setDarkMode((current) => !current)}
       className="inline-flex items-center gap-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors shadow-md text-sm"
-      aria-label={darkMode ? '切换到浅色模式' : '切换到深色模式'}
+      aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       {darkMode ? <SunIcon /> : <MoonIcon />}
-      <span>{darkMode ? '浅色模式' : '深色模式'}</span>
+      <span>{darkMode ? 'Light Mode' : 'Dark Mode'}</span>
     </button>
   );
 }

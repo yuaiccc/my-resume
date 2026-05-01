@@ -20,7 +20,7 @@ const PROJECTS: Project[] = [
     href: 'https://github.com/SillyTavern/SillyTavern',
     summary: 'LLM Frontend for Power Users.',
     description:
-      'SillyTavern 是一个功能强大的本地 LLM 前端界面，支持多模型 API 接入、角色扮演卡片与插件扩展。我在该项目中提交了 21 个已合并 PR，持续参与核心功能与体验优化。',
+      'SillyTavern is a feature-rich local LLM frontend for advanced users, with multi-model API support, character cards, and an extensible plugin ecosystem. I have contributed 21 merged pull requests focused on product polish and core experience improvements.',
     languageLabel: 'JavaScript',
     languageColor: '#f1e05a',
     metaLabel: '21 Merged PRs',
@@ -29,9 +29,9 @@ const PROJECTS: Project[] = [
     id: 'japanese-verb',
     name: 'yuaiccc/japanese-verb-master',
     href: 'https://github.com/yuaiccc/japanese-verb-master',
-    summary: '一个精准的日语动词活用在线工具和文档网站，支持五段、一段及不规则动词的自动变换。',
+    summary: 'A Japanese verb conjugation tool and documentation site covering godan, ichidan, and irregular verbs.',
     description:
-      '独立开发的日语动词活用变形工具。基于 Vue 构建响应式界面，支持五段、一段、サ变、カ变等多类动词的自动变形及规则说明，帮助学习者快速掌握语法变化。',
+      'An independently built Japanese verb conjugation tool created with Vue. It provides responsive interactions, automatic conjugation across major verb classes, and concise rule explanations to help learners master grammar patterns quickly.',
     languageLabel: 'Vue',
     languageColor: '#41b883',
     metaLabel: 'Public',
@@ -79,7 +79,7 @@ export default function OpenSourceProjects() {
 
   return (
     <section className="animate-fade-in-up delay-100">
-      <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">开源项目</h2>
+      <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">Open Source</h2>
       <div className="grid md:grid-cols-2 gap-4">
         {PROJECTS.map((project) => {
           const expanded = Boolean(expandedProjects[project.id]);
@@ -121,7 +121,7 @@ export default function OpenSourceProjects() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-xs text-blue-500 hover:text-blue-600 font-medium px-2 py-1 rounded bg-blue-50 dark:bg-blue-900/30 transition-colors"
                   >
-                    前往 GitHub <ExternalLinkIcon />
+                    View on GitHub <ExternalLinkIcon />
                   </a>
                 </div>
               </div>

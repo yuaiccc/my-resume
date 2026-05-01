@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import AccessibilityToggle from './AccessibilityToggle';
 import InteractiveEffects from './InteractiveEffects';
 import OpenSourceProjects from './OpenSourceProjects';
 import ScrollProgress from './ScrollProgress';
@@ -94,15 +95,6 @@ const GlobeIcon = ({ className = 'w-4 h-4' }: IconProps) => (
   </svg>
 );
 
-const FileDownIcon = ({ className = 'w-4 h-4' }: IconProps) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className} aria-hidden="true">
-    <path d="M14.5 2.75H7.5a2.5 2.5 0 0 0-2.5 2.5v13.5a2.5 2.5 0 0 0 2.5 2.5h9a2.5 2.5 0 0 0 2.5-2.5V8.75L14.5 2.75Z" />
-    <path d="M14.5 2.75v6h4.5" />
-    <path d="M12 11.5v6" />
-    <path d="M9.8 15.4L12 17.6l2.2-2.2" />
-  </svg>
-);
-
 export default function Resume() {
   return (
     <>
@@ -127,7 +119,7 @@ export default function Resume() {
                 <div className="hero-avatar-glow relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden flex-shrink-0 shadow-lg ring-1 ring-white/10">
                   <Image
                     src="/profile.jpg"
-                    alt="许君山"
+                    alt="Xu Junshan"
                     fill
                     sizes="(max-width: 768px) 80px, 96px"
                     className="object-cover"
@@ -135,10 +127,10 @@ export default function Resume() {
                   />
                 </div>
                 <div className="text-center md:text-left">
-                  <h1 className="text-3xl font-bold tracking-tight">许君山</h1>
-                  <p className="mt-1 text-base text-blue-300 font-medium font-mono">26届·应届本科 / AI</p>
+                  <h1 className="text-3xl font-bold tracking-tight">Xu Junshan</h1>
+                  <p className="mt-1 text-base text-blue-300 font-medium font-mono">Class of 2026 · AI Undergraduate</p>
                   <div className="mt-3 flex flex-wrap justify-center md:justify-start gap-4 text-sm text-gray-300">
-                    <span>🎓 华北水利水电大学 (人工智能)</span>
+                    <span>North China University of Water Resources and Electric Power · Artificial Intelligence</span>
                   </div>
                 </div>
               </div>
@@ -180,47 +172,45 @@ export default function Resume() {
           </header>
 
           <div className="p-8 md:p-12 space-y-10">
-            <div className="flex justify-between items-center">
-              <ThemeToggle />
-              <a
-                href="/Xu_Junshan_Resume.pdf"
-                className="inline-flex items-center gap-2 bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors shadow-md"
-                download
-              >
-                <FileDownIcon />
-                <span>下载 PDF</span>
-              </a>
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="flex flex-wrap items-center gap-3">
+                <ThemeToggle />
+                <AccessibilityToggle />
+              </div>
+              <p className="text-sm text-slate-500 dark:text-slate-400">
+                Personal site focused on engineering work, open source, and AI projects.
+              </p>
             </div>
 
             <OpenSourceProjects />
 
             <section className="animate-fade-in-up delay-200">
-              <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">个人优势</h2>
+              <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">Highlights</h2>
               <div className="grid md:grid-cols-2 gap-6">
                 <div
                   data-spotlight-card
                   className="interactive-card bg-blue-50 dark:bg-blue-900/30 p-5 rounded-lg border border-blue-100 dark:border-blue-800 hover:shadow-md hover:-translate-y-1 transition-all duration-300"
                 >
-                  <h3 className="font-bold text-blue-700 dark:text-blue-300 mb-2 flex items-center gap-2"><span>🌍</span> 语言能力</h3>
+                  <h3 className="font-bold text-blue-700 dark:text-blue-300 mb-2 flex items-center gap-2"><span>🌍</span> Languages</h3>
                   <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                    <span className="font-bold text-slate-900 dark:text-slate-100">英语 CET-6 (538分)</span>：可熟练作为工作语言进行日常沟通与会议。<br />
-                    <span className="font-bold text-slate-900 dark:text-slate-100">日语 N3</span>：能阅读基本日文技术文档，适应对日开发环境。
+                    <span className="font-bold text-slate-900 dark:text-slate-100">English CET-6 (538)</span>: comfortable using English in day-to-day collaboration and technical discussions.<br />
+                    <span className="font-bold text-slate-900 dark:text-slate-100">Japanese JLPT N3</span>: able to read basic technical materials and adapt to Japan-facing development contexts.
                   </p>
                 </div>
                 <div
                   data-spotlight-card
                   className="interactive-card bg-blue-50 dark:bg-blue-900/30 p-5 rounded-lg border border-blue-100 dark:border-blue-800 hover:shadow-md hover:-translate-y-1 transition-all duration-300"
                 >
-                  <h3 className="font-bold text-blue-700 dark:text-blue-300 mb-2 flex items-center gap-2"><span>⚙️</span> 工程化能力</h3>
+                  <h3 className="font-bold text-blue-700 dark:text-blue-300 mb-2 flex items-center gap-2"><span>⚙️</span> Engineering Workflow</h3>
                   <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                    熟练运用 <span className="font-bold">Git/Linux/Docker</span> 工作流；具备跨平台依赖排错能力；熟练使用 AI IDE 与 Agent (Trae, Claude Code, Codex) 提升研发效能。
+                    Strong with <span className="font-bold">Git, Linux, and Docker</span> workflows; experienced in cross-platform dependency debugging; productive with AI-native tools such as Trae, Claude Code, and Codex.
                   </p>
                 </div>
               </div>
             </section>
 
             <section className="animate-fade-in-up delay-300">
-              <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">技术栈</h2>
+              <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">Tech Stack</h2>
               <div
                 data-spotlight-card
                 className="interactive-card bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-gray-200 dark:border-gray-800 space-y-6"
@@ -241,59 +231,59 @@ export default function Resume() {
             </section>
 
             <section className="animate-fade-in-up delay-400">
-              <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">教育经历</h2>
+              <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">Education</h2>
               <div className="p-5 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
                 <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">华北水利水电大学</h3>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">2022.09 - 2026.06</span>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">North China University of Water Resources and Electric Power</h3>
+                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Sep 2022 - Jun 2026</span>
                 </div>
-                <p className="text-gray-700 dark:text-gray-300 mb-2">人工智能 / 本科 / <span className="font-medium text-blue-500">GPA: 3.16</span> / 共青团员</p>
+                <p className="text-gray-700 dark:text-gray-300 mb-2">B.Eng. in Artificial Intelligence / <span className="font-medium text-blue-500">GPA: 3.16</span> / Member of the Communist Youth League</p>
                 <p className="text-sm text-gray-600 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 inline-block px-3 py-1 rounded-full border border-blue-100 dark:border-blue-800">
-                  🏆 校级优秀学生奖学金
+                  Academic Excellence Scholarship
                 </p>
                 <p className="text-sm text-gray-500 dark:text-gray-400 mt-3">
-                  <span className="font-medium">主修课程：</span>操作系统、数据结构、线性代数、自然语言处理、计算机网络、软件工程
+                  <span className="font-medium">Core coursework:</span> Operating Systems, Data Structures, Linear Algebra, Natural Language Processing, Computer Networks, and Software Engineering
                 </p>
               </div>
             </section>
 
             <section className="animate-fade-in-up delay-500">
-              <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">专业技能</h2>
+              <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">Capabilities</h2>
               <div className="space-y-4">
                 <div className="group p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
-                  <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-500 transition-colors">Java 后端核心</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">熟悉 Java 基础 (HashMap/JUC/JVM)；熟练使用 <span className="font-medium text-blue-500">Spring Boot + MyBatis</span> 开发企业级应用；理解 MVC 与 RESTful 规范。</p>
+                  <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-500 transition-colors">Java Backend Foundations</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">Comfortable with Java fundamentals including HashMap, JUC, and JVM concepts; experienced in building production-style applications with <span className="font-medium text-blue-500">Spring Boot + MyBatis</span>; familiar with MVC and RESTful design.</p>
                 </div>
                 <div className="group p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
-                  <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-500 transition-colors">数据库与中间件</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">熟悉 <span className="font-medium text-blue-500">MySQL</span> (索引/事务/SQL优化)；掌握 <span className="font-medium text-blue-500">Redis</span> 核心数据结构与缓存场景；了解 RabbitMQ 异步解耦。</p>
+                  <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-500 transition-colors">Data and Middleware</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">Working knowledge of <span className="font-medium text-blue-500">MySQL</span> covering indexing, transactions, and SQL tuning; hands-on with <span className="font-medium text-blue-500">Redis</span> data structures and caching patterns; familiar with RabbitMQ for asynchronous decoupling.</p>
                 </div>
                 <div className="group p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
-                  <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-500 transition-colors">DevOps 与部署</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">熟练掌握 <span className="font-medium text-blue-500">Vercel CI/CD + GitHub</span> 自动化部署；熟悉 Linux 常用命令与 Nginx 配置。</p>
+                  <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-500 transition-colors">DevOps and Delivery</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">Comfortable with automated deployment through <span className="font-medium text-blue-500">Vercel CI/CD + GitHub</span>; familiar with common Linux workflows and Nginx configuration.</p>
                 </div>
               </div>
             </section>
 
             <section className="animate-fade-in-up delay-600">
-              <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">项目经历</h2>
+              <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">Selected Projects</h2>
 
               <div
                 data-spotlight-card
                 className="interactive-card mb-6 p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group"
               >
                 <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors">Mall 电商后台管理系统</h3>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded mt-2 sm:mt-0">2026.01 - 2026.02</span>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors">Mall E-commerce Admin System</h3>
+                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded mt-2 sm:mt-0">Jan 2026 - Feb 2026</span>
                 </div>
                 <p className="text-sm text-blue-500 font-medium mb-3 flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-blue-500" />
-                  Java 后端开发 | Spring Boot + Redis + JWT + MySQL
+                  Java Backend Development | Spring Boot + Redis + JWT + MySQL
                 </p>
                 <ul className="list-disc list-outside ml-5 space-y-2.5 text-sm text-gray-700 dark:text-gray-300">
-                  <li><span className="font-bold text-slate-800 dark:text-slate-100">环境搭建：</span>独立完成本地开发环境搭建，解决前后端分离架构下的跨域与环境一致性问题，保障项目顺利启动。</li>
-                  <li><span className="font-bold text-slate-800 dark:text-slate-100">接口开发：</span>基于 <span className="font-semibold text-slate-900 dark:text-slate-200">Controller-Service-Mapper</span> 架构，实现商品管理与用户认证接口，使用 <span className="font-semibold text-slate-900 dark:text-slate-200">Swagger</span> 进行联调。</li>
-                  <li><span className="font-bold text-slate-800 dark:text-slate-100">安全认证：</span>基于 <span className="font-semibold text-slate-900 dark:text-slate-200">Spring Security + JWT</span> 构建无状态认证中心，实现细粒度的接口权限拦截与 Token 续期策略。</li>
+                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Environment setup:</span> Independently bootstrapped the local development environment, resolving cross-origin and environment consistency issues in a front-end/back-end separated architecture.</li>
+                  <li><span className="font-bold text-slate-800 dark:text-slate-100">API delivery:</span> Implemented product management and authentication APIs with a <span className="font-semibold text-slate-900 dark:text-slate-200">Controller-Service-Mapper</span> architecture, using <span className="font-semibold text-slate-900 dark:text-slate-200">Swagger</span> for collaborative debugging.</li>
+                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Security:</span> Built stateless authentication with <span className="font-semibold text-slate-900 dark:text-slate-200">Spring Security + JWT</span>, including permission interception and token renewal strategies.</li>
                 </ul>
               </div>
 
@@ -302,34 +292,34 @@ export default function Resume() {
                 className="interactive-card p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group"
               >
                 <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors">多语言自然场景文本识别系统 (毕业设计)</h3>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded mt-2 sm:mt-0">2025.12 - 至今</span>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors">Multilingual Scene Text Recognition System</h3>
+                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded mt-2 sm:mt-0">Dec 2025 - Present</span>
                 </div>
                 <p className="text-sm text-blue-500 font-medium mb-3 flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-blue-500" />
-                  全生命周期负责人 | Python + PyTorch + Linux
+                  End-to-end Owner | Python + PyTorch + Linux
                 </p>
                 <ul className="list-disc list-outside ml-5 space-y-2.5 text-sm text-gray-700 dark:text-gray-300">
-                  <li><span className="font-bold text-slate-800 dark:text-slate-100">数据工程：</span>清洗构建 <span className="font-bold text-blue-600 dark:text-blue-400">113万行</span> 语料库；修复开源工具渲染 Bug，生成 10万+ 高质量仿真训练集。</li>
-                  <li><span className="font-bold text-slate-800 dark:text-slate-100">性能优化：</span>将海量小图转存为 <span className="font-semibold text-slate-900 dark:text-slate-200">LMDB 数据库</span>，优化 <span className="font-semibold text-slate-900 dark:text-slate-200">Batch Size 至 768</span>，将验证耗时从小时级压缩至分钟级。</li>
-                  <li><span className="font-bold text-slate-800 dark:text-slate-100">模型落地：</span>验证集准确率达 <span className="font-bold text-blue-600 dark:text-blue-400">98.3%</span>，成功解决繁体/日文重叠字识别难题。</li>
+                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Data engineering:</span> Cleaned and assembled a corpus of <span className="font-bold text-blue-600 dark:text-blue-400">1.13 million lines</span>; fixed rendering bugs in open-source tooling and generated more than 100,000 high-quality synthetic training samples.</li>
+                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Performance tuning:</span> Converted large collections of small images into an <span className="font-semibold text-slate-900 dark:text-slate-200">LMDB dataset</span>, pushed <span className="font-semibold text-slate-900 dark:text-slate-200">batch size to 768</span>, and reduced validation time from hours to minutes.</li>
+                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Model outcome:</span> Reached <span className="font-bold text-blue-600 dark:text-blue-400">98.3%</span> validation accuracy and solved recognition issues involving overlapping Traditional Chinese and Japanese characters.</li>
                 </ul>
               </div>
             </section>
 
             <section className="animate-fade-in-up delay-700">
-              <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">实习经历</h2>
+              <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">Experience</h2>
 
               <div className="mb-6 p-5 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700 relative">
                 <div className="absolute left-0 top-6 w-1 h-full bg-gray-200 dark:bg-gray-700 -ml-2 hidden sm:block" />
                 <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2 relative">
                   <div className="absolute left-[-13px] top-1.5 w-3 h-3 rounded-full bg-blue-400 hidden sm:block" />
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">陕西蓝鸥信息技术 (校企实训)</h3>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono">2025.09 - 2025.10</span>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">Shaanxi Blue Ocean Information Technology</h3>
+                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono">Sep 2025 - Oct 2025</span>
                 </div>
-                <p className="text-sm text-blue-500 font-medium mb-2">软件开发实习生 / 后端开发</p>
+                <p className="text-sm text-blue-500 font-medium mb-2">Software Engineering Intern / Backend</p>
                 <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                  参与企业 OA 系统需求评审，基于 SpringBoot 编写业务接口并封装标准返回值；配合前端联调，独立排查 Maven 依赖冲突 Bug。
+                  Participated in requirement reviews for an enterprise OA system, implemented business APIs with Spring Boot, standardized response wrappers, and independently resolved Maven dependency conflicts during front-end integration.
                 </p>
               </div>
 
@@ -337,12 +327,12 @@ export default function Resume() {
                 <div className="absolute left-0 top-6 w-1 h-full bg-gray-200 dark:bg-gray-700 -ml-2 hidden sm:block" />
                 <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2 relative">
                   <div className="absolute left-[-13px] top-1.5 w-3 h-3 rounded-full bg-blue-400 hidden sm:block" />
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">河南华蓝信息技术集团</h3>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono">2025.04 - 2025.06</span>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">Henan Hualan Information Technology Group</h3>
+                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono">Apr 2025 - Jun 2025</span>
                 </div>
-                <p className="text-sm text-blue-500 font-medium mb-2">大模型应用实习生</p>
+                <p className="text-sm text-blue-500 font-medium mb-2">LLM Application Intern</p>
                 <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                  在 Linux 环境下完成大模型私有化部署与推理速度对比测试；基于 Coze 平台设计 AI 智能体工作流，实现业务闭环验证。
+                  Deployed large language models in Linux environments, benchmarked inference speed, and designed AI agent workflows on Coze to validate end-to-end business scenarios.
                 </p>
               </div>
             </section>

@@ -17,6 +17,10 @@ html.dark {
   color-scheme: dark;
 }
 
+html.accessibility-mode {
+  font-size: 18px;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -39,8 +43,23 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+html.accessibility-mode body {
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+}
+
 a {
   text-underline-offset: 3px;
+}
+
+html.accessibility-mode a,
+html.accessibility-mode button {
+  outline-offset: 4px;
+}
+
+html.accessibility-mode a:focus-visible,
+html.accessibility-mode button:focus-visible {
+  outline: 3px solid rgba(59, 130, 246, 0.9);
 }
 
 ::selection {
@@ -136,5 +155,21 @@ a {
 .ambient-orb-delayed {
   animation: ambientFloat 10s ease-in-out infinite;
   animation-delay: 1.5s;
+}
+
+html.accessibility-mode .animate-fade-in-up,
+html.accessibility-mode .ambient-orb,
+html.accessibility-mode .ambient-orb-delayed {
+  animation: none;
+  opacity: 1;
+}
+
+html.accessibility-mode .interactive-card::before {
+  display: none;
+}
+
+html.accessibility-mode .resume-card {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
 }
 

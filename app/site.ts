@@ -1,19 +1,19 @@
 export const SITE_URL = 'https://xj3.tech';
-export const SITE_NAME = '许君山的CV | Xu Junshan';
+export const SITE_NAME = 'Xu Junshan | Personal Site';
 export const SITE_DESCRIPTION =
-  '许君山的个人简历主页，聚焦 Java 后端、AI 应用与全栈开发，展示开源贡献、项目经历、技术栈与联系方式。';
+  'Personal website of Xu Junshan, focused on Java backend engineering, AI applications, open-source work, selected projects, and contact information.';
 
 export const PERSON_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: '许君山',
-  alternateName: 'Xu Junshan',
+  name: 'Xu Junshan',
+  alternateName: '许君山',
   url: SITE_URL,
   image: `${SITE_URL}/profile.jpg`,
-  jobTitle: 'Java 后端开发 / AI 应用开发',
+  jobTitle: 'Java Backend Engineer / AI Application Developer',
   alumniOf: {
     '@type': 'CollegeOrUniversity',
-    name: '华北水利水电大学',
+    name: 'North China University of Water Resources and Electric Power',
   },
   email: 'mailto:yuaiccc@aliyun.com',
   telephone: '157-7937-5847',

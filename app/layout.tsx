@@ -30,13 +30,12 @@ export const metadata: Metadata = {
   },
   applicationName: SITE_NAME,
   keywords: [
-    "许君山",
     "Xu Junshan",
-    "Java 后端",
+    "Java backend",
     "AI",
-    "全栈开发",
-    "个人简历",
-    "简历主页",
+    "full-stack development",
+    "personal website",
+    "portfolio",
     "OCR",
     "Next.js",
   ],
@@ -56,14 +55,14 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     url: SITE_URL,
     siteName: SITE_NAME,
-    locale: "zh_CN",
+    locale: "en_US",
     type: "website",
     images: [
       {
         url: "/profile.jpg",
         width: 512,
         height: 512,
-        alt: "许君山",
+        alt: "Xu Junshan",
       },
     ],
   },
@@ -86,7 +85,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className={`${notoSansSC.variable} ${jetbrainsMono.variable} antialiased`}>
         <Script id="theme-init" strategy="beforeInteractive">
           {themeInitScript}
