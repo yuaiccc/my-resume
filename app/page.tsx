@@ -436,10 +436,10 @@ export default function Resume() {
                 <span className="w-2 h-2 rounded-full bg-blue-500"></span>
                 Java 后端开发 | Spring Boot + Redis + JWT + MySQL
               </p>
-              <ul className="list-disc list-outside ml-5 space-y-1.5 text-sm text-gray-700 dark:text-gray-300">
-                <li><span className="font-bold text-slate-800 dark:text-slate-100">环境搭建：</span>独立配置 MySQL/Redis/Maven 环境，解决端口冲突与跨域问题，保障本地开发环境稳定。</li>
-                <li><span className="font-bold text-slate-800 dark:text-slate-100">接口开发：</span>基于 Controller-Service-Mapper 架构，实现商品管理与用户认证接口，使用 Swagger 进行联调。</li>
-                <li><span className="font-bold text-slate-800 dark:text-slate-100">安全认证：</span>集成 Spring Security + JWT 实现无状态登录，完成 Token 生成与拦截校验逻辑。</li>
+              <ul className="list-disc list-outside ml-5 space-y-2.5 text-sm text-gray-700 dark:text-gray-300">
+                <li><span className="font-bold text-slate-800 dark:text-slate-100">环境搭建：</span>独立完成本地开发环境搭建，解决前后端分离架构下的跨域与环境一致性问题，保障项目顺利启动。</li>
+                <li><span className="font-bold text-slate-800 dark:text-slate-100">接口开发：</span>基于 <span className="font-semibold text-slate-900 dark:text-slate-200">Controller-Service-Mapper</span> 架构，实现商品管理与用户认证接口，使用 <span className="font-semibold text-slate-900 dark:text-slate-200">Swagger</span> 进行联调。</li>
+                <li><span className="font-bold text-slate-800 dark:text-slate-100">安全认证：</span>基于 <span className="font-semibold text-slate-900 dark:text-slate-200">Spring Security + JWT</span> 构建无状态认证中心，实现细粒度的接口权限拦截与 Token 续期策略。</li>
               </ul>
             </div>
 
@@ -456,9 +456,9 @@ export default function Resume() {
                 <span className="w-2 h-2 rounded-full bg-blue-500"></span>
                 全生命周期负责人 | Python + PyTorch + Linux
               </p>
-              <ul className="list-disc list-outside ml-5 space-y-1.5 text-sm text-gray-700 dark:text-gray-300">
+              <ul className="list-disc list-outside ml-5 space-y-2.5 text-sm text-gray-700 dark:text-gray-300">
                 <li><span className="font-bold text-slate-800 dark:text-slate-100">数据工程：</span>清洗构建 <span className="font-bold text-blue-600 dark:text-blue-400">113万行</span> 语料库；修复开源工具渲染 Bug，生成 10万+ 高质量仿真训练集。</li>
-                <li><span className="font-bold text-slate-800 dark:text-slate-100">性能优化：</span>将海量小图转存为 LMDB 数据库，优化 Batch Size 至 768，将验证耗时从小时级压缩至分钟级。</li>
+                <li><span className="font-bold text-slate-800 dark:text-slate-100">性能优化：</span>将海量小图转存为 <span className="font-semibold text-slate-900 dark:text-slate-200">LMDB 数据库</span>，优化 <span className="font-semibold text-slate-900 dark:text-slate-200">Batch Size 至 768</span>，将验证耗时从小时级压缩至分钟级。</li>
                 <li><span className="font-bold text-slate-800 dark:text-slate-100">模型落地：</span>验证集准确率达 <span className="font-bold text-blue-600 dark:text-blue-400">98.3%</span>，成功解决繁体/日文重叠字识别难题。</li>
               </ul>
             </div>
