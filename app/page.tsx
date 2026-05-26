@@ -138,10 +138,11 @@ export default function Resume() {
                   />
                 </div>
                 <div className="text-center md:text-left">
-                  <h1 className="text-3xl font-bold tracking-tight">Xu Junshan</h1>
+                  <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-transparent bg-[length:300%_100%] animate-[gradientShift_6s_ease-in-out_infinite]">Xu Junshan</h1>
                   <p className="mt-1 text-base text-blue-300 font-medium font-mono">Class of 2026 · AI Undergraduate</p>
                   <div className="mt-3 flex flex-wrap justify-center md:justify-start gap-4 text-sm text-gray-300">
-                    <span>North China University of Water Resources and Electric Power · Artificial Intelligence</span>
+                    <span>North China University of Water Resources and Electric Power</span>
+                    <span>Artificial Intelligence</span>
                   </div>
                 </div>
               </div>
@@ -214,7 +215,7 @@ export default function Resume() {
                 >
                   <h3 className="font-bold text-blue-700 dark:text-blue-300 mb-2 flex items-center gap-2"><span>⚙️</span> Engineering Workflow</h3>
                   <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                    Strong with <span className="font-bold">Git, Linux, and Docker</span> workflows; experienced in cross-platform dependency debugging; productive with AI-native tools such as Trae, Claude Code, and Codex.
+                    Strong with <span className="font-bold">Git, Linux, and Docker</span> workflows; experienced in cross-platform dependency debugging; productive with AI-native tools such as Claude Code and Codex.
                   </p>
                 </div>
               </div>
