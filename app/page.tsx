@@ -48,6 +48,7 @@ const TECH_GROUPS: TechGroup[] = [
       { name: 'Spring', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg' },
       { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg' },
       { name: 'Redis', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg' },
+      { name: 'RabbitMQ', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rabbitmq/rabbitmq-original.svg' },
       { name: 'R', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/r/r-original.svg' },
     ],
   },
@@ -247,7 +248,7 @@ export default function Resume() {
                   <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">North China University of Water Resources and Electric Power</h3>
                   <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Sep 2022 - Jun 2026</span>
                 </div>
-                <p className="text-gray-700 dark:text-gray-300 mb-2">B.Eng. in Artificial Intelligence / <span className="font-medium text-blue-500">GPA: 3.16</span> / Member of the Communist Youth League</p>
+                <p className="text-gray-700 dark:text-gray-300 mb-2">B.Eng. in Artificial Intelligence / <span className="font-medium text-blue-500">GPA: 3.16</span></p>
                 <p className="text-sm text-gray-600 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 inline-block px-3 py-1 rounded-full border border-blue-100 dark:border-blue-800">
                   Academic Excellence Scholarship
                 </p>
@@ -262,15 +263,15 @@ export default function Resume() {
               <div className="space-y-4">
                 <div className="group p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
                   <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-500 transition-colors">Java Backend Foundations</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">Comfortable with Java fundamentals including HashMap, JUC, and JVM concepts; experienced in building production-style applications with <span className="font-medium text-blue-500">Spring Boot + MyBatis</span>; familiar with MVC and RESTful design.</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">Built production APIs with <span className="font-medium text-blue-500">Spring Boot + MyBatis</span> following MVC and RESTful conventions; applied HashMap, JUC, and JVM internals to diagnose concurrency and performance issues.</p>
                 </div>
                 <div className="group p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
                   <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-500 transition-colors">Data and Middleware</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">Working knowledge of <span className="font-medium text-blue-500">MySQL</span> covering indexing, transactions, and SQL tuning; hands-on with <span className="font-medium text-blue-500">Redis</span> data structures and caching patterns; familiar with RabbitMQ for asynchronous decoupling.</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">Optimized <span className="font-medium text-blue-500">MySQL</span> queries with index tuning and transaction design; implemented <span className="font-medium text-blue-500">Redis</span> caching strategies for hot-path data; integrated RabbitMQ for asynchronous task decoupling.</p>
                 </div>
                 <div className="group p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
                   <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-500 transition-colors">DevOps and Delivery</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">Comfortable with automated deployment through <span className="font-medium text-blue-500">Vercel CI/CD + GitHub</span>; familiar with common Linux workflows and Nginx configuration.</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">Shipped projects end-to-end through <span className="font-medium text-blue-500">Vercel CI/CD + GitHub</span> pipelines; managed Linux servers and configured Nginx for reverse proxy and static hosting.</p>
                 </div>
               </div>
             </section>
