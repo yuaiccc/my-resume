@@ -103,6 +103,19 @@ const GithubIcon = ({ className = 'w-4 h-4' }: IconProps) => (
   </svg>
 );
 
+const CnFlag = ({ className = 'h-3.5 w-auto rounded-[2px] shadow-[0_0_0_0.5px_rgba(0,0,0,0.15)]' }: IconProps) => (
+  <svg viewBox="0 0 30 20" className={className} aria-label="China" role="img">
+    <rect width="30" height="20" fill="#ee1c25" />
+    <g fill="#ffde00">
+      <polygon points="5,2 5.675,4.073 7.853,4.073 6.089,5.354 6.764,7.427 5,6.146 3.236,7.427 3.911,5.354 2.147,4.073 4.325,4.073" />
+      <polygon points="10,2 10.225,2.691 10.951,2.691 10.363,3.118 10.588,3.809 10,3.382 9.412,3.809 9.637,3.118 9.049,2.691 9.775,2.691" />
+      <polygon points="12,4 12.225,4.691 12.951,4.691 12.363,5.118 12.588,5.809 12,5.382 11.412,5.809 11.637,5.118 11.049,4.691 11.775,4.691" />
+      <polygon points="12,7 12.225,7.691 12.951,7.691 12.363,8.118 12.588,8.809 12,8.382 11.412,8.809 11.637,8.118 11.049,7.691 11.775,7.691" />
+      <polygon points="10,9 10.225,9.691 10.951,9.691 10.363,10.118 10.588,10.809 10,10.382 9.412,10.809 9.637,10.118 9.049,9.691 9.775,9.691" />
+    </g>
+  </svg>
+);
+
 export default function Resume() {
   return (
     <>
@@ -150,7 +163,7 @@ export default function Resume() {
                   className="hover:text-white transition inline-flex items-center justify-center md:justify-end gap-2 whitespace-nowrap"
                 >
                   <PhoneIcon />
-                  <span className="whitespace-nowrap"><span aria-hidden="true">🇨🇳</span> +86 157-7937-5847</span>
+                  <span className="whitespace-nowrap inline-flex items-center gap-1.5"><CnFlag /> +86 157-7937-5847</span>
                 </a>
                 <a
                   href="https://github.com/yuaiccc"
@@ -226,18 +239,39 @@ export default function Resume() {
 
             <section className="animate-fade-in-up delay-400">
               <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">Education</h2>
-              <div className="p-5 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
-                <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">North China University of Water Resources and Electric Power</h3>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Sep 2022 - Jun 2026</span>
+              <div className="space-y-3">
+                <div className="p-5 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
+                  <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-2 gap-2">
+                    <div className="flex items-center gap-3">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src="/hdu-logo.svg" alt="Hangzhou Dianzi University logo" className="h-7 w-auto invert dark:invert-0" />
+                      <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">Hangzhou Dianzi University</h3>
+                    </div>
+                    <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Sep 2026 - (expected)</span>
+                  </div>
+                  <p className="text-gray-700 dark:text-gray-300 mb-2">Postgraduate (Incoming)</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 inline-block px-3 py-1 rounded-full border border-amber-100 dark:border-amber-800">
+                    拟攻读 · Incoming Fall 2026
+                  </p>
                 </div>
-                <p className="text-gray-700 dark:text-gray-300 mb-2">B.Eng. in Artificial Intelligence / <span className="font-medium text-blue-500">GPA: 3.16</span></p>
-                <p className="text-sm text-gray-600 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 inline-block px-3 py-1 rounded-full border border-blue-100 dark:border-blue-800">
-                  Academic Excellence Scholarship
-                </p>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-3">
-                  <span className="font-medium">Core coursework:</span> Operating Systems, Data Structures, Linear Algebra, Natural Language Processing, Computer Networks, and Software Engineering
-                </p>
+
+                <div className="p-5 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
+                  <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-2 gap-2">
+                    <div className="flex items-center gap-3">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src="/ncwu-logo.png" alt="NCWU logo" className="h-7 w-auto" />
+                      <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">North China University of Water Resources and Electric Power</h3>
+                    </div>
+                    <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Sep 2022 - Jun 2026</span>
+                  </div>
+                  <p className="text-gray-700 dark:text-gray-300 mb-2">B.Eng. in Artificial Intelligence / <span className="font-medium text-blue-500">GPA: 3.16</span></p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 inline-block px-3 py-1 rounded-full border border-blue-100 dark:border-blue-800">
+                    Academic Excellence Scholarship
+                  </p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-3">
+                    <span className="font-medium">Core coursework:</span> Operating Systems, Data Structures, Linear Algebra, Natural Language Processing, Computer Networks, and Software Engineering
+                  </p>
+                </div>
               </div>
             </section>
 
