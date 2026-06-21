@@ -171,10 +171,6 @@ export default function Resume() {
                 <div className="text-center md:text-left">
                   <h1 className="text-4xl sm:text-5xl font-semibold bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-transparent bg-[length:300%_100%] animate-[gradientShift_6s_ease-in-out_infinite]">Xu Junshan</h1>
                   <p className="mt-1 text-base text-blue-300 font-medium font-mono">Class of 2026 · AI Undergraduate</p>
-                  <div className="mt-3 flex flex-wrap justify-center md:justify-start gap-4 text-sm text-gray-300">
-                    <span>North China University of Water Resources and Electric Power</span>
-                    <span>Artificial Intelligence</span>
-                  </div>
                 </div>
               </div>
               <div className="flex flex-col gap-2 text-sm text-gray-300 text-center md:text-right">
