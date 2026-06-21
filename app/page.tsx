@@ -314,7 +314,7 @@ export default function Resume() {
                   <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-2 gap-2">
                     <div className="flex items-center gap-3">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src="/ncwu-logo.png" alt="NCWU logo" className="h-7 w-auto" />
+                      <img src="/ncwu-logo.png" alt="NCWU logo" className="h-7 w-auto invert dark:invert-0" />
                       <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">North China University of Water Resources and Electric Power</h3>
                     </div>
                     <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Sep 2022 - Jun 2026</span>
