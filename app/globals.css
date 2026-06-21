@@ -52,6 +52,12 @@ a {
   text-underline-offset: 3px;
 }
 
+/* 衬线显示标题：H1/H2 用 Playfair Display，呼应 artificialanalysis.ai 的 editorial 风格 */
+h1, h2 {
+  font-family: var(--font-playfair), Georgia, "Songti SC", "STSong", serif;
+  letter-spacing: -0.02em;
+}
+
 html.accessibility-mode a,
 html.accessibility-mode button {
   outline-offset: 4px;
