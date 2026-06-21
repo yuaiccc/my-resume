@@ -191,8 +191,8 @@ export default function Resume() {
                     className="text-4xl sm:text-5xl font-semibold bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-transparent bg-[length:300%_100%] animate-[gradientShift_6s_ease-in-out_infinite] cursor-help"
                   >
                     Xu Junshan
+                    <span lang="zh-CN" className="sr-only">（许君山）</span>
                   </h1>
-                  <p lang="zh-CN" className="mt-1 text-2xl sm:text-3xl font-semibold text-slate-100/90 tracking-wide">许君山</p>
                   <p className="mt-1 text-base text-blue-300 font-medium font-mono">Class of 2026 · AI Undergraduate</p>
                 </div>
               </div>
