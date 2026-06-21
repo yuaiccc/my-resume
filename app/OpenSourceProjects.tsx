@@ -15,17 +15,6 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
-    id: 'sillytavern',
-    name: 'SillyTavern/SillyTavern',
-    href: 'https://github.com/SillyTavern/SillyTavern',
-    summary: 'LLM Frontend for Power Users.',
-    description:
-      'SillyTavern is a feature-rich local LLM frontend for advanced users, with multi-model API support, character cards, and an extensible plugin ecosystem. I have contributed 21 merged pull requests focused on product polish and core experience improvements.',
-    languageLabel: 'JavaScript',
-    languageColor: '#f1e05a',
-    metaLabel: '21 Merged PRs',
-  },
-  {
     id: 'japanese-verb',
     name: 'yuaiccc/japanese-verb-master',
     href: 'https://github.com/yuaiccc/japanese-verb-master',
@@ -35,6 +24,17 @@ const PROJECTS: Project[] = [
     languageLabel: 'TypeScript',
     languageColor: '#3178c6',
     metaLabel: 'Public',
+  },
+  {
+    id: 'sillytavern',
+    name: 'SillyTavern/SillyTavern',
+    href: 'https://github.com/SillyTavern/SillyTavern',
+    summary: 'LLM Frontend for Power Users.',
+    description:
+      'SillyTavern is a feature-rich local LLM frontend for advanced users, with multi-model API support, character cards, and an extensible plugin ecosystem. I have contributed 21 merged pull requests focused on product polish and core experience improvements.',
+    languageLabel: 'JavaScript',
+    languageColor: '#f1e05a',
+    metaLabel: '21 Merged PRs',
   },
 ];
 

@@ -103,7 +103,9 @@ const GithubIcon = ({ className = 'w-4 h-4' }: IconProps) => (
   </svg>
 );
 
-const CnFlag = ({ className = 'h-3.5 w-auto rounded-[2px] shadow-[0_0_0_0.5px_rgba(0,0,0,0.15)]' }: IconProps) => (
+const FLAG_BASE = 'h-3.5 w-auto rounded-[2px] shadow-[0_0_0_0.5px_rgba(0,0,0,0.15)] inline-block align-[-2px]';
+
+const CnFlag = ({ className = FLAG_BASE }: IconProps) => (
   <svg viewBox="0 0 30 20" className={className} aria-label="China" role="img">
     <rect width="30" height="20" fill="#ee1c25" />
     <g fill="#ffde00">
@@ -113,6 +115,25 @@ const CnFlag = ({ className = 'h-3.5 w-auto rounded-[2px] shadow-[0_0_0_0.5px_rg
       <polygon points="12,7 12.225,7.691 12.951,7.691 12.363,8.118 12.588,8.809 12,8.382 11.412,8.809 11.637,8.118 11.049,7.691 11.775,7.691" />
       <polygon points="10,9 10.225,9.691 10.951,9.691 10.363,10.118 10.588,10.809 10,10.382 9.412,10.809 9.637,10.118 9.049,9.691 9.775,9.691" />
     </g>
+  </svg>
+);
+
+const GbFlag = ({ className = FLAG_BASE }: IconProps) => (
+  <svg viewBox="0 0 30 20" className={className} aria-label="United Kingdom" role="img">
+    <rect width="30" height="20" fill="#012169" />
+    <path d="M0,0 L30,20 M30,0 L0,20" stroke="#ffffff" strokeWidth="3" />
+    <path d="M0,0 L30,20 M30,0 L0,20" stroke="#C8102E" strokeWidth="1.4" />
+    <rect x="13" width="4" height="20" fill="#ffffff" />
+    <rect y="8" width="30" height="4" fill="#ffffff" />
+    <rect x="14" width="2" height="20" fill="#C8102E" />
+    <rect y="9" width="30" height="2" fill="#C8102E" />
+  </svg>
+);
+
+const JpFlag = ({ className = FLAG_BASE }: IconProps) => (
+  <svg viewBox="0 0 30 20" className={className} aria-label="Japan" role="img">
+    <rect width="30" height="20" fill="#ffffff" />
+    <circle cx="15" cy="10" r="6" fill="#bc002d" />
   </svg>
 );
 
@@ -200,8 +221,8 @@ export default function Resume() {
                 >
                   <h3 className="font-bold text-blue-700 dark:text-blue-300 mb-2 flex items-center gap-2"><span>🌍</span> Languages</h3>
                   <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                    <span className="font-bold text-slate-900 dark:text-slate-100">English CET-6 (538)</span>: comfortable using English in day-to-day collaboration and technical discussions.<br />
-                    <span className="font-bold text-slate-900 dark:text-slate-100">Japanese JLPT N3</span>: able to read basic technical materials and adapt to Japan-facing development contexts.
+                    <GbFlag /> <span className="font-bold text-slate-900 dark:text-slate-100">English CET-6 (538)</span>: comfortable using English in day-to-day collaboration and technical discussions.<br />
+                    <JpFlag /> <span className="font-bold text-slate-900 dark:text-slate-100">Japanese JLPT N3</span>: able to read basic technical materials and adapt to Japan-facing development contexts.
                   </p>
                 </div>
                 <div
