@@ -185,3 +185,34 @@ html.accessibility-mode .resume-card {
   backdrop-filter: none;
 }
 
+/* 头部名字滚动条：横向无缝循环 + 边缘羽化 + hover 暂停 */
+@keyframes nameMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.name-marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.name-marquee-track {
+  animation: nameMarquee 48s linear infinite;
+  will-change: transform;
+}
+
+.name-marquee:hover .name-marquee-track {
+  animation-play-state: paused;
+}
+
+html.accessibility-mode .name-marquee-track {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .name-marquee-track {
+    animation: none;
+  }
+}
+

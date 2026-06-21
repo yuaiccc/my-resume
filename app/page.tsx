@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import AccessibilityToggle from './AccessibilityToggle';
 import InteractiveEffects from './InteractiveEffects';
+import NameMarquee from './NameMarquee';
 import OpenSourceProjects from './OpenSourceProjects';
 import ScrollProgress from './ScrollProgress';
 import { PERSON_SCHEMA } from './site';
@@ -231,6 +232,7 @@ export default function Resume() {
                 </a>
               </div>
             </div>
+            <NameMarquee />
           </header>
 
           <div className="p-8 md:p-12 space-y-10">
