@@ -43,7 +43,6 @@ export const PERSON_SCHEMA = {
     'LangChain',
     'Hugging Face',
     'PyTorch',
-    'Ollama',
     'Dify',
     'OCR',
     'Python',
