@@ -103,6 +103,12 @@ const GithubIcon = ({ className = 'w-4 h-4' }: IconProps) => (
   </svg>
 );
 
+const XIcon = ({ className = 'w-4 h-4' }: IconProps) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231L18.244 2.25Zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644Z" />
+  </svg>
+);
+
 const FLAG_BASE = 'h-3.5 w-auto rounded-[2px] shadow-[0_0_0_0.5px_rgba(0,0,0,0.15)] inline-block align-[-2px]';
 
 const CnFlag = ({ className = FLAG_BASE }: IconProps) => (
@@ -194,6 +200,15 @@ export default function Resume() {
                 >
                   <GithubIcon />
                   <span>github.com/yuaiccc</span>
+                </a>
+                <a
+                  href="https://x.com/Hakikeioak"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition inline-flex items-center justify-center md:justify-end gap-2"
+                >
+                  <XIcon />
+                  <span>x.com/Hakikeioak</span>
                 </a>
               </div>
             </div>
