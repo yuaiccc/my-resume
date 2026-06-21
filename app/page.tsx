@@ -169,10 +169,10 @@ export default function Resume() {
       />
       <ScrollProgress />
       <InteractiveEffects />
-      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-10 px-4 sm:px-6 lg:px-8 font-sans text-gray-800 dark:text-gray-100 transition-colors duration-300">
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-8 px-4 sm:px-6 lg:px-8 font-sans text-gray-800 dark:text-gray-100 transition-colors duration-300">
         <div className="resume-card relative max-w-4xl mx-auto bg-white dark:bg-gray-900 shadow-sm rounded-xl overflow-hidden transition-colors duration-300 ring-1 ring-slate-200 dark:ring-slate-800">
           {/* === 头部信息 === */}
-          <header className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white p-8 md:p-10 transition-colors duration-300 border-b border-slate-100 dark:border-slate-800">
+          <header className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white p-6 md:p-8 transition-colors duration-300 border-b border-slate-100 dark:border-slate-800">
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
               <div className="flex flex-col md:flex-row items-center gap-6">
                 <div className="hero-avatar-glow relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden flex-shrink-0 shadow-md ring-1 ring-slate-200 dark:ring-white/10">
@@ -233,7 +233,7 @@ export default function Resume() {
             </div>
           </header>
 
-          <div className="p-8 md:p-12 space-y-10">
+          <div className="p-6 sm:p-8 md:p-10 space-y-8">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex flex-wrap items-center gap-3">
                 <ThemeToggle />
@@ -247,8 +247,8 @@ export default function Resume() {
             <OpenSourceProjects />
 
             <section className="animate-fade-in-up delay-200">
-              <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">Highlights</h2>
-              <div className="grid md:grid-cols-2 gap-6">
+              <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-l-[3px] border-blue-500 pl-3 mb-4">Highlights</h2>
+              <div className="grid md:grid-cols-2 gap-4">
                 <div
                   data-spotlight-card
                   className="interactive-card bg-blue-50 dark:bg-blue-900/30 p-5 rounded-lg border border-blue-100 dark:border-blue-800 hover:shadow-md hover:-translate-y-1 transition-all duration-300"
@@ -272,10 +272,10 @@ export default function Resume() {
             </section>
 
             <section className="animate-fade-in-up delay-300">
-              <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">Tech Stack</h2>
+              <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-l-[3px] border-blue-500 pl-3 mb-4">Tech Stack</h2>
               <div
                 data-spotlight-card
-                className="interactive-card bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-gray-200 dark:border-gray-800 space-y-6"
+                className="interactive-card bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-gray-200 dark:border-gray-800 space-y-4"
               >
                 {TECH_GROUPS.map((group) => (
                   <div key={group.title} className="space-y-3">
@@ -293,7 +293,7 @@ export default function Resume() {
             </section>
 
             <section className="animate-fade-in-up delay-400">
-              <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">Education</h2>
+              <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-l-[3px] border-blue-500 pl-3 mb-4">Education</h2>
               <div className="space-y-3">
                 <div className="p-5 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
                   <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-2 gap-2">
@@ -331,21 +331,21 @@ export default function Resume() {
             </section>
 
             <section className="animate-fade-in-up delay-500">
-              <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">Capabilities</h2>
-              <div className="space-y-4">
-                <div className="group p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
+              <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-l-[3px] border-blue-500 pl-3 mb-4">Capabilities</h2>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <div className="group p-4 rounded-lg bg-slate-50/70 dark:bg-slate-800/40 hover:bg-slate-50 dark:hover:bg-slate-800/70 transition-colors border border-slate-100 dark:border-slate-800 hover:border-slate-200 dark:hover:border-slate-700">
                   <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-500 transition-colors">LLM & Agent Systems</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300">Build agentic apps with <span className="font-medium text-blue-500">LangGraph</span> orchestration and local <span className="font-medium text-blue-500">RAG</span> (hybrid retrieval + rerank, RAGAS-style evaluation); studied the source code of mainstream agent frameworks — <span className="font-medium text-blue-500">OpenClaw, DeerFlow, Claude Code, and Hermes</span> — to understand their multi-agent orchestration, task scheduling, and context-management trade-offs.</p>
                 </div>
-                <div className="group p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
+                <div className="group p-4 rounded-lg bg-slate-50/70 dark:bg-slate-800/40 hover:bg-slate-50 dark:hover:bg-slate-800/70 transition-colors border border-slate-100 dark:border-slate-800 hover:border-slate-200 dark:hover:border-slate-700">
                   <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-500 transition-colors">Java Backend Foundations</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300">Built production APIs with <span className="font-medium text-blue-500">Spring Boot + MyBatis</span> following MVC and RESTful conventions; applied HashMap, JUC, and JVM internals to diagnose concurrency and performance issues.</p>
                 </div>
-                <div className="group p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
+                <div className="group p-4 rounded-lg bg-slate-50/70 dark:bg-slate-800/40 hover:bg-slate-50 dark:hover:bg-slate-800/70 transition-colors border border-slate-100 dark:border-slate-800 hover:border-slate-200 dark:hover:border-slate-700">
                   <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-500 transition-colors">Data and Middleware</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300">Optimized <span className="font-medium text-blue-500">MySQL</span> queries with index tuning and transaction design; implemented <span className="font-medium text-blue-500">Redis</span> caching strategies for hot-path data; integrated RabbitMQ for asynchronous task decoupling.</p>
                 </div>
-                <div className="group p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
+                <div className="group p-4 rounded-lg bg-slate-50/70 dark:bg-slate-800/40 hover:bg-slate-50 dark:hover:bg-slate-800/70 transition-colors border border-slate-100 dark:border-slate-800 hover:border-slate-200 dark:hover:border-slate-700">
                   <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-500 transition-colors">DevOps and Delivery</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300">Shipped projects end-to-end through <span className="font-medium text-blue-500">Vercel CI/CD + GitHub</span> pipelines; managed Linux servers and configured Nginx for reverse proxy and static hosting.</p>
                 </div>
@@ -353,11 +353,11 @@ export default function Resume() {
             </section>
 
             <section className="animate-fade-in-up delay-600">
-              <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">Selected Projects</h2>
+              <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-l-[3px] border-blue-500 pl-3 mb-4">Selected Projects</h2>
 
               <div
                 data-spotlight-card
-                className="interactive-card mb-6 p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group"
+                className="interactive-card mb-4 p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group"
               >
                 <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2 gap-2">
                   <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors flex items-center gap-2 flex-wrap">
@@ -379,7 +379,7 @@ export default function Resume() {
                   <span className="w-2 h-2 rounded-full bg-blue-500" />
                   Independent Project | LangGraph + Node.js + sqlite-vec
                 </p>
-                <ul className="list-disc list-outside ml-5 space-y-2.5 text-sm text-gray-700 dark:text-gray-300">
+                <ul className="list-disc list-outside ml-5 space-y-2 text-sm text-gray-700 dark:text-gray-300">
                   <li><span className="font-bold text-slate-800 dark:text-slate-100">Local RAG:</span> Hybrid retrieval (vector + BM25 fused via <span className="font-semibold text-slate-900 dark:text-slate-200">RRF</span>) with LLM query rewrite and rerank, reaching <span className="font-bold text-blue-600 dark:text-blue-400">MRR 0.977</span> and <span className="font-bold text-blue-600 dark:text-blue-400">recall@1 60/65</span> on a 65-question gold set.</li>
                   <li><span className="font-bold text-slate-800 dark:text-slate-100">Evaluation and anti-hallucination:</span> RAGAS-style metrics (recall@k / MRR / NDCG / faithfulness / hallucination); a dual abstain gate drove off-topic hallucination <span className="font-bold text-blue-600 dark:text-blue-400">from 10.7% to 0%</span>.</li>
                   <li><span className="font-bold text-slate-800 dark:text-slate-100">Agent workflow:</span> A <span className="font-semibold text-slate-900 dark:text-slate-200">Planner → Researcher → Tutor → Memory Manager</span> StateGraph with three-tier persistence and sandbox isolation (tool allowlist / token budget / timeout).</li>
@@ -399,7 +399,7 @@ export default function Resume() {
                   <span className="w-2 h-2 rounded-full bg-blue-500" />
                   End-to-end Owner | Python + PyTorch + Linux
                 </p>
-                <ul className="list-disc list-outside ml-5 space-y-2.5 text-sm text-gray-700 dark:text-gray-300">
+                <ul className="list-disc list-outside ml-5 space-y-2 text-sm text-gray-700 dark:text-gray-300">
                   <li><span className="font-bold text-slate-800 dark:text-slate-100">Data engineering:</span> Cleaned and assembled a corpus of <span className="font-bold text-blue-600 dark:text-blue-400">1.13 million lines</span>; fixed rendering bugs in open-source tooling and generated more than 100,000 high-quality synthetic training samples.</li>
                   <li><span className="font-bold text-slate-800 dark:text-slate-100">Performance tuning:</span> Converted large collections of small images into an <span className="font-semibold text-slate-900 dark:text-slate-200">LMDB dataset</span>, pushed <span className="font-semibold text-slate-900 dark:text-slate-200">batch size to 768</span>, and reduced validation time from hours to minutes.</li>
                   <li><span className="font-bold text-slate-800 dark:text-slate-100">Model outcome:</span> Reached <span className="font-bold text-blue-600 dark:text-blue-400">98.3%</span> validation accuracy and solved recognition issues involving overlapping Traditional Chinese and Japanese characters.</li>
@@ -408,9 +408,9 @@ export default function Resume() {
             </section>
 
             <section className="animate-fade-in-up delay-700">
-              <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">Experience</h2>
+              <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-l-[3px] border-blue-500 pl-3 mb-4">Experience</h2>
 
-              <div className="mb-6 p-5 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700 relative">
+              <div className="mb-4 p-5 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700 relative">
                 <div className="absolute left-0 top-6 w-1 h-full bg-gray-200 dark:bg-gray-700 -ml-2 hidden sm:block" />
                 <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2 relative">
                   <div className="absolute left-[-13px] top-1.5 w-3 h-3 rounded-full bg-blue-400 hidden sm:block" />
@@ -437,7 +437,7 @@ export default function Resume() {
               </div>
             </section>
 
-            <footer className="mt-12 pt-8 pb-4 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-400 space-y-6">
+            <footer className="mt-8 pt-6 pb-2 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-400 space-y-4">
               <div className="flex justify-center">
                 <VisitorBadge />
               </div>
