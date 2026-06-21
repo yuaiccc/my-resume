@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import AccessibilityToggle from './AccessibilityToggle';
 import InteractiveEffects from './InteractiveEffects';
-import NameMarquee from './NameMarquee';
 import OpenSourceProjects from './OpenSourceProjects';
 import ScrollProgress from './ScrollProgress';
 import { PERSON_SCHEMA } from './site';
@@ -170,13 +169,13 @@ export default function Resume() {
       />
       <ScrollProgress />
       <InteractiveEffects />
-      <div className="min-h-screen bg-slate-100 dark:bg-slate-950 py-10 px-4 sm:px-6 lg:px-8 font-sans text-gray-800 dark:text-gray-100 transition-colors duration-300">
-        <div className="resume-card relative max-w-4xl mx-auto bg-white dark:bg-gray-900 shadow-lg rounded-xl overflow-hidden transition-colors duration-300 ring-1 ring-slate-200 dark:ring-slate-800">
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-10 px-4 sm:px-6 lg:px-8 font-sans text-gray-800 dark:text-gray-100 transition-colors duration-300">
+        <div className="resume-card relative max-w-4xl mx-auto bg-white dark:bg-gray-900 shadow-sm rounded-xl overflow-hidden transition-colors duration-300 ring-1 ring-slate-200 dark:ring-slate-800">
           {/* === 头部信息 === */}
-          <header className="bg-slate-900 text-white p-8 md:p-10 transition-colors duration-300">
+          <header className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white p-8 md:p-10 transition-colors duration-300 border-b border-slate-100 dark:border-slate-800">
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
               <div className="flex flex-col md:flex-row items-center gap-6">
-                <div className="hero-avatar-glow relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden flex-shrink-0 shadow-lg ring-1 ring-white/10">
+                <div className="hero-avatar-glow relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden flex-shrink-0 shadow-md ring-1 ring-slate-200 dark:ring-white/10">
                   <Image
                     src="/profile.jpg"
                     alt="Xu Junshan"
@@ -189,25 +188,25 @@ export default function Resume() {
                 <div className="text-center md:text-left">
                   <h1
                     title="许君山"
-                    className="text-4xl sm:text-5xl font-semibold bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-transparent bg-[length:300%_100%] animate-[gradientShift_6s_ease-in-out_infinite] cursor-help"
+                    className="text-4xl sm:text-5xl font-semibold bg-gradient-to-r from-cyan-600 via-blue-600 to-violet-600 bg-clip-text text-transparent bg-[length:300%_100%] animate-[gradientShift_6s_ease-in-out_infinite] cursor-help"
                   >
                     Xu Junshan
                     <span lang="zh-CN" className="sr-only">（许君山）</span>
                   </h1>
-                  <p className="mt-1 text-base text-blue-300 font-medium font-mono">Class of 2026 · AI Undergraduate</p>
+                  <p className="mt-1 text-base text-blue-600 dark:text-blue-300 font-medium font-mono">Class of 2026 · AI Undergraduate</p>
                 </div>
               </div>
-              <div className="flex flex-col gap-2 text-sm text-gray-300 text-center md:text-right">
+              <div className="flex flex-col gap-2 text-sm text-slate-600 dark:text-gray-300 text-center md:text-right">
                 <a
                   href="mailto:yuaiccc@aliyun.com"
-                  className="hover:text-white transition inline-flex items-center justify-center md:justify-end gap-2"
+                  className="hover:text-slate-900 dark:hover:text-white transition inline-flex items-center justify-center md:justify-end gap-2"
                 >
                   <MailIcon />
                   <span>yuaiccc@aliyun.com</span>
                 </a>
                 <a
                   href="tel:+8615779375847"
-                  className="hover:text-white transition inline-flex items-center justify-center md:justify-end gap-2 whitespace-nowrap"
+                  className="hover:text-slate-900 dark:hover:text-white transition inline-flex items-center justify-center md:justify-end gap-2 whitespace-nowrap"
                 >
                   <PhoneIcon />
                   <span className="whitespace-nowrap inline-flex items-center gap-1.5"><CnFlag /> +86 157-7937-5847</span>
@@ -216,7 +215,7 @@ export default function Resume() {
                   href="https://github.com/yuaiccc"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white transition inline-flex items-center justify-center md:justify-end gap-2"
+                  className="hover:text-slate-900 dark:hover:text-white transition inline-flex items-center justify-center md:justify-end gap-2"
                 >
                   <GithubIcon />
                   <span>github.com/yuaiccc</span>
@@ -225,14 +224,13 @@ export default function Resume() {
                   href="https://x.com/Hakikeioak"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white transition inline-flex items-center justify-center md:justify-end gap-2"
+                  className="hover:text-slate-900 dark:hover:text-white transition inline-flex items-center justify-center md:justify-end gap-2"
                 >
                   <XIcon />
                   <span>x.com/Hakikeioak</span>
                 </a>
               </div>
             </div>
-            <NameMarquee />
           </header>
 
           <div className="p-8 md:p-12 space-y-10">
