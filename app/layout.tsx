@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
-import { JetBrains_Mono, Noto_Sans_SC } from "next/font/google";
+import { Inter, JetBrains_Mono, Noto_Sans_SC } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "./site";
 import { themeInitScript } from "./theme";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 const notoSansSC = Noto_Sans_SC({
   subsets: ["latin"],
@@ -86,7 +92,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${notoSansSC.variable} ${jetbrainsMono.variable} antialiased`}>
+      <body className={`${inter.variable} ${notoSansSC.variable} ${jetbrainsMono.variable} antialiased`}>
         <Script id="theme-init" strategy="beforeInteractive">
           {themeInitScript}
         </Script>

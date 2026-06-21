@@ -31,6 +31,7 @@ const TECH_GROUPS: TechGroup[] = [
       { name: 'LangGraph', icon: 'https://cdn.simpleicons.org/langchain/1C3C3C', invertDark: true },
       { name: 'Ollama', icon: 'https://cdn.simpleicons.org/ollama/000000', invertDark: true },
       { name: 'Dify', icon: 'https://cdn.simpleicons.org/dify/000000', invertDark: true },
+      { name: 'FastAPI', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg' },
     ],
   },
   {
@@ -39,6 +40,7 @@ const TECH_GROUPS: TechGroup[] = [
       { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg' },
       { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
       { name: 'Next.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg', invertDark: true },
+      { name: 'Vue', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg' },
       { name: 'Tailwind CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg' },
     ],
   },
@@ -47,10 +49,12 @@ const TECH_GROUPS: TechGroup[] = [
     items: [
       { name: 'Java', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg' },
       { name: 'Spring', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg' },
+      { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg' },
+      { name: 'Express', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg', invertDark: true },
       { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg' },
+      { name: 'SQLite', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg' },
       { name: 'Redis', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg' },
       { name: 'RabbitMQ', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rabbitmq/rabbitmq-original.svg' },
-      { name: 'R', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/r/r-original.svg' },
     ],
   },
   {
@@ -156,11 +160,11 @@ export default function Resume() {
                   <span>yuaiccc@aliyun.com</span>
                 </a>
                 <a
-                  href="tel:157-7937-5847"
+                  href="tel:+8615779375847"
                   className="hover:text-white transition inline-flex items-center justify-center md:justify-end gap-2"
                 >
                   <PhoneIcon />
-                  <span>157-7937-5847</span>
+                  <span><span aria-hidden="true">🇨🇳</span> +86 157-7937-5847</span>
                 </a>
                 <a
                   href="https://github.com/yuaiccc"
