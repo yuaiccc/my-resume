@@ -29,11 +29,11 @@ const PROJECTS: Project[] = [
     id: 'japanese-verb',
     name: 'yuaiccc/japanese-verb-master',
     href: 'https://github.com/yuaiccc/japanese-verb-master',
-    summary: 'A Japanese verb conjugation tool and documentation site covering godan, ichidan, and irregular verbs.',
+    summary: 'A Japanese-learning agent built on LangGraph with a local RAG pipeline for grounded grammar tutoring.',
     description:
-      'An independently built Japanese verb conjugation tool created with Vue. It provides responsive interactions, automatic conjugation across major verb classes, and concise rule explanations to help learners master grammar patterns quickly.',
-    languageLabel: 'Vue',
-    languageColor: '#41b883',
+      'An independently built Japanese-learning agent. A LangGraph multi-node workflow (Planner → Researcher → Tutor → Memory Manager) drives tutoring over a local RAG pipeline: hybrid retrieval (vector + BM25 fused with RRF) plus LLM rerank reaches MRR 0.977 / recall@1 60-of-65 on a 65-question gold set, and a dual abstain gate cuts off-topic hallucination from 10.7% to 0%. Backed by Node.js + Express with 72 unit tests, GitHub Actions CI, scrypt+HMAC auth, and per-user data isolation.',
+    languageLabel: 'TypeScript',
+    languageColor: '#3178c6',
     metaLabel: 'Public',
   },
 ];

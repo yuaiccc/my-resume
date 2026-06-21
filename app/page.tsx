@@ -28,6 +28,7 @@ const TECH_GROUPS: TechGroup[] = [
       { name: 'PyTorch', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg' },
       { name: 'Hugging Face', icon: 'https://cdn.simpleicons.org/huggingface/FFD21E' },
       { name: 'LangChain', icon: 'https://cdn.simpleicons.org/langchain/1C3C3C', invertDark: true },
+      { name: 'LangGraph', icon: 'https://cdn.simpleicons.org/langchain/1C3C3C', invertDark: true },
       { name: 'Ollama', icon: 'https://cdn.simpleicons.org/ollama/000000', invertDark: true },
       { name: 'Dify', icon: 'https://cdn.simpleicons.org/dify/000000', invertDark: true },
     ],
@@ -263,6 +264,10 @@ export default function Resume() {
               <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">Capabilities</h2>
               <div className="space-y-4">
                 <div className="group p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
+                  <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-500 transition-colors">LLM & Agent Systems</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">Build agentic apps with <span className="font-medium text-blue-500">LangGraph</span> orchestration and local <span className="font-medium text-blue-500">RAG</span> (hybrid retrieval + rerank, RAGAS-style evaluation); studied the source code of mainstream agent frameworks — <span className="font-medium text-blue-500">OpenClaw, DeerFlow, Claude Code, and Hermes</span> — to understand their multi-agent orchestration, task scheduling, and context-management trade-offs.</p>
+                </div>
+                <div className="group p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
                   <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-500 transition-colors">Java Backend Foundations</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300">Built production APIs with <span className="font-medium text-blue-500">Spring Boot + MyBatis</span> following MVC and RESTful conventions; applied HashMap, JUC, and JVM internals to diagnose concurrency and performance issues.</p>
                 </div>
@@ -279,6 +284,26 @@ export default function Resume() {
 
             <section className="animate-fade-in-up delay-600">
               <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-l-4 border-blue-400 pl-4 mb-6">Selected Projects</h2>
+
+              <div
+                data-spotlight-card
+                className="interactive-card mb-6 p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group"
+              >
+                <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors">Japanese Word Master — LangGraph Agent + Local RAG</h3>
+                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded mt-2 sm:mt-0">May 2026 - Present</span>
+                </div>
+                <p className="text-sm text-blue-500 font-medium mb-3 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-blue-500" />
+                  Independent Project | LangGraph + Node.js + sqlite-vec
+                </p>
+                <ul className="list-disc list-outside ml-5 space-y-2.5 text-sm text-gray-700 dark:text-gray-300">
+                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Local RAG:</span> Hybrid retrieval (vector + BM25 fused via <span className="font-semibold text-slate-900 dark:text-slate-200">RRF</span>) with LLM query rewrite and rerank, reaching <span className="font-bold text-blue-600 dark:text-blue-400">MRR 0.977</span> and <span className="font-bold text-blue-600 dark:text-blue-400">recall@1 60/65</span> on a 65-question gold set.</li>
+                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Evaluation and anti-hallucination:</span> RAGAS-style metrics (recall@k / MRR / NDCG / faithfulness / hallucination); a dual abstain gate drove off-topic hallucination <span className="font-bold text-blue-600 dark:text-blue-400">from 10.7% to 0%</span>.</li>
+                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Agent workflow:</span> A <span className="font-semibold text-slate-900 dark:text-slate-200">Planner → Researcher → Tutor → Memory Manager</span> StateGraph with three-tier persistence and sandbox isolation (tool allowlist / token budget / timeout).</li>
+                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Engineering:</span> <span className="font-semibold text-slate-900 dark:text-slate-200">72 unit tests</span> + GitHub Actions CI, scrypt+HMAC auth, and per-user data isolation.</li>
+                </ul>
+              </div>
 
               <div
                 data-spotlight-card
@@ -326,12 +351,12 @@ export default function Resume() {
                 <div className="absolute left-0 top-6 w-1 h-full bg-gray-200 dark:bg-gray-700 -ml-2 hidden sm:block" />
                 <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2 relative">
                   <div className="absolute left-[-13px] top-1.5 w-3 h-3 rounded-full bg-blue-400 hidden sm:block" />
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">Shaanxi Blue Ocean Information Technology</h3>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono">Sep 2025 - Oct 2025</span>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">Henan Hualan Information Technology Group</h3>
+                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono">Sep 2024 - Feb 2025</span>
                 </div>
-                <p className="text-sm text-blue-500 font-medium mb-2">Software Engineering Intern / Backend</p>
+                <p className="text-sm text-blue-500 font-medium mb-2">Java Backend Intern</p>
                 <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Participated in requirement reviews for an enterprise OA system, implemented business APIs with Spring Boot, standardized response wrappers, and independently resolved Maven dependency conflicts during front-end integration.
+                  Joined RESTful API development and integration for an enterprise system; ran automated interface testing and parameter validation with Postman and maintained Swagger API docs; troubleshot backend errors through Linux server logs and wrote SQL to verify data consistency and clean up dirty data.
                 </p>
               </div>
 
@@ -339,12 +364,12 @@ export default function Resume() {
                 <div className="absolute left-0 top-6 w-1 h-full bg-gray-200 dark:bg-gray-700 -ml-2 hidden sm:block" />
                 <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2 relative">
                   <div className="absolute left-[-13px] top-1.5 w-3 h-3 rounded-full bg-blue-400 hidden sm:block" />
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">Henan Hualan Information Technology Group</h3>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono">Apr 2025 - Jun 2025</span>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">Youth League Committee — &ldquo;Huashui Youth&rdquo; Office</h3>
+                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono">Sep 2023 - Jun 2024</span>
                 </div>
-                <p className="text-sm text-blue-500 font-medium mb-2">LLM Application Intern</p>
+                <p className="text-sm text-blue-500 font-medium mb-2">Officer</p>
                 <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Deployed large language models in Linux environments, benchmarked inference speed, and designed AI agent workflows on Coze to validate end-to-end business scenarios.
+                  Consolidated class-attendance data across 22 schools; automated cleaning with Python and analysis in Excel to produce a core data dashboard.
                 </p>
               </div>
             </section>
