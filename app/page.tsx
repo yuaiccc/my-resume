@@ -325,8 +325,20 @@ export default function Resume() {
                 data-spotlight-card
                 className="interactive-card mb-6 p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group"
               >
-                <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors">Japanese Word Master — LangGraph Agent + Local RAG</h3>
+                <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2 gap-2">
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors flex items-center gap-2 flex-wrap">
+                    <span>Japanese Word Master — LangGraph Agent + Local RAG</span>
+                    <a
+                      href="https://github.com/yuaiccc/japanese-verb-master"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-xs font-medium text-slate-500 hover:text-blue-500 dark:text-slate-400 dark:hover:text-blue-400 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 px-2 py-0.5 rounded-md transition-colors"
+                      aria-label="View Japanese Word Master on GitHub"
+                    >
+                      <GithubIcon className="w-3.5 h-3.5" />
+                      <span>yuaiccc/japanese-verb-master</span>
+                    </a>
+                  </h3>
                   <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded mt-2 sm:mt-0">May 2026 - Present</span>
                 </div>
                 <p className="text-sm text-blue-500 font-medium mb-3 flex items-center gap-2">
