@@ -27,11 +27,8 @@ const TECH_GROUPS: TechGroup[] = [
       { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
       { name: 'PyTorch', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg' },
       { name: 'Hugging Face', icon: 'https://cdn.simpleicons.org/huggingface/FFD21E' },
-      { name: 'LangChain', icon: 'https://cdn.simpleicons.org/langchain/1C3C3C', invertDark: true },
-      { name: 'LangGraph', icon: 'https://cdn.simpleicons.org/langchain/1C3C3C', invertDark: true },
-      { name: 'Ollama', icon: 'https://cdn.simpleicons.org/ollama/000000', invertDark: true },
+      { name: 'LangChain / LangGraph', icon: 'https://cdn.simpleicons.org/langchain/1C3C3C', invertDark: true },
       { name: 'Dify', icon: 'https://cdn.simpleicons.org/dify/000000', invertDark: true },
-      { name: 'FastAPI', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg' },
     ],
   },
   {
@@ -64,8 +61,6 @@ const TECH_GROUPS: TechGroup[] = [
       { name: 'Linux', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg' },
       { name: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
       { name: 'Vercel', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg', invertDark: true },
-      { name: 'IntelliJ IDEA', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/intellij/intellij-original.svg' },
-      { name: 'VS Code', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg' },
     ],
   },
 ];
