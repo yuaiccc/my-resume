@@ -32,7 +32,6 @@ export const PERSON_SCHEMA = {
     sameAs: 'https://en.wikipedia.org/wiki/Hangzhou_Dianzi_University',
   },
   email: 'mailto:yuaiccc@aliyun.com',
-  telephone: '157-7937-5847',
   knowsAbout: [
     'LLM Agent',
     'LangGraph',
