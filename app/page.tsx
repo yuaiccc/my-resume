@@ -103,14 +103,6 @@ const GithubIcon = ({ className = 'w-4 h-4' }: IconProps) => (
   </svg>
 );
 
-const GlobeIcon = ({ className = 'w-4 h-4' }: IconProps) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className} aria-hidden="true">
-    <circle cx="12" cy="12" r="9" />
-    <path d="M3.5 12h17" />
-    <path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18Z" />
-  </svg>
-);
-
 export default function Resume() {
   return (
     <>
@@ -123,14 +115,8 @@ export default function Resume() {
       <div className="min-h-screen bg-slate-100 dark:bg-slate-950 py-10 px-4 sm:px-6 lg:px-8 font-sans text-gray-800 dark:text-gray-100 transition-colors duration-300">
         <div className="resume-card relative max-w-4xl mx-auto bg-white dark:bg-gray-900 shadow-lg rounded-xl overflow-hidden transition-colors duration-300 ring-1 ring-slate-200 dark:ring-slate-800">
           {/* === 头部信息 === */}
-          <header className="hero-ambient relative isolate overflow-hidden bg-slate-900 text-white p-8 md:p-10 transition-colors duration-300">
-            <div className="pointer-events-none absolute inset-0">
-              <div className="absolute -left-10 top-0 h-36 w-36 rounded-full bg-cyan-400/20 blur-3xl" />
-              <div className="ambient-orb absolute right-0 top-6 h-40 w-40 rounded-full bg-blue-500/20 blur-3xl" />
-              <div className="ambient-orb-delayed absolute left-1/3 bottom-[-2.5rem] h-44 w-44 rounded-full bg-violet-500/20 blur-3xl" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_45%),linear-gradient(135deg,rgba(148,163,184,0.08),transparent_55%)]" />
-            </div>
-            <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-6">
+          <header className="bg-slate-900 text-white p-8 md:p-10 transition-colors duration-300">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
               <div className="flex flex-col md:flex-row items-center gap-6">
                 <div className="hero-avatar-glow relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden flex-shrink-0 shadow-lg ring-1 ring-white/10">
                   <Image
@@ -161,10 +147,10 @@ export default function Resume() {
                 </a>
                 <a
                   href="tel:+8615779375847"
-                  className="hover:text-white transition inline-flex items-center justify-center md:justify-end gap-2"
+                  className="hover:text-white transition inline-flex items-center justify-center md:justify-end gap-2 whitespace-nowrap"
                 >
                   <PhoneIcon />
-                  <span><span aria-hidden="true">🇨🇳</span> +86 157-7937-5847</span>
+                  <span className="whitespace-nowrap"><span aria-hidden="true">🇨🇳</span> +86 157-7937-5847</span>
                 </a>
                 <a
                   href="https://github.com/yuaiccc"
@@ -174,15 +160,6 @@ export default function Resume() {
                 >
                   <GithubIcon />
                   <span>github.com/yuaiccc</span>
-                </a>
-                <a
-                  href="https://xj3.tech"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-400 hover:text-blue-300 font-bold inline-flex items-center justify-center md:justify-end gap-2"
-                >
-                  <GlobeIcon />
-                  <span>xj3.tech</span>
                 </a>
               </div>
             </div>
