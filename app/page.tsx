@@ -91,12 +91,6 @@ const MailIcon = ({ className = 'w-4 h-4' }: IconProps) => (
   </svg>
 );
 
-const PhoneIcon = ({ className = 'w-4 h-4' }: IconProps) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className} aria-hidden="true">
-    <path d="M6.6 3.75h2.55c.46 0 .87.3 1 .74l.94 3.14a1.1 1.1 0 0 1-.29 1.09l-1.5 1.5a14.35 14.35 0 0 0 4.48 4.48l1.5-1.5c.3-.3.75-.4 1.16-.27l3.07.94c.44.13.74.54.74 1v2.55a1.8 1.8 0 0 1-1.8 1.8h-.9C9.8 20.95 3.05 14.2 3.05 6.45v-.9a1.8 1.8 0 0 1 1.8-1.8H6.6Z" />
-  </svg>
-);
-
 const GithubIcon = ({ className = 'w-4 h-4' }: IconProps) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
     <path d="M12 2C6.48 2 2 6.6 2 12.26c0 4.53 2.87 8.37 6.84 9.72.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.72-2.78.62-3.37-1.37-3.37-1.37-.46-1.2-1.12-1.52-1.12-1.52-.91-.64.07-.63.07-.63 1.01.08 1.55 1.07 1.55 1.07.9 1.6 2.36 1.13 2.93.86.09-.67.35-1.13.64-1.39-2.22-.26-4.56-1.15-4.56-5.13 0-1.13.39-2.06 1.03-2.78-.11-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.06A9.2 9.2 0 0 1 12 7.25c.83 0 1.67.12 2.45.36 1.9-1.34 2.74-1.06 2.74-1.06.56 1.42.22 2.47.11 2.73.64.72 1.03 1.65 1.03 2.78 0 3.99-2.34 4.86-4.57 5.12.36.32.69.95.69 1.92 0 1.39-.01 2.5-.01 2.84 0 .27.18.6.69.49A10.28 10.28 0 0 0 22 12.26C22 6.6 17.52 2 12 2Z" />
@@ -127,19 +121,6 @@ const OpenAiIcon = ({ className = 'w-3.5 h-3.5 inline-block align-[-2px]' }: Ico
 );
 
 const FLAG_BASE = 'h-3.5 w-auto rounded-[2px] shadow-[0_0_0_0.5px_rgba(0,0,0,0.15)] inline-block align-[-2px]';
-
-const CnFlag = ({ className = FLAG_BASE }: IconProps) => (
-  <svg viewBox="0 0 30 20" className={className} aria-label="China" role="img">
-    <rect width="30" height="20" fill="#ee1c25" />
-    <g fill="#ffde00">
-      <polygon points="5,2 5.675,4.073 7.853,4.073 6.089,5.354 6.764,7.427 5,6.146 3.236,7.427 3.911,5.354 2.147,4.073 4.325,4.073" />
-      <polygon points="10,2 10.225,2.691 10.951,2.691 10.363,3.118 10.588,3.809 10,3.382 9.412,3.809 9.637,3.118 9.049,2.691 9.775,2.691" />
-      <polygon points="12,4 12.225,4.691 12.951,4.691 12.363,5.118 12.588,5.809 12,5.382 11.412,5.809 11.637,5.118 11.049,4.691 11.775,4.691" />
-      <polygon points="12,7 12.225,7.691 12.951,7.691 12.363,8.118 12.588,8.809 12,8.382 11.412,8.809 11.637,8.118 11.049,7.691 11.775,7.691" />
-      <polygon points="10,9 10.225,9.691 10.951,9.691 10.363,10.118 10.588,10.809 10,10.382 9.412,10.809 9.637,10.118 9.049,9.691 9.775,9.691" />
-    </g>
-  </svg>
-);
 
 const GbFlag = ({ className = FLAG_BASE }: IconProps) => (
   <svg viewBox="0 0 30 20" className={className} aria-label="United Kingdom" role="img">
@@ -175,13 +156,13 @@ export default function Resume() {
           <header className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white p-6 md:p-8 transition-colors duration-300 border-b border-slate-100 dark:border-slate-800">
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
               <div className="flex flex-col md:flex-row items-center gap-6">
-                <div className="hero-avatar-glow relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden flex-shrink-0 shadow-md ring-1 ring-slate-200 dark:ring-white/10">
+                <div className="hero-avatar-glow relative w-20 sm:w-24 aspect-[1290/1733] rounded-xl overflow-hidden flex-shrink-0 shadow-md ring-1 ring-slate-200 dark:ring-white/10">
                   <Image
                     src="/profile.jpg"
                     alt="Xu Junshan"
                     fill
                     sizes="(max-width: 768px) 80px, 96px"
-                    className="object-cover"
+                    className="object-cover object-top"
                     priority
                   />
                 </div>
@@ -203,13 +184,6 @@ export default function Resume() {
                 >
                   <MailIcon />
                   <span>yuaiccc@aliyun.com</span>
-                </a>
-                <a
-                  href="tel:+8615779375847"
-                  className="hover:text-slate-900 dark:hover:text-white transition inline-flex items-center justify-center md:justify-end gap-2 whitespace-nowrap"
-                >
-                  <PhoneIcon />
-                  <span className="whitespace-nowrap inline-flex items-center gap-1.5"><CnFlag /> +86 157-7937-5847</span>
                 </a>
                 <a
                   href="https://github.com/yuaiccc"
@@ -253,7 +227,7 @@ export default function Resume() {
                   data-spotlight-card
                   className="interactive-card bg-blue-50 dark:bg-blue-900/30 p-5 rounded-lg border border-blue-100 dark:border-blue-800 hover:shadow-md hover:-translate-y-1 transition-all duration-300"
                 >
-                  <h3 className="font-bold text-blue-700 dark:text-blue-300 mb-2 flex items-center gap-2"><span>🌍</span> Languages</h3>
+                  <h3 className="font-bold text-blue-700 dark:text-blue-300 mb-2">Languages</h3>
                   <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
                     <GbFlag /> <span className="font-bold text-slate-900 dark:text-slate-100">English CET-6 (538)</span>: comfortable using English in day-to-day collaboration and technical discussions.<br />
                     <JpFlag /> <span className="font-bold text-slate-900 dark:text-slate-100">Japanese JLPT N3</span>: able to read basic technical materials and adapt to Japan-facing development contexts.
@@ -263,7 +237,7 @@ export default function Resume() {
                   data-spotlight-card
                   className="interactive-card bg-blue-50 dark:bg-blue-900/30 p-5 rounded-lg border border-blue-100 dark:border-blue-800 hover:shadow-md hover:-translate-y-1 transition-all duration-300"
                 >
-                  <h3 className="font-bold text-blue-700 dark:text-blue-300 mb-2 flex items-center gap-2"><span>⚙️</span> Engineering Workflow</h3>
+                  <h3 className="font-bold text-blue-700 dark:text-blue-300 mb-2">Engineering Workflow</h3>
                   <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
                     Strong with <span className="font-bold">Git, Linux, and Docker</span> workflows; experienced in cross-platform dependency debugging; productive with AI-native tools such as <span className="inline-flex items-center gap-1 font-medium"><ClaudeIcon /> Claude Code</span> and <span className="inline-flex items-center gap-1 font-medium"><OpenAiIcon /> Codex</span>.
                   </p>
@@ -298,8 +272,10 @@ export default function Resume() {
                 <div className="p-5 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
                   <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-2 gap-2">
                     <div className="flex items-center gap-3">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src="/hdu-logo.svg" alt="Hangzhou Dianzi University logo" className="h-7 w-auto invert dark:invert-0" />
+                      <span className="inline-flex items-center rounded-md bg-slate-900 px-2 py-1 ring-1 ring-slate-800">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src="/hdu-logo.svg" alt="Hangzhou Dianzi University logo" className="h-5 w-auto" />
+                      </span>
                       <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">Hangzhou Dianzi University</h3>
                     </div>
                     <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Sep 2026 - (expected)</span>
@@ -313,8 +289,10 @@ export default function Resume() {
                 <div className="p-5 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
                   <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-2 gap-2">
                     <div className="flex items-center gap-3">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src="/ncwu-logo.png" alt="NCWU logo" className="h-7 w-auto invert dark:invert-0" />
+                      <span className="inline-flex items-center rounded-md bg-slate-900 px-2 py-1 ring-1 ring-slate-800">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src="/ncwu-logo.png" alt="NCWU logo" className="h-5 w-auto" />
+                      </span>
                       <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">North China University of Water Resources and Electric Power</h3>
                     </div>
                     <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Sep 2022 - Jun 2026</span>
