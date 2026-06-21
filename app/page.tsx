@@ -307,25 +307,6 @@ export default function Resume() {
 
               <div
                 data-spotlight-card
-                className="interactive-card mb-6 p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group"
-              >
-                <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors">Mall E-commerce Admin System</h3>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded mt-2 sm:mt-0">Jan 2026 - Feb 2026</span>
-                </div>
-                <p className="text-sm text-blue-500 font-medium mb-3 flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-blue-500" />
-                  Java Backend Development | Spring Boot + Redis + JWT + MySQL
-                </p>
-                <ul className="list-disc list-outside ml-5 space-y-2.5 text-sm text-gray-700 dark:text-gray-300">
-                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Environment setup:</span> Independently bootstrapped the local development environment, resolving cross-origin and environment consistency issues in a front-end/back-end separated architecture.</li>
-                  <li><span className="font-bold text-slate-800 dark:text-slate-100">API delivery:</span> Implemented product management and authentication APIs with a <span className="font-semibold text-slate-900 dark:text-slate-200">Controller-Service-Mapper</span> architecture, using <span className="font-semibold text-slate-900 dark:text-slate-200">Swagger</span> for collaborative debugging.</li>
-                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Security:</span> Built stateless authentication with <span className="font-semibold text-slate-900 dark:text-slate-200">Spring Security + JWT</span>, including permission interception and token renewal strategies.</li>
-                </ul>
-              </div>
-
-              <div
-                data-spotlight-card
                 className="interactive-card p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group"
               >
                 <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
