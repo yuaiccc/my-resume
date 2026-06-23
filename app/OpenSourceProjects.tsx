@@ -11,9 +11,22 @@ type Project = {
   languageLabel: string;
   languageColor: string;
   metaLabel: string;
+  ctaLabel?: string;
 };
 
 const PROJECTS: Project[] = [
+  {
+    id: 'arklab',
+    name: 'yuaiccc/ArkLab',
+    href: 'https://arklab.onrender.com',
+    summary: 'A local-first RAG evaluation workbench for orchestration, failure diagnosis, traces, and regression testing.',
+    description:
+      'ArkLab is a CLI-first RAG evaluation and diagnosis system that turns benchmark runs into reproducible engineering evidence: retrieval metrics, LLM-as-Judge hooks, trace files, failure pools, experiment summaries, and regression eval sets. It can run public benchmarks such as MultiHop-RAG / EnterpriseRAG-Bench and evaluate real application targets like japanese-verb-master through API adapters.',
+    languageLabel: 'Python',
+    languageColor: '#3572A5',
+    metaLabel: 'Render Demo',
+    ctaLabel: 'Open Web UI',
+  },
   {
     id: 'japanese-verb',
     name: 'yuaiccc/japanese-verb-master',
@@ -121,7 +134,7 @@ export default function OpenSourceProjects() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-xs text-blue-500 hover:text-blue-600 font-medium px-2 py-1 rounded bg-blue-50 dark:bg-blue-900/30 transition-colors"
                   >
-                    View on GitHub <ExternalLinkIcon />
+                    {project.ctaLabel ?? 'View on GitHub'} <ExternalLinkIcon />
                   </a>
                 </div>
               </div>
