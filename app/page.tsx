@@ -213,6 +213,71 @@ export default function Resume() {
               </p>
             </div>
 
+            <section className="animate-fade-in-up delay-100">
+              <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-l-[3px] border-blue-500 pl-3 mb-4">Selected Projects</h2>
+
+              <div
+                data-spotlight-card
+                className="interactive-card mb-4 p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group"
+              >
+                <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2 gap-2">
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors flex items-center gap-2 flex-wrap">
+                    <span>Japanese Word Master — LangGraph Agent + Local RAG</span>
+                    <a
+                      href="https://japanese-verb-master.onrender.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400 px-2.5 py-0.5 rounded-md transition-colors"
+                      aria-label="Open Japanese Word Master live demo"
+                    >
+                      <span aria-hidden="true">↗</span>
+                      <span>Live Demo</span>
+                    </a>
+                    <a
+                      href="https://github.com/yuaiccc/japanese-verb-master"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-xs font-medium text-slate-500 hover:text-blue-500 dark:text-slate-400 dark:hover:text-blue-400 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 px-2 py-0.5 rounded-md transition-colors"
+                      aria-label="View Japanese Word Master on GitHub"
+                    >
+                      <GithubIcon className="w-3.5 h-3.5" />
+                      <span>yuaiccc/japanese-verb-master</span>
+                    </a>
+                  </h3>
+                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded mt-2 sm:mt-0">May 2026 - Present</span>
+                </div>
+                <p className="text-sm text-blue-500 font-medium mb-3 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-blue-500" />
+                  Independent Project | LangGraph + Node.js + sqlite-vec
+                </p>
+                <ul className="list-disc list-outside ml-5 space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Local RAG:</span> Hybrid retrieval (vector + BM25 fused via <span className="font-semibold text-slate-900 dark:text-slate-200">RRF</span>) with LLM query rewrite and rerank, reaching <span className="font-bold text-blue-600 dark:text-blue-400">MRR 0.977</span> and <span className="font-bold text-blue-600 dark:text-blue-400">recall@1 60/65</span> on a 65-question gold set.</li>
+                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Evaluation and anti-hallucination:</span> RAGAS-style metrics (recall@k / MRR / NDCG / faithfulness / hallucination); a dual abstain gate drove off-topic hallucination <span className="font-bold text-blue-600 dark:text-blue-400">from 10.7% to 0%</span>.</li>
+                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Agent workflow:</span> A <span className="font-semibold text-slate-900 dark:text-slate-200">Planner → Researcher → Tutor → Memory Manager</span> StateGraph with three-tier persistence and sandbox isolation (tool allowlist / token budget / timeout).</li>
+                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Engineering:</span> <span className="font-semibold text-slate-900 dark:text-slate-200">72 unit tests</span> + GitHub Actions CI, scrypt+HMAC auth, and per-user data isolation.</li>
+                </ul>
+              </div>
+
+              <div
+                data-spotlight-card
+                className="interactive-card p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group"
+              >
+                <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors">Multilingual Scene Text Recognition System</h3>
+                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded mt-2 sm:mt-0">Dec 2025 - Present</span>
+                </div>
+                <p className="text-sm text-blue-500 font-medium mb-3 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-blue-500" />
+                  End-to-end Owner | Python + PyTorch + Linux
+                </p>
+                <ul className="list-disc list-outside ml-5 space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Data engineering:</span> Cleaned and assembled a corpus of <span className="font-bold text-blue-600 dark:text-blue-400">1.13 million lines</span>; fixed rendering bugs in open-source tooling and generated more than 100,000 high-quality synthetic training samples.</li>
+                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Performance tuning:</span> Converted large collections of small images into an <span className="font-semibold text-slate-900 dark:text-slate-200">LMDB dataset</span>, pushed <span className="font-semibold text-slate-900 dark:text-slate-200">batch size to 768</span>, and reduced validation time from hours to minutes.</li>
+                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Model outcome:</span> Reached <span className="font-bold text-blue-600 dark:text-blue-400">98.3%</span> validation accuracy and solved recognition issues involving overlapping Traditional Chinese and Japanese characters.</li>
+                </ul>
+              </div>
+            </section>
+
             <OpenSourceProjects />
 
             <section className="animate-fade-in-up delay-200">
@@ -325,70 +390,6 @@ export default function Resume() {
               </div>
             </section>
 
-            <section className="animate-fade-in-up delay-600">
-              <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-l-[3px] border-blue-500 pl-3 mb-4">Selected Projects</h2>
-
-              <div
-                data-spotlight-card
-                className="interactive-card mb-4 p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group"
-              >
-                <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2 gap-2">
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors flex items-center gap-2 flex-wrap">
-                    <span>Japanese Word Master — LangGraph Agent + Local RAG</span>
-                    <a
-                      href="https://japanese-verb-master.onrender.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400 px-2.5 py-0.5 rounded-md transition-colors"
-                      aria-label="Open Japanese Word Master live demo"
-                    >
-                      <span aria-hidden="true">↗</span>
-                      <span>Live Demo</span>
-                    </a>
-                    <a
-                      href="https://github.com/yuaiccc/japanese-verb-master"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs font-medium text-slate-500 hover:text-blue-500 dark:text-slate-400 dark:hover:text-blue-400 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 px-2 py-0.5 rounded-md transition-colors"
-                      aria-label="View Japanese Word Master on GitHub"
-                    >
-                      <GithubIcon className="w-3.5 h-3.5" />
-                      <span>yuaiccc/japanese-verb-master</span>
-                    </a>
-                  </h3>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded mt-2 sm:mt-0">May 2026 - Present</span>
-                </div>
-                <p className="text-sm text-blue-500 font-medium mb-3 flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-blue-500" />
-                  Independent Project | LangGraph + Node.js + sqlite-vec
-                </p>
-                <ul className="list-disc list-outside ml-5 space-y-2 text-sm text-gray-700 dark:text-gray-300">
-                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Local RAG:</span> Hybrid retrieval (vector + BM25 fused via <span className="font-semibold text-slate-900 dark:text-slate-200">RRF</span>) with LLM query rewrite and rerank, reaching <span className="font-bold text-blue-600 dark:text-blue-400">MRR 0.977</span> and <span className="font-bold text-blue-600 dark:text-blue-400">recall@1 60/65</span> on a 65-question gold set.</li>
-                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Evaluation and anti-hallucination:</span> RAGAS-style metrics (recall@k / MRR / NDCG / faithfulness / hallucination); a dual abstain gate drove off-topic hallucination <span className="font-bold text-blue-600 dark:text-blue-400">from 10.7% to 0%</span>.</li>
-                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Agent workflow:</span> A <span className="font-semibold text-slate-900 dark:text-slate-200">Planner → Researcher → Tutor → Memory Manager</span> StateGraph with three-tier persistence and sandbox isolation (tool allowlist / token budget / timeout).</li>
-                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Engineering:</span> <span className="font-semibold text-slate-900 dark:text-slate-200">72 unit tests</span> + GitHub Actions CI, scrypt+HMAC auth, and per-user data isolation.</li>
-                </ul>
-              </div>
-
-              <div
-                data-spotlight-card
-                className="interactive-card p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group"
-              >
-                <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors">Multilingual Scene Text Recognition System</h3>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded mt-2 sm:mt-0">Dec 2025 - Present</span>
-                </div>
-                <p className="text-sm text-blue-500 font-medium mb-3 flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-blue-500" />
-                  End-to-end Owner | Python + PyTorch + Linux
-                </p>
-                <ul className="list-disc list-outside ml-5 space-y-2 text-sm text-gray-700 dark:text-gray-300">
-                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Data engineering:</span> Cleaned and assembled a corpus of <span className="font-bold text-blue-600 dark:text-blue-400">1.13 million lines</span>; fixed rendering bugs in open-source tooling and generated more than 100,000 high-quality synthetic training samples.</li>
-                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Performance tuning:</span> Converted large collections of small images into an <span className="font-semibold text-slate-900 dark:text-slate-200">LMDB dataset</span>, pushed <span className="font-semibold text-slate-900 dark:text-slate-200">batch size to 768</span>, and reduced validation time from hours to minutes.</li>
-                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Model outcome:</span> Reached <span className="font-bold text-blue-600 dark:text-blue-400">98.3%</span> validation accuracy and solved recognition issues involving overlapping Traditional Chinese and Japanese characters.</li>
-                </ul>
-              </div>
-            </section>
 
             <section className="animate-fade-in-up delay-700">
               <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-l-[3px] border-blue-500 pl-3 mb-4">Experience</h2>
