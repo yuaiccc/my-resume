@@ -336,6 +336,16 @@ export default function Resume() {
                   <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors flex items-center gap-2 flex-wrap">
                     <span>Japanese Word Master — LangGraph Agent + Local RAG</span>
                     <a
+                      href="https://japanese-verb-master.onrender.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400 px-2.5 py-0.5 rounded-md transition-colors"
+                      aria-label="Open Japanese Word Master live demo"
+                    >
+                      <span aria-hidden="true">↗</span>
+                      <span>Live Demo</span>
+                    </a>
+                    <a
                       href="https://github.com/yuaiccc/japanese-verb-master"
                       target="_blank"
                       rel="noopener noreferrer"
