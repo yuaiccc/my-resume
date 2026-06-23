@@ -1,7 +1,7 @@
 export const SITE_URL = 'https://xj3.tech';
-export const SITE_NAME = 'Xu Junshan (许君山) | AI & Backend Engineer';
+export const SITE_NAME = '许君山 Xu Junshan · 华北水利水电大学 AI 本科 · 个人主页';
 export const SITE_DESCRIPTION =
-  'Xu Junshan (许君山) — AI undergraduate at North China University of Water Resources and Electric Power (Class of 2026), incoming postgraduate at Hangzhou Dianzi University. Builds LLM agents with LangGraph, local RAG (hybrid retrieval + rerank) and Java backend services; studies the source code of OpenClaw, DeerFlow, Claude Code, and Hermes.';
+  '许君山 (Xu Junshan)，华北水利水电大学 (NCWU) 人工智能专业 2026 届本科生，拟进入杭州电子科技大学 (HDU) 攻读硕士。专注 LLM Agent (LangGraph)、本地 RAG (向量 + BM25 + RRF 混合检索)、Java 后端 (Spring Boot)；研究 OpenClaw / DeerFlow / Claude Code / Hermes 等开源 Agent 框架的源码与上下文压缩设计。';
 
 export const PERSON_SCHEMA = {
   '@context': 'https://schema.org',

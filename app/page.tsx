@@ -336,7 +336,10 @@ export default function Resume() {
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src="/hdu-logo.svg" alt="Hangzhou Dianzi University logo" className="h-5 w-auto" />
                       </span>
-                      <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">Hangzhou Dianzi University</h3>
+                      <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">
+                        Hangzhou Dianzi University
+                        <span lang="zh-CN" className="block text-sm font-medium text-slate-500 dark:text-slate-400 mt-0.5">杭州电子科技大学（HDU）</span>
+                      </h3>
                     </div>
                     <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Sep 2026 - (expected)</span>
                   </div>
@@ -353,7 +356,10 @@ export default function Resume() {
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src="/ncwu-logo.png" alt="NCWU logo" className="h-5 w-auto" />
                       </span>
-                      <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">North China University of Water Resources and Electric Power</h3>
+                      <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">
+                        North China University of Water Resources and Electric Power
+                        <span lang="zh-CN" className="block text-sm font-medium text-slate-500 dark:text-slate-400 mt-0.5">华北水利水电大学（NCWU）</span>
+                      </h3>
                     </div>
                     <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Sep 2022 - Jun 2026</span>
                   </div>
