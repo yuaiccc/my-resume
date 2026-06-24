@@ -20,6 +20,27 @@ type TechGroup = {
   items: TechItem[];
 };
 
+const INLINE_TECH: Record<string, TechItem> = {
+  LangGraph: { name: 'LangGraph', icon: 'https://cdn.simpleicons.org/langchain/1C3C3C', invertDark: true },
+  Node: { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg' },
+  PostgreSQL: { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg' },
+  SQLite: { name: 'sqlite-vec', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg' },
+  Vue: { name: 'Vue', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg' },
+  Express: { name: 'Express', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg', invertDark: true },
+  Render: { name: 'Render', icon: 'https://cdn.simpleicons.org/render/46E3B7' },
+  Supabase: { name: 'Supabase', icon: 'https://cdn.simpleicons.org/supabase/3FCF8E' },
+  Cloudflare: { name: 'Cloudflare', icon: 'https://cdn.simpleicons.org/cloudflare/F38020' },
+  OKX: { name: 'OKX', icon: 'https://cdn.simpleicons.org/okx/000000', invertDark: true },
+  Spring: { name: 'Spring Boot', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg' },
+  MySQL: { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg' },
+  Redis: { name: 'Redis', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg' },
+  RabbitMQ: { name: 'RabbitMQ', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rabbitmq/rabbitmq-original.svg' },
+  Vercel: { name: 'Vercel', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg', invertDark: true },
+  GitHub: { name: 'GitHub', icon: 'https://cdn.simpleicons.org/github/181717', invertDark: true },
+  Linux: { name: 'Linux', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg' },
+  Nginx: { name: 'Nginx', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nginx/nginx-original.svg' },
+};
+
 const TECH_GROUPS: TechGroup[] = [
   {
     title: 'AI & ML',
@@ -78,6 +99,22 @@ const TechBadge = ({ name, icon, invertDark }: TechItem) => (
     </span>
   </li>
 );
+
+const InlineTech = ({ tech, label }: { tech: keyof typeof INLINE_TECH; label?: string }) => {
+  const item = INLINE_TECH[tech];
+  return (
+    <span className="inline-flex items-center gap-1 whitespace-nowrap font-semibold text-slate-900 dark:text-slate-200">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={item.icon}
+        alt=""
+        className={`inline-block h-3.5 w-3.5 object-contain ${item.invertDark ? 'dark:invert' : ''}`}
+        aria-hidden="true"
+      />
+      <span>{label || item.name}</span>
+    </span>
+  );
+};
 
 const MailIcon = ({ className = 'w-4 h-4' }: IconProps) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className} aria-hidden="true">
@@ -243,18 +280,35 @@ export default function Resume() {
                       <GithubIcon className="w-3.5 h-3.5" />
                       <span>yuaiccc/japanese-verb-master</span>
                     </a>
+                    <a
+                      href="https://github.com/yuaiccc/japanese-verb-master/releases/tag/v1.3.0"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-xs font-medium text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 px-2 py-0.5 rounded-md transition-colors"
+                      aria-label="View Japanese Word Master v1.3.0 release"
+                    >
+                      <span>v1.3.0</span>
+                    </a>
                   </h3>
                   <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded mt-2 sm:mt-0">May 2026 - Present</span>
                 </div>
-                <p className="text-sm text-blue-500 font-medium mb-3 flex items-center gap-2">
+                <p className="text-sm text-blue-500 font-medium mb-3 flex flex-wrap items-center gap-x-2 gap-y-1">
                   <span className="w-2 h-2 rounded-full bg-blue-500" />
-                  Independent Project | LangGraph + Node.js + sqlite-vec
+                  <span>Independent Project</span>
+                  <span aria-hidden="true">|</span>
+                  <InlineTech tech="LangGraph" />
+                  <span aria-hidden="true">+</span>
+                  <InlineTech tech="Node" />
+                  <span aria-hidden="true">+</span>
+                  <InlineTech tech="PostgreSQL" />
+                  <span aria-hidden="true">+</span>
+                  <InlineTech tech="SQLite" />
                 </p>
                 <ul className="list-disc list-outside ml-5 space-y-2 text-sm text-gray-700 dark:text-gray-300">
-                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Local RAG:</span> Hybrid retrieval (vector + BM25 fused via <span className="font-semibold text-slate-900 dark:text-slate-200">RRF</span>) with LLM query rewrite and rerank, reaching <span className="font-bold text-blue-600 dark:text-blue-400">MRR 0.977</span> and <span className="font-bold text-blue-600 dark:text-blue-400">recall@1 60/65</span> on a 65-question gold set.</li>
-                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Evaluation and anti-hallucination:</span> RAGAS-style metrics (recall@k / MRR / NDCG / faithfulness / hallucination); a dual abstain gate drove off-topic hallucination <span className="font-bold text-blue-600 dark:text-blue-400">from 10.7% to 0%</span>.</li>
-                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Agent workflow:</span> A <span className="font-semibold text-slate-900 dark:text-slate-200">Planner → Researcher → Tutor → Memory Manager</span> StateGraph with three-tier persistence and sandbox isolation (tool allowlist / token budget / timeout).</li>
-                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Engineering:</span> <span className="font-semibold text-slate-900 dark:text-slate-200">72 unit tests</span> + GitHub Actions CI, scrypt+HMAC auth, and per-user data isolation.</li>
+                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Hybrid RAG:</span> Combined vector and BM25 retrieval through <span className="font-semibold text-slate-900 dark:text-slate-200">RRF</span>, query rewriting, and LLM reranking; achieved <span className="font-bold text-blue-600 dark:text-blue-400">MRR 0.977</span>, <span className="font-bold text-blue-600 dark:text-blue-400">NDCG@10 0.979</span>, and <span className="font-bold text-blue-600 dark:text-blue-400">recall@1 63/65</span>.</li>
+                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Evaluation:</span> Built recall@k / MRR / NDCG / faithfulness / hallucination regression suites; a distance filter plus LLM gatekeeper reduced off-topic hallucination <span className="font-bold text-blue-600 dark:text-blue-400">from 10.7% to 0%</span>.</li>
+                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Agent runtime:</span> Implemented a <InlineTech tech="LangGraph" /> <span className="font-semibold text-slate-900 dark:text-slate-200">Planner → Researcher → Tutor → Memory Manager</span> StateGraph with SSE traces, persisted run/task history, durable user memory, and sandbox policies for tools, tokens, and timeouts.</li>
+                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Production engineering:</span> Deployed a same-origin <InlineTech tech="Vue" /> + <InlineTech tech="Express" /> service on <InlineTech tech="Render" /> with <InlineTech tech="Supabase" label="Supabase PostgreSQL" />, isolated guest/account data, <InlineTech tech="Cloudflare" label="Turnstile" /> and rate limits, browser-side LLM BYOK, server-verified <InlineTech tech="OKX" /> payments, and <span className="font-semibold text-slate-900 dark:text-slate-200">112 passing tests</span>.</li>
                 </ul>
               </div>
 
@@ -289,7 +343,7 @@ export default function Resume() {
                 >
                   <h3 className="font-bold text-blue-700 dark:text-blue-300 mb-2">Languages</h3>
                   <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                    <GbFlag /> <span className="font-bold text-slate-900 dark:text-slate-100">English CET-6 (538)</span>: comfortable using English in day-to-day collaboration and technical discussions.<br />
+                    <GbFlag /> <span className="font-bold text-slate-900 dark:text-slate-100">English CET-6</span>: comfortable using English in day-to-day collaboration and technical discussions.<br />
                     <JpFlag /> <span className="font-bold text-slate-900 dark:text-slate-100">Japanese JLPT N3</span>: able to read basic technical materials and adapt to Japan-facing development contexts.
                   </p>
                 </div>
@@ -379,19 +433,19 @@ export default function Resume() {
               <div className="grid sm:grid-cols-2 gap-3">
                 <div className="group p-4 rounded-lg bg-slate-50/70 dark:bg-slate-800/40 hover:bg-slate-50 dark:hover:bg-slate-800/70 transition-colors border border-slate-100 dark:border-slate-800 hover:border-slate-200 dark:hover:border-slate-700">
                   <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-500 transition-colors">LLM & Agent Systems</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">Build agentic apps with <span className="font-medium text-blue-500">LangGraph</span> orchestration and local <span className="font-medium text-blue-500">RAG</span> (hybrid retrieval + rerank, RAGAS-style evaluation); studied the source code of mainstream agent frameworks — <span className="font-medium text-blue-500">OpenClaw, DeerFlow, Claude Code, and Hermes</span> — to understand their multi-agent orchestration, task scheduling, and context-management trade-offs.</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">Build agentic apps with <InlineTech tech="LangGraph" /> orchestration and local <span className="font-medium text-blue-500">RAG</span> (hybrid retrieval + rerank, RAGAS-style evaluation); studied the source code of OpenClaw, DeerFlow, Claude Code, and Hermes to understand multi-agent orchestration, task scheduling, and context-management trade-offs.</p>
                 </div>
                 <div className="group p-4 rounded-lg bg-slate-50/70 dark:bg-slate-800/40 hover:bg-slate-50 dark:hover:bg-slate-800/70 transition-colors border border-slate-100 dark:border-slate-800 hover:border-slate-200 dark:hover:border-slate-700">
                   <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-500 transition-colors">Java Backend Foundations</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">Built production APIs with <span className="font-medium text-blue-500">Spring Boot + MyBatis</span> following MVC and RESTful conventions; applied HashMap, JUC, and JVM internals to diagnose concurrency and performance issues.</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">Built production APIs with <InlineTech tech="Spring" /> + MyBatis following MVC and RESTful conventions; applied HashMap, JUC, and JVM internals to diagnose concurrency and performance issues.</p>
                 </div>
                 <div className="group p-4 rounded-lg bg-slate-50/70 dark:bg-slate-800/40 hover:bg-slate-50 dark:hover:bg-slate-800/70 transition-colors border border-slate-100 dark:border-slate-800 hover:border-slate-200 dark:hover:border-slate-700">
                   <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-500 transition-colors">Data and Middleware</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">Optimized <span className="font-medium text-blue-500">MySQL</span> queries with index tuning and transaction design; implemented <span className="font-medium text-blue-500">Redis</span> caching strategies for hot-path data; integrated RabbitMQ for asynchronous task decoupling.</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">Optimized <InlineTech tech="MySQL" /> queries with index tuning and transaction design; implemented <InlineTech tech="Redis" /> caching for hot-path data; integrated <InlineTech tech="RabbitMQ" /> for asynchronous task decoupling.</p>
                 </div>
                 <div className="group p-4 rounded-lg bg-slate-50/70 dark:bg-slate-800/40 hover:bg-slate-50 dark:hover:bg-slate-800/70 transition-colors border border-slate-100 dark:border-slate-800 hover:border-slate-200 dark:hover:border-slate-700">
                   <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-500 transition-colors">DevOps and Delivery</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">Shipped projects end-to-end through <span className="font-medium text-blue-500">Vercel CI/CD + GitHub</span> pipelines; managed Linux servers and configured Nginx for reverse proxy and static hosting.</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">Shipped projects through <InlineTech tech="Vercel" /> CI/CD and <InlineTech tech="GitHub" /> pipelines; managed <InlineTech tech="Linux" /> servers and configured <InlineTech tech="Nginx" /> for reverse proxy and static hosting.</p>
                 </div>
               </div>
             </section>

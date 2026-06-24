@@ -31,12 +31,12 @@ const PROJECTS: Project[] = [
     id: 'japanese-verb',
     name: 'yuaiccc/japanese-verb-master',
     href: 'https://github.com/yuaiccc/japanese-verb-master',
-    summary: 'A Japanese-learning agent built on LangGraph with a local RAG pipeline for grounded grammar tutoring.',
+    summary: 'A production-deployed Japanese-learning agent with hybrid RAG, durable user memory, and verified payments.',
     description:
-      'An independently built Japanese-learning agent. A LangGraph multi-node workflow (Planner → Researcher → Tutor → Memory Manager) drives tutoring over a local RAG pipeline: hybrid retrieval (vector + BM25 fused with RRF) plus LLM rerank reaches MRR 0.977 / recall@1 60-of-65 on a 65-question gold set, and a dual abstain gate cuts off-topic hallucination from 10.7% to 0%. Backed by Node.js + Express with 72 unit tests, GitHub Actions CI, scrypt+HMAC auth, and per-user data isolation.',
+      'A production-deployed Japanese-learning Agentic RAG system. Its LangGraph workflow (Planner → Researcher → Tutor → Memory Manager) combines vector and BM25 retrieval with RRF fusion and LLM reranking, reaching MRR 0.977 and recall@1 63/65 while a dual abstain gate reduces off-topic hallucination to 0%. The Render deployment uses Supabase PostgreSQL for isolated guest/account data, Cloudflare Turnstile and rate limiting for abuse protection, browser-side LLM BYOK, and server-verified OKX payments. The backend is covered by 112 tests.',
     languageLabel: 'TypeScript',
     languageColor: '#3178c6',
-    metaLabel: 'Public',
+    metaLabel: 'v1.3.0 Live',
   },
   {
     id: 'sillytavern',
