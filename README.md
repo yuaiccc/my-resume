@@ -2,6 +2,16 @@
 
 Personal resume and engineering portfolio built with Next.js.
 
+## Live Site
+
+- <https://xj3.tech>
+
+## Featured Projects
+
+- Japanese Word Master: LangGraph agent, hybrid RAG, Supabase-backed account data, Turnstile, rate limiting, and OKX payment verification.
+- Feishu Companion Bot: Go + Feishu Open Platform companion agent with GraphRAG memory, OceanBase / MySQL-compatible storage, and an embedded React console.
+- Multilingual Scene Text Recognition: PyTorch OCR training pipeline and multilingual synthetic-data workflow.
+
 ## Local Development
 
 ```bash

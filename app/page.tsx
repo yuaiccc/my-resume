@@ -25,6 +25,8 @@ const INLINE_TECH: Record<string, TechItem> = {
   Node: { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg' },
   PostgreSQL: { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg' },
   SQLite: { name: 'sqlite-vec', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg' },
+  Go: { name: 'Go', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original-wordmark.svg' },
+  React: { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
   Vue: { name: 'Vue', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg' },
   Express: { name: 'Express', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg', invertDark: true },
   Render: { name: 'Render', icon: 'https://cdn.simpleicons.org/render/46E3B7' },
@@ -67,6 +69,7 @@ const TECH_GROUPS: TechGroup[] = [
     items: [
       { name: 'Java', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg' },
       { name: 'Spring', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg' },
+      { name: 'Go', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original-wordmark.svg' },
       { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg' },
       { name: 'Express', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg', invertDark: true },
       { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg' },
@@ -309,6 +312,45 @@ export default function Resume() {
                   <li><span className="font-bold text-slate-800 dark:text-slate-100">Evaluation:</span> Built recall@k / MRR / NDCG / faithfulness / hallucination regression suites; a distance filter plus LLM gatekeeper reduced off-topic hallucination <span className="font-bold text-blue-600 dark:text-blue-400">from 10.7% to 0%</span>.</li>
                   <li><span className="font-bold text-slate-800 dark:text-slate-100">Agent runtime:</span> Implemented a <InlineTech tech="LangGraph" /> <span className="font-semibold text-slate-900 dark:text-slate-200">Planner → Researcher → Tutor → Memory Manager</span> StateGraph with SSE traces, persisted run/task history, durable user memory, and sandbox policies for tools, tokens, and timeouts.</li>
                   <li><span className="font-bold text-slate-800 dark:text-slate-100">Production engineering:</span> Deployed a same-origin <InlineTech tech="Vue" /> + <InlineTech tech="Express" /> service on <InlineTech tech="Render" /> with <InlineTech tech="Supabase" label="Supabase PostgreSQL" />, isolated guest/account data, <InlineTech tech="Cloudflare" label="Turnstile" /> and rate limits, browser-side LLM BYOK, server-verified <InlineTech tech="OKX" /> payments, and <span className="font-semibold text-slate-900 dark:text-slate-200">112 passing tests</span>.</li>
+                </ul>
+              </div>
+
+              <div
+                data-spotlight-card
+                className="interactive-card mb-4 p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group"
+              >
+                <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2 gap-2">
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors flex items-center gap-2 flex-wrap">
+                    <span>Feishu Companion Bot — Memory-Centric LLM Assistant</span>
+                    <a
+                      href="https://github.com/yuaiccc/feishu-companion-bot"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-xs font-medium text-slate-500 hover:text-blue-500 dark:text-slate-400 dark:hover:text-blue-400 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 px-2 py-0.5 rounded-md transition-colors"
+                      aria-label="View Feishu Companion Bot on GitHub"
+                    >
+                      <GithubIcon className="w-3.5 h-3.5" />
+                      <span>yuaiccc/feishu-companion-bot</span>
+                    </a>
+                  </h3>
+                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded mt-2 sm:mt-0">Jun 2026 - Present</span>
+                </div>
+                <p className="text-sm text-blue-500 font-medium mb-3 flex flex-wrap items-center gap-x-2 gap-y-1">
+                  <span className="w-2 h-2 rounded-full bg-blue-500" />
+                  <span>Independent Project</span>
+                  <span aria-hidden="true">|</span>
+                  <InlineTech tech="Go" />
+                  <span aria-hidden="true">+</span>
+                  <InlineTech tech="React" />
+                  <span aria-hidden="true">+</span>
+                  <InlineTech tech="MySQL" label="OceanBase / MySQL" />
+                  <span aria-hidden="true">+</span>
+                  <span>Feishu Open Platform</span>
+                </p>
+                <ul className="list-disc list-outside ml-5 space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Companion-agent runtime:</span> Built a <InlineTech tech="Go" /> service around Feishu event ingestion, LLM response generation, short/long-term memory, profile configuration, safety filters, and local tool adapters.</li>
+                  <li><span className="font-bold text-slate-800 dark:text-slate-100">GraphRAG memory:</span> Designed a dual-store memory layer with unstructured memories and open predicate knowledge relations, including multi-turn pronoun resolution, relationship conflict handling, and multimodal image-memory extraction.</li>
+                  <li><span className="font-bold text-slate-800 dark:text-slate-100">Operational console:</span> Embedded a <InlineTech tech="React" /> + Vite SPA into a single Go binary for feature toggles, onboarding, database health, connection-pool status, and mood / affinity trend monitoring.</li>
                 </ul>
               </div>
 

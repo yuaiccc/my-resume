@@ -39,6 +39,17 @@ const PROJECTS: Project[] = [
     metaLabel: 'v1.3.0 Live',
   },
   {
+    id: 'feishu-companion',
+    name: 'yuaiccc/feishu-companion-bot',
+    href: 'https://github.com/yuaiccc/feishu-companion-bot',
+    summary: 'A Feishu-native companion agent with long-term memory, GraphRAG relations, and an embedded web console.',
+    description:
+      'A Go-based Feishu companion-agent framework with LLM responses, short/long-term memory, safety filters, image-memory extraction, and a GraphRAG relation layer backed by OceanBase / MySQL-compatible storage. The project ships a Vite + React control console embedded into the Go binary for onboarding, module toggles, database health checks, and mood / affinity trend monitoring.',
+    languageLabel: 'Go',
+    languageColor: '#00ADD8',
+    metaLabel: 'Feishu Agent',
+  },
+  {
     id: 'sillytavern',
     name: 'SillyTavern/SillyTavern',
     href: 'https://github.com/SillyTavern/SillyTavern',
