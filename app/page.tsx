@@ -57,6 +57,8 @@ const TECH_GROUPS: TechGroup[] = [
       { name: 'PyTorch', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg' },
       { name: 'Hugging Face', icon: '/tech/huggingface.svg' },
       { name: 'LangChain / LangGraph', icon: 'https://cdn.simpleicons.org/langchain/1C3C3C', invertDark: true },
+      { name: 'Claude Code', icon: '/tech/claude.svg' },
+      { name: 'OpenAI Codex', icon: '/tech/openai.svg', invertDark: true },
       { name: 'Dify', icon: 'https://cdn.simpleicons.org/dify/000000', invertDark: true },
     ],
   },
@@ -385,6 +387,11 @@ export default function Resume() {
                 data-spotlight-card
                 className="interactive-card bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-gray-200 dark:border-gray-800 space-y-4"
               >
+                <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                  {zh
+                    ? '熟练使用 Claude Code、OpenAI Codex 等 Coding Agent，能够完成代码库接手、跨模块实现、测试调试与 Git 交付。'
+                    : 'Proficient with coding agents including Claude Code and OpenAI Codex for codebase onboarding, cross-module implementation, testing, debugging, and Git delivery.'}
+                </p>
                 {TECH_GROUPS.map((group) => (
                   <div key={group.title} className="space-y-3">
                     <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-[0.14em] font-mono">
