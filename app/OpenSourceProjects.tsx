@@ -21,21 +21,6 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
-    id: 'feishu-companion',
-    name: 'yuaiccc/feishu-companion-bot',
-    href: 'https://github.com/yuaiccc/feishu-companion-bot',
-    summary: 'Feishuye is a context-aware agent with model-planned replies, multimodal memory, and OceanBase hybrid retrieval.',
-    summaryZh: '飞书叶是一个由模型规划回复、具备多模态记忆与 OceanBase 混合检索的上下文感知智能体。',
-    description:
-      'Feishuye is a Go-based companion-agent framework built on Feishu WebSocket events and CardKit streaming. DeepSeek plans reply behavior and context assembly, while OceanBase full-text search and 1,024-dimensional Ollama embeddings provide weighted-RRF retrieval across layered memories, chat archives, media assets, and GraphRAG relations. Apple Vision OCR, local VLM understanding, a content-addressed media vault, privacy filters, evaluation tooling, health checks, and an embedded React console complete the local-first runtime.',
-    descriptionZh:
-      '飞书叶是一个基于 Go 的陪伴智能体框架，通过飞书 WebSocket 事件和 CardKit 流式输出工作。DeepSeek 负责规划回复行为与上下文组装，OceanBase 全文检索和 1,024 维 Ollama 向量通过加权 RRF 融合，覆盖分层记忆、聊天归档、媒体资产和 GraphRAG 关系。系统还集成 Apple Vision OCR、本地 VLM、内容寻址媒体库、隐私过滤、评测工具、健康检查及内嵌 React 控制台。',
-    languageLabel: 'Go',
-    languageColor: '#00ADD8',
-    metaLabel: 'Feishuye Agent',
-    metaLabelZh: '飞书叶智能体',
-  },
-  {
     id: 'arklab',
     name: 'yuaiccc/ArkLab',
     href: 'https://arklab.onrender.com',
@@ -51,21 +36,6 @@ const PROJECTS: Project[] = [
     metaLabelZh: 'Render 演示',
     ctaLabel: 'Open Web UI',
     ctaLabelZh: '打开 Web 界面',
-  },
-  {
-    id: 'japanese-verb',
-    name: 'yuaiccc/japanese-verb-master',
-    href: 'https://github.com/yuaiccc/japanese-verb-master',
-    summary: 'A production-deployed Japanese-learning agent with hybrid RAG, durable user memory, and verified payments.',
-    summaryZh: '已部署上线的日语学习智能体，支持混合 RAG、长期用户记忆与可验证支付。',
-    description:
-      'A production-deployed Japanese-learning Agentic RAG system. Its LangGraph workflow (Planner → Researcher → Tutor → Memory Manager) combines vector and BM25 retrieval with RRF fusion and LLM reranking, reaching MRR 0.977 and recall@1 63/65 while a dual abstain gate reduces off-topic hallucination to 0%. The Render deployment uses Supabase PostgreSQL for isolated guest/account data, Cloudflare Turnstile and rate limiting for abuse protection, browser-side LLM BYOK, and server-verified OKX payments. The backend is covered by 112 tests.',
-    descriptionZh:
-      '已部署上线的日语学习 Agentic RAG 系统。LangGraph 工作流（Planner → Researcher → Tutor → Memory Manager）通过 RRF 融合向量与 BM25 检索，并使用 LLM 重排，达到 MRR 0.977 与 recall@1 63/65；双重拒答门将离题幻觉率降至 0%。Render 部署使用 Supabase PostgreSQL 隔离游客与账号数据，通过 Cloudflare Turnstile 和限流防滥用，支持浏览器侧 LLM BYOK 及服务端验证的 OKX 支付，后端由 112 项测试覆盖。',
-    languageLabel: 'TypeScript',
-    languageColor: '#3178c6',
-    metaLabel: 'v1.3.0 Live',
-    metaLabelZh: 'v1.3.0 在线',
   },
   {
     id: 'sillytavern',
@@ -126,7 +96,7 @@ export default function OpenSourceProjects() {
 
   return (
     <section className="animate-fade-in-up delay-100">
-      <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-l-[3px] border-blue-500 pl-3 mb-4">{zh ? '开源项目' : 'Open Source'}</h2>
+      <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-l-[3px] border-blue-500 pl-3 mb-4">{zh ? '开源与社区' : 'Open Source & Community'}</h2>
       <div className="grid md:grid-cols-2 gap-4">
         {PROJECTS.map((project) => {
           const expanded = Boolean(expandedProjects[project.id]);

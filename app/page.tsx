@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import AccessibilityToggle from './AccessibilityToggle';
 import FeishuContact from './FeishuContact';
 import InteractiveEffects from './InteractiveEffects';
 import LanguageToggle from './LanguageToggle';
@@ -34,11 +33,13 @@ const INLINE_TECH: Record<string, TechItem> = {
   React: { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
   Vue: { name: 'Vue', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg' },
   Express: { name: 'Express', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg', invertDark: true },
-  Render: { name: 'Render', icon: 'https://cdn.simpleicons.org/render/46E3B7' },
-  Supabase: { name: 'Supabase', icon: 'https://cdn.simpleicons.org/supabase/3FCF8E' },
-  Cloudflare: { name: 'Cloudflare', icon: 'https://cdn.simpleicons.org/cloudflare/F38020' },
-  OKX: { name: 'OKX', icon: 'https://cdn.simpleicons.org/okx/000000', invertDark: true },
+  Render: { name: 'Render', icon: '/tech/render.svg' },
+  Supabase: { name: 'Supabase', icon: '/tech/supabase.svg' },
+  Cloudflare: { name: 'Cloudflare', icon: '/tech/cloudflare.svg' },
+  OKX: { name: 'OKX', icon: '/tech/okx.svg', invertDark: true },
   Spring: { name: 'Spring Boot', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg' },
+  Feishu: { name: 'Feishu', icon: '/feishu-icon.png' },
+  OceanBase: { name: 'OceanBase', icon: '/oceanbase-icon.png' },
   MySQL: { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg' },
   Redis: { name: 'Redis', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg' },
   RabbitMQ: { name: 'RabbitMQ', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rabbitmq/rabbitmq-original.svg' },
@@ -54,7 +55,7 @@ const TECH_GROUPS: TechGroup[] = [
     items: [
       { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
       { name: 'PyTorch', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg' },
-      { name: 'Hugging Face', icon: 'https://cdn.simpleicons.org/huggingface/FFD21E' },
+      { name: 'Hugging Face', icon: '/tech/huggingface.svg' },
       { name: 'LangChain / LangGraph', icon: 'https://cdn.simpleicons.org/langchain/1C3C3C', invertDark: true },
       { name: 'Dify', icon: 'https://cdn.simpleicons.org/dify/000000', invertDark: true },
     ],
@@ -143,23 +144,6 @@ const XIcon = ({ className = 'w-4 h-4' }: IconProps) => (
   </svg>
 );
 
-const ClaudeIcon = ({ className = 'w-3.5 h-3.5 inline-block align-[-2px]' }: IconProps) => (
-  <svg viewBox="0 0 24 24" fill="#D97757" className={className} aria-hidden="true">
-    <rect x="11" y="2" width="2" height="20" rx="1" />
-    <rect x="2" y="11" width="20" height="2" rx="1" />
-    <g transform="rotate(45 12 12)">
-      <rect x="11" y="3.5" width="2" height="17" rx="1" />
-      <rect x="3.5" y="11" width="17" height="2" rx="1" />
-    </g>
-  </svg>
-);
-
-const OpenAiIcon = ({ className = 'w-3.5 h-3.5 inline-block align-[-2px]' }: IconProps) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={`${className} text-slate-900 dark:text-slate-100`} aria-hidden="true">
-    <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728v5.6775a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654 2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z" />
-  </svg>
-);
-
 const FLAG_BASE = 'h-3.5 w-auto rounded-[2px] shadow-[0_0_0_0.5px_rgba(0,0,0,0.15)] inline-block align-[-2px]';
 
 const GbFlag = ({ className = FLAG_BASE }: IconProps) => (
@@ -217,9 +201,6 @@ export default function Resume() {
                     Xu Junshan
                     <span lang="zh-CN" className="sr-only">（许君山）</span>
                   </h1>
-                  <p className="mt-1 text-base text-blue-600 dark:text-blue-300 font-medium font-mono">
-                    {zh ? '2026 届 · 人工智能本科' : 'Class of 2026 · AI Undergraduate'}
-                  </p>
                 </div>
               </div>
               <div className="flex flex-col gap-2 text-sm text-slate-600 dark:text-gray-300 text-center md:text-right">
@@ -254,15 +235,10 @@ export default function Resume() {
           </header>
 
           <div className="p-6 sm:p-8 md:p-10 space-y-8">
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <div className="flex flex-wrap items-center gap-3">
-                <LanguageToggle />
-                <ThemeToggle />
-                <AccessibilityToggle />
-              </div>
-              <p className="text-sm text-slate-500 dark:text-slate-400">
-                {zh ? '聚焦工程实践、开源贡献与 AI 项目的个人主页。' : 'Personal site focused on engineering work, open source, and AI projects.'}
-              </p>
+            <div className="flex flex-wrap items-center gap-3">
+              <LanguageToggle />
+              <ThemeToggle />
+              <VisitorBadge />
             </div>
 
             <section className="animate-fade-in-up delay-100">
@@ -290,21 +266,19 @@ export default function Resume() {
                 </div>
                 <p className="text-sm text-blue-500 font-medium mb-3 flex flex-wrap items-center gap-x-2 gap-y-1">
                   <span className="w-2 h-2 rounded-full bg-blue-500" />
-                  <span>{zh ? '个人开源项目' : 'Independent Open-source Project'}</span>
-                  <span aria-hidden="true">|</span>
+                  <InlineTech tech="Feishu" />
+                  <span aria-hidden="true">+</span>
                   <InlineTech tech="Go" />
                   <span aria-hidden="true">+</span>
                   <InlineTech tech="React" />
                   <span aria-hidden="true">+</span>
-                  <InlineTech tech="MySQL" label="OceanBase" />
-                  <span aria-hidden="true">+</span>
-                  <span>DeepSeek / Ollama</span>
+                  <InlineTech tech="OceanBase" />
                 </p>
                 <ul className="list-disc list-outside ml-5 space-y-2 text-sm text-gray-700 dark:text-gray-300">
-                  <li>{zh ? <><span className="font-bold text-slate-800 dark:text-slate-100">智能体运行时：</span>基于飞书 WebSocket 事件通道与 CardKit 流式 API 构建 <span className="font-semibold text-slate-900 dark:text-slate-200">飞书叶</span> <InlineTech tech="Go" /> 服务；由 DeepSeek 上下文 Planner 在无关键词路由的情况下决定是否回复、调用哪些工具与记忆、Top-K、近期消息深度及上下文预算。</> : <><span className="font-bold text-slate-800 dark:text-slate-100">Agent runtime:</span> Built <span className="font-semibold text-slate-900 dark:text-slate-200">Feishuye</span>, a <InlineTech tech="Go" /> service over Feishu&apos;s WebSocket event channel and CardKit streaming API; a DeepSeek context Planner decides whether to reply, which tools and memories to use, Top-K, recent-message depth, and context budget without keyword routing.</>}</li>
-                  <li>{zh ? <><span className="font-bold text-slate-800 dark:text-slate-100">Agentic 记忆：</span>融合 <InlineTech tech="MySQL" label="OceanBase" /> 全文检索与 <span className="font-semibold text-slate-900 dark:text-slate-200">1,024 维</span> Ollama 向量，通过加权 RRF 检索分层人物、情景与语义记忆，并加入时序对齐、GraphRAG 关系和可见性过滤，接入 <span className="font-bold text-blue-600 dark:text-blue-400">1,600+ 条聊天与媒体记录</span>。</> : <><span className="font-bold text-slate-800 dark:text-slate-100">Agentic memory:</span> Integrated <InlineTech tech="MySQL" label="OceanBase" /> full-text and <span className="font-semibold text-slate-900 dark:text-slate-200">1,024-dimensional</span> Ollama embeddings with weighted RRF, layered profile/episodic/semantic memory, temporal alignment, GraphRAG relations, and visibility filtering across <span className="font-bold text-blue-600 dark:text-blue-400">1,600+ chat and media records</span>.</>}</li>
+                  <li>{zh ? <><span className="font-bold text-slate-800 dark:text-slate-100">智能体运行时：</span>基于飞书 WebSocket 事件通道与 CardKit 流式 API 构建 <span className="font-semibold text-slate-900 dark:text-slate-200">飞书叶</span> <InlineTech tech="Go" /> 服务；由 LLM 上下文 Planner 在无关键词路由的情况下决定是否回复、调用哪些工具与记忆、Top-K、近期消息深度及上下文预算。</> : <><span className="font-bold text-slate-800 dark:text-slate-100">Agent runtime:</span> Built <span className="font-semibold text-slate-900 dark:text-slate-200">Feishuye</span>, a <InlineTech tech="Go" /> service over Feishu&apos;s WebSocket event channel and CardKit streaming API; an LLM context Planner decides whether to reply, which tools and memories to use, Top-K, recent-message depth, and context budget without keyword routing.</>}</li>
+                  <li>{zh ? <><span className="font-bold text-slate-800 dark:text-slate-100">Agentic 记忆：</span>融合 <InlineTech tech="OceanBase" /> 全文检索与 <span className="font-semibold text-slate-900 dark:text-slate-200">1,024 维</span>本地向量，通过加权 RRF 检索分层人物、情景与语义记忆，并加入时序对齐、GraphRAG 关系和可见性过滤，接入 <span className="font-bold text-blue-600 dark:text-blue-400">1,600+ 条聊天与媒体记录</span>。</> : <><span className="font-bold text-slate-800 dark:text-slate-100">Agentic memory:</span> Integrated <InlineTech tech="OceanBase" /> full-text search and <span className="font-semibold text-slate-900 dark:text-slate-200">1,024-dimensional</span> local embeddings with weighted RRF, layered profile/episodic/semantic memory, temporal alignment, GraphRAG relations, and visibility filtering across <span className="font-bold text-blue-600 dark:text-blue-400">1,600+ chat and media records</span>.</>}</li>
                   <li>{zh ? <><span className="font-bold text-slate-800 dark:text-slate-100">多模态链路：</span>实现 Apple Vision 本地 OCR、飞书 OCR 兜底与本地 VLM 并行理解；设计基于 SHA-256 的内容寻址媒体库，支持消息级幂等、权限隔离、资产修复和图片记忆召回。</> : <><span className="font-bold text-slate-800 dark:text-slate-100">Multimodal pipeline:</span> Added local Apple Vision OCR with Feishu fallback, parallel local VLM understanding, and a SHA-256 content-addressed media vault with message-level idempotency, permission isolation, repair tooling, and image-memory recall.</>}</li>
-                  <li>{zh ? <><span className="font-bold text-slate-800 dark:text-slate-100">质量与运维：</span>构建检索、隐私与延迟回归工具；3 条核心回归用例达到 <span className="font-bold text-blue-600 dark:text-blue-400">Hit@K 100%</span>、<span className="font-bold text-blue-600 dark:text-blue-400">MRR 0.833</span> 且隐私违规为 0，并接入真实依赖健康检查、分阶段延迟追踪、竞态测试、Lint 与 CI。</> : <><span className="font-bold text-slate-800 dark:text-slate-100">Quality and operations:</span> Built retrieval/privacy/latency regression tooling; the 3-case core suite reached <span className="font-bold text-blue-600 dark:text-blue-400">Hit@K 100%</span> and <span className="font-bold text-blue-600 dark:text-blue-400">MRR 0.833</span> with zero privacy violations, alongside real dependency health checks, phased latency tracing, race tests, linting, and CI.</>}</li>
+                  <li>{zh ? <><span className="font-bold text-slate-800 dark:text-slate-100">质量与运维：</span>将 OceanBase 官方 SeekDB Skill 的结构探查、批量导入、混合查询与结果验证流程纳入运维工具链；3 条核心回归用例达到 <span className="font-bold text-blue-600 dark:text-blue-400">Hit@K 100%</span>、<span className="font-bold text-blue-600 dark:text-blue-400">MRR 0.833</span> 且隐私违规为 0，并接入健康检查、分阶段延迟追踪、竞态测试与 CI。</> : <><span className="font-bold text-slate-800 dark:text-slate-100">Quality and operations:</span> Incorporated the official OceanBase SeekDB Skill workflow for schema inspection, batch import, hybrid querying, and result verification; the 3-case core suite reached <span className="font-bold text-blue-600 dark:text-blue-400">Hit@K 100%</span> and <span className="font-bold text-blue-600 dark:text-blue-400">MRR 0.833</span> with zero privacy violations, alongside health checks, phased latency tracing, race tests, and CI.</>}</li>
                 </ul>
               </div>
 
@@ -314,13 +288,13 @@ export default function Resume() {
               >
                 <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2 gap-2">
                   <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors flex items-center gap-2 flex-wrap">
-                    <span>{zh ? '日语动词大师 — LangGraph 智能体 + 本地 RAG' : 'Japanese Word Master — LangGraph Agent + Local RAG'}</span>
+                    <span>{zh ? 'KotobaFlow — 日语学习智能体' : 'KotobaFlow — Agentic Japanese Learning System'}</span>
                     <a
                       href="https://japanese-verb-master.onrender.com"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400 px-2.5 py-0.5 rounded-md transition-colors"
-                      aria-label={zh ? '打开日语动词大师在线演示' : 'Open Japanese Word Master live demo'}
+                      aria-label={zh ? '打开 KotobaFlow 在线演示' : 'Open KotobaFlow live demo'}
                     >
                       <span aria-hidden="true">↗</span>
                       <span>{zh ? '在线演示' : 'Live Demo'}</span>
@@ -330,7 +304,7 @@ export default function Resume() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 text-xs font-medium text-slate-500 hover:text-blue-500 dark:text-slate-400 dark:hover:text-blue-400 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 px-2 py-0.5 rounded-md transition-colors"
-                      aria-label={zh ? '在 GitHub 查看日语动词大师' : 'View Japanese Word Master on GitHub'}
+                      aria-label={zh ? '在 GitHub 查看 KotobaFlow' : 'View KotobaFlow on GitHub'}
                     >
                       <GithubIcon className="w-3.5 h-3.5" />
                       <span>yuaiccc/japanese-verb-master</span>
@@ -340,7 +314,7 @@ export default function Resume() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 text-xs font-medium text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 px-2 py-0.5 rounded-md transition-colors"
-                      aria-label="View Japanese Word Master v1.3.0 release"
+                      aria-label="View KotobaFlow v1.3.0 release"
                     >
                       <span>v1.3.0</span>
                     </a>
@@ -372,17 +346,17 @@ export default function Resume() {
                 className="interactive-card p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group"
               >
                 <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors">{zh ? '多语种场景文字识别系统' : 'Multilingual Scene Text Recognition System'}</h3>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded mt-2 sm:mt-0">{zh ? '2025.12 - 至今' : 'Dec 2025 - Present'}</span>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors">{zh ? 'StockFlow — 电商库存服务' : 'StockFlow — E-commerce Inventory Service'}</h3>
+                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded mt-2 sm:mt-0">{zh ? '2026.01' : 'Jan 2026'}</span>
                 </div>
-                <p className="text-sm text-blue-500 font-medium mb-3 flex items-center gap-2">
+                <p className="text-sm text-blue-500 font-medium mb-3 flex flex-wrap items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-blue-500" />
-                  {zh ? '端到端负责人' : 'End-to-end Owner'} | Python + PyTorch + Linux
+                  {zh ? '后端工程化练习' : 'Backend Engineering Project'} | <InlineTech tech="Spring" /> + <InlineTech tech="MySQL" /> + <InlineTech tech="Redis" />
                 </p>
                 <ul className="list-disc list-outside ml-5 space-y-2 text-sm text-gray-700 dark:text-gray-300">
-                  <li>{zh ? <><span className="font-bold text-slate-800 dark:text-slate-100">数据工程：</span>清洗并构建 <span className="font-bold text-blue-600 dark:text-blue-400">113 万行</span>语料，修复开源工具的渲染问题并生成超过 10 万条高质量合成训练样本。</> : <><span className="font-bold text-slate-800 dark:text-slate-100">Data engineering:</span> Cleaned and assembled a corpus of <span className="font-bold text-blue-600 dark:text-blue-400">1.13 million lines</span>; fixed rendering bugs in open-source tooling and generated more than 100,000 high-quality synthetic training samples.</>}</li>
-                  <li>{zh ? <><span className="font-bold text-slate-800 dark:text-slate-100">性能优化：</span>将海量小图片转换为 <span className="font-semibold text-slate-900 dark:text-slate-200">LMDB 数据集</span>，把 <span className="font-semibold text-slate-900 dark:text-slate-200">batch size 提升至 768</span>，将验证耗时从数小时缩短至分钟级。</> : <><span className="font-bold text-slate-800 dark:text-slate-100">Performance tuning:</span> Converted large collections of small images into an <span className="font-semibold text-slate-900 dark:text-slate-200">LMDB dataset</span>, pushed <span className="font-semibold text-slate-900 dark:text-slate-200">batch size to 768</span>, and reduced validation time from hours to minutes.</>}</li>
-                  <li>{zh ? <><span className="font-bold text-slate-800 dark:text-slate-100">模型结果：</span>验证准确率达到 <span className="font-bold text-blue-600 dark:text-blue-400">98.3%</span>，解决繁体中文与日文字符重叠带来的识别问题。</> : <><span className="font-bold text-slate-800 dark:text-slate-100">Model outcome:</span> Reached <span className="font-bold text-blue-600 dark:text-blue-400">98.3%</span> validation accuracy and solved recognition issues involving overlapping Traditional Chinese and Japanese characters.</>}</li>
+                  <li>{zh ? <><span className="font-bold text-slate-800 dark:text-slate-100">领域建模：</span>以 SKU 与仓库组成联合主键，使用 Spring Data JPA 持久化库存，并提供查询、扣减等 RESTful API。</> : <><span className="font-bold text-slate-800 dark:text-slate-100">Domain model:</span> Modeled inventory with a composite SKU-and-warehouse key, persisted stock through Spring Data JPA, and exposed RESTful query and deduction APIs.</>}</li>
+                  <li>{zh ? <><span className="font-bold text-slate-800 dark:text-slate-100">缓存与并发：</span>使用 Redis cache-aside 降低库存读取开销，并为库存扣减加入带过期时间的互斥控制与库存不足保护。</> : <><span className="font-bold text-slate-800 dark:text-slate-100">Caching and concurrency:</span> Applied Redis cache-aside to reduce inventory read cost and added expiring mutual exclusion plus insufficient-stock protection around deductions.</>}</li>
+                  <li>{zh ? <><span className="font-bold text-slate-800 dark:text-slate-100">本地交付：</span>通过 Docker Compose 编排 Spring Boot、MySQL 与 Redis，统一开发环境和依赖启动方式。</> : <><span className="font-bold text-slate-800 dark:text-slate-100">Local delivery:</span> Used Docker Compose to orchestrate Spring Boot, MySQL, and Redis with a reproducible development environment.</>}</li>
                 </ul>
               </div>
             </section>
@@ -391,7 +365,7 @@ export default function Resume() {
 
             <section className="animate-fade-in-up delay-200">
               <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-l-[3px] border-blue-500 pl-3 mb-4">{zh ? '亮点' : 'Highlights'}</h2>
-              <div className="grid md:grid-cols-2 gap-4">
+              <div>
                 <div
                   data-spotlight-card
                   className="interactive-card bg-blue-50 dark:bg-blue-900/30 p-5 rounded-lg border border-blue-100 dark:border-blue-800 hover:shadow-md hover:-translate-y-1 transition-all duration-300"
@@ -400,15 +374,6 @@ export default function Resume() {
                   <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
                     <GbFlag /> <span className="font-bold text-slate-900 dark:text-slate-100">{zh ? '英语 CET-6' : 'English CET-6'}</span>{zh ? '：可用于日常协作和技术讨论。' : ': comfortable using English in day-to-day collaboration and technical discussions.'}<br />
                     <JpFlag /> <span className="font-bold text-slate-900 dark:text-slate-100">{zh ? '日语 JLPT N3' : 'Japanese JLPT N3'}</span>{zh ? '：能够阅读基础技术资料并适应对日开发语境。' : ': able to read basic technical materials and adapt to Japan-facing development contexts.'}
-                  </p>
-                </div>
-                <div
-                  data-spotlight-card
-                  className="interactive-card bg-blue-50 dark:bg-blue-900/30 p-5 rounded-lg border border-blue-100 dark:border-blue-800 hover:shadow-md hover:-translate-y-1 transition-all duration-300"
-                >
-                  <h3 className="font-bold text-blue-700 dark:text-blue-300 mb-2">{zh ? '工程工作流' : 'Engineering Workflow'}</h3>
-                  <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                    {zh ? <>熟练使用 <span className="font-bold">Git、Linux 与 Docker</span> 工作流，具备跨平台依赖排障经验，并高效使用 <span className="inline-flex items-center gap-1 font-medium"><ClaudeIcon /> Claude Code</span>、<span className="inline-flex items-center gap-1 font-medium"><OpenAiIcon /> Codex</span> 等 AI 原生工具。</> : <>Strong with <span className="font-bold">Git, Linux, and Docker</span> workflows; experienced in cross-platform dependency debugging; productive with AI-native tools such as <span className="inline-flex items-center gap-1 font-medium"><ClaudeIcon /> Claude Code</span> and <span className="inline-flex items-center gap-1 font-medium"><OpenAiIcon /> Codex</span>.</>}
                   </p>
                 </div>
               </div>
@@ -477,38 +442,13 @@ export default function Resume() {
                     {zh ? '学业优秀奖学金' : 'Academic Excellence Scholarship'}
                   </p>
                   <p className="text-sm text-gray-500 dark:text-gray-400 mt-3">
-                    <span className="font-medium">{zh ? '核心课程：' : 'Core coursework:'}</span> {zh ? '操作系统、数据结构、线性代数、自然语言处理、计算机网络、软件工程' : 'Operating Systems, Data Structures, Linear Algebra, Natural Language Processing, Computer Networks, and Software Engineering'}
+                    <span className="font-medium">{zh ? '核心课程：' : 'Core coursework:'}</span> {zh ? '操作系统、数据结构、线性代数、自然语言处理、深度学习、计算机网络、软件工程' : 'Operating Systems, Data Structures, Linear Algebra, Natural Language Processing, Deep Learning, Computer Networks, and Software Engineering'}
                   </p>
                 </div>
               </div>
             </section>
 
-            <section className="animate-fade-in-up delay-500">
-              <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-l-[3px] border-blue-500 pl-3 mb-4">{zh ? '专业能力' : 'Capabilities'}</h2>
-              <div className="grid sm:grid-cols-2 gap-3">
-                <div className="group p-4 rounded-lg bg-slate-50/70 dark:bg-slate-800/40 hover:bg-slate-50 dark:hover:bg-slate-800/70 transition-colors border border-slate-100 dark:border-slate-800 hover:border-slate-200 dark:hover:border-slate-700">
-                  <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-500 transition-colors">{zh ? 'LLM 与智能体系统' : 'LLM & Agent Systems'}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">{zh ? <>使用 <InlineTech tech="LangGraph" /> 编排和本地 <span className="font-medium text-blue-500">RAG</span>（混合检索、重排、RAGAS 风格评测）构建智能体应用；研读 OpenClaw、DeerFlow、Claude Code 与 Hermes 源码，理解多智能体编排、任务调度和上下文管理的工程权衡。</> : <>Build agentic apps with <InlineTech tech="LangGraph" /> orchestration and local <span className="font-medium text-blue-500">RAG</span> (hybrid retrieval + rerank, RAGAS-style evaluation); studied the source code of OpenClaw, DeerFlow, Claude Code, and Hermes to understand multi-agent orchestration, task scheduling, and context-management trade-offs.</>}</p>
-                </div>
-                <div className="group p-4 rounded-lg bg-slate-50/70 dark:bg-slate-800/40 hover:bg-slate-50 dark:hover:bg-slate-800/70 transition-colors border border-slate-100 dark:border-slate-800 hover:border-slate-200 dark:hover:border-slate-700">
-                  <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-500 transition-colors">{zh ? 'Java 后端基础' : 'Java Backend Foundations'}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">{zh ? <>使用 <InlineTech tech="Spring" /> + MyBatis 按 MVC 与 RESTful 规范开发生产 API；结合 HashMap、JUC 与 JVM 原理排查并发和性能问题。</> : <>Built production APIs with <InlineTech tech="Spring" /> + MyBatis following MVC and RESTful conventions; applied HashMap, JUC, and JVM internals to diagnose concurrency and performance issues.</>}</p>
-                </div>
-                <div className="group p-4 rounded-lg bg-slate-50/70 dark:bg-slate-800/40 hover:bg-slate-50 dark:hover:bg-slate-800/70 transition-colors border border-slate-100 dark:border-slate-800 hover:border-slate-200 dark:hover:border-slate-700">
-                  <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-500 transition-colors">{zh ? '数据与中间件' : 'Data and Middleware'}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">{zh ? <>通过索引调优和事务设计优化 <InlineTech tech="MySQL" /> 查询，为热点数据实现 <InlineTech tech="Redis" /> 缓存，并使用 <InlineTech tech="RabbitMQ" /> 解耦异步任务。</> : <>Optimized <InlineTech tech="MySQL" /> queries with index tuning and transaction design; implemented <InlineTech tech="Redis" /> caching for hot-path data; integrated <InlineTech tech="RabbitMQ" /> for asynchronous task decoupling.</>}</p>
-                </div>
-                <div className="group p-4 rounded-lg bg-slate-50/70 dark:bg-slate-800/40 hover:bg-slate-50 dark:hover:bg-slate-800/70 transition-colors border border-slate-100 dark:border-slate-800 hover:border-slate-200 dark:hover:border-slate-700">
-                  <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-500 transition-colors">{zh ? 'DevOps 与交付' : 'DevOps and Delivery'}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">{zh ? <>通过 <InlineTech tech="Vercel" /> CI/CD 与 <InlineTech tech="GitHub" /> 流水线交付项目；维护 <InlineTech tech="Linux" /> 服务器并配置 <InlineTech tech="Nginx" /> 反向代理和静态托管。</> : <>Shipped projects through <InlineTech tech="Vercel" /> CI/CD and <InlineTech tech="GitHub" /> pipelines; managed <InlineTech tech="Linux" /> servers and configured <InlineTech tech="Nginx" /> for reverse proxy and static hosting.</>}</p>
-                </div>
-              </div>
-            </section>
-
             <footer className="mt-8 pt-6 pb-2 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-400 space-y-4">
-              <div className="flex justify-center">
-                <VisitorBadge />
-              </div>
               <p>© 2026 Xu Junshan.</p>
             </footer>
           </div>

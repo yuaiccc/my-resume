@@ -1,36 +1,37 @@
-# Xu Junshan Resume
+# 许君山个人简历
 
-Personal resume and engineering portfolio built with Next.js.
+使用 Next.js 构建的双语个人简历与工程作品集。
 
-The site supports a persistent English / Chinese switch, responsive layouts, dark and accessibility modes, and a Feishu QR contact entry.
+支持中英文持久化切换、响应式布局、深色模式，以及悬停展示的飞书二维码联系方式。
 
-## Live Site
+## 在线访问
 
 - <https://xj3.tech>
 
-## Featured Projects
+## 精选项目
 
-- Feishuye (飞书叶): a Go companion agent with DeepSeek context planning, Feishu Open Platform integration, OceanBase hybrid retrieval, multimodal memory, and an embedded React console.
-- Japanese Word Master: LangGraph agent, hybrid RAG, Supabase-backed account data, Turnstile, rate limiting, and OKX payment verification.
-- Multilingual Scene Text Recognition: PyTorch OCR training pipeline and multilingual synthetic-data workflow.
+- 飞书叶（Feishuye）：基于 Go、飞书开放平台、OceanBase 混合检索与多模态记忆的上下文感知智能体。
+- KotobaFlow：集 LangGraph 工作流、混合 RAG、长期用户记忆与在线部署于一体的日语学习智能体。
+- StockFlow：基于 Spring Boot、MySQL、Redis 与 Docker Compose 的电商库存服务工程化练习。
+- ArkLab：面向检索指标、失败诊断、轨迹分析与回归测试的 RAG 评测工作台。
 
-## Local Development
+## 本地开发
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open <http://localhost:3000>.
+浏览器打开 <http://localhost:3000>。
 
-## Content
+## 主要文件
 
-- `app/page.tsx`: resume content and selected projects.
-- `app/OpenSourceProjects.tsx`: expandable open-source project cards.
-- `app/site.ts`: SEO metadata and structured profile text.
-- `public/Xu_Junshan_Resume.pdf`: downloadable static resume.
+- `app/page.tsx`：简历正文与精选项目。
+- `app/OpenSourceProjects.tsx`：可展开的开源与社区项目卡片。
+- `app/site.ts`：SEO 元数据与结构化个人信息。
+- `public/Xu_Junshan_Resume.pdf`：静态 PDF 简历。
 
-## Verification
+## 验证
 
 ```bash
 npm run lint
