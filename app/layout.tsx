@@ -33,6 +33,8 @@ export const metadata: Metadata = {
     "Junshan Xu",
     "Xu Junshan NCWU",
     "AI Agent",
+    "Feishuye",
+    "飞书叶",
     "LangGraph",
     "RAG",
     "Java backend",

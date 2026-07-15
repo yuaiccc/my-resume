@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
+import { useResumeLanguage } from './language';
 import { THEME_STORAGE_KEY } from './theme';
 
 type IconProps = { className?: string };
@@ -18,30 +19,37 @@ const SunIcon = ({ className = 'w-4 h-4' }: IconProps) => (
   </svg>
 );
 
+const THEME_CHANGE_EVENT = 'resume-theme-change';
+
+const subscribeToTheme = (onStoreChange: () => void) => {
+  window.addEventListener(THEME_CHANGE_EVENT, onStoreChange);
+  return () => window.removeEventListener(THEME_CHANGE_EVENT, onStoreChange);
+};
+
+const getThemeSnapshot = () => document.documentElement.classList.contains('dark');
+const getServerThemeSnapshot = () => false;
+
 export default function ThemeToggle() {
-  const [darkMode, setDarkMode] = useState<boolean>(() => {
-    if (typeof document === 'undefined') {
-      return true;
-    }
+  const darkMode = useSyncExternalStore(subscribeToTheme, getThemeSnapshot, getServerThemeSnapshot);
+  const zh = useResumeLanguage() === 'zh';
 
-    return document.documentElement.classList.contains('dark');
-  });
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', darkMode);
-    document.documentElement.style.colorScheme = darkMode ? 'dark' : 'light';
-    window.localStorage.setItem(THEME_STORAGE_KEY, darkMode ? 'dark' : 'light');
-  }, [darkMode]);
+  const toggleTheme = () => {
+    const nextDarkMode = !darkMode;
+    document.documentElement.classList.toggle('dark', nextDarkMode);
+    document.documentElement.style.colorScheme = nextDarkMode ? 'dark' : 'light';
+    window.localStorage.setItem(THEME_STORAGE_KEY, nextDarkMode ? 'dark' : 'light');
+    window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
+  };
 
   return (
     <button
       type="button"
-      onClick={() => setDarkMode((current) => !current)}
+      onClick={toggleTheme}
       className="inline-flex items-center gap-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors shadow-md text-sm"
-      aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+      aria-label={darkMode ? (zh ? '切换到浅色模式' : 'Switch to light mode') : (zh ? '切换到深色模式' : 'Switch to dark mode')}
     >
       {darkMode ? <SunIcon /> : <MoonIcon />}
-      <span>{darkMode ? 'Light Mode' : 'Dark Mode'}</span>
+      <span>{darkMode ? (zh ? '浅色' : 'Light Mode') : (zh ? '深色' : 'Dark Mode')}</span>
     </button>
   );
 }

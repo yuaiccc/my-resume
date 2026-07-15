@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
+import { useResumeLanguage } from './language';
 import { ACCESSIBILITY_STORAGE_KEY } from './theme';
 
 type IconProps = { className?: string };
@@ -15,30 +16,41 @@ const AccessibilityIcon = ({ className = 'w-4 h-4' }: IconProps) => (
   </svg>
 );
 
+const ACCESSIBILITY_CHANGE_EVENT = 'resume-accessibility-change';
+
+const subscribeToAccessibility = (onStoreChange: () => void) => {
+  window.addEventListener(ACCESSIBILITY_CHANGE_EVENT, onStoreChange);
+  return () => window.removeEventListener(ACCESSIBILITY_CHANGE_EVENT, onStoreChange);
+};
+
+const getAccessibilitySnapshot = () => document.documentElement.classList.contains('accessibility-mode');
+const getServerAccessibilitySnapshot = () => false;
+
 export default function AccessibilityToggle() {
-  const [enabled, setEnabled] = useState<boolean>(() => {
-    if (typeof document === 'undefined') {
-      return false;
-    }
+  const enabled = useSyncExternalStore(
+    subscribeToAccessibility,
+    getAccessibilitySnapshot,
+    getServerAccessibilitySnapshot,
+  );
+  const zh = useResumeLanguage() === 'zh';
 
-    return document.documentElement.classList.contains('accessibility-mode');
-  });
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('accessibility-mode', enabled);
-    window.localStorage.setItem(ACCESSIBILITY_STORAGE_KEY, enabled ? 'on' : 'off');
-  }, [enabled]);
+  const toggleAccessibility = () => {
+    const nextEnabled = !enabled;
+    document.documentElement.classList.toggle('accessibility-mode', nextEnabled);
+    window.localStorage.setItem(ACCESSIBILITY_STORAGE_KEY, nextEnabled ? 'on' : 'off');
+    window.dispatchEvent(new Event(ACCESSIBILITY_CHANGE_EVENT));
+  };
 
   return (
     <button
       type="button"
-      onClick={() => setEnabled((current) => !current)}
+      onClick={toggleAccessibility}
       className="inline-flex items-center gap-2 bg-amber-100 text-amber-900 px-4 py-2 rounded-lg hover:bg-amber-200 transition-colors shadow-md text-sm dark:bg-amber-500/15 dark:text-amber-100 dark:hover:bg-amber-500/25"
       aria-pressed={enabled}
-      aria-label={enabled ? 'Disable accessibility mode' : 'Enable accessibility mode'}
+      aria-label={enabled ? (zh ? '关闭无障碍模式' : 'Disable accessibility mode') : (zh ? '开启无障碍模式' : 'Enable accessibility mode')}
     >
       <AccessibilityIcon />
-      <span>{enabled ? 'Accessibility On' : 'Accessibility Off'}</span>
+      <span>{enabled ? (zh ? '无障碍：开' : 'Accessibility On') : (zh ? '无障碍：关' : 'Accessibility Off')}</span>
     </button>
   );
 }

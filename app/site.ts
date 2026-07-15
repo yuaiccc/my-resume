@@ -1,7 +1,7 @@
 export const SITE_URL = 'https://xj3.tech';
 export const SITE_NAME = '许君山 Xu Junshan · 华北水利水电大学 AI 本科 · 个人主页';
 export const SITE_DESCRIPTION =
-  '许君山 (Xu Junshan)，华北水利水电大学 (NCWU) 人工智能专业 2026 届本科生，拟进入杭州电子科技大学 (HDU) 攻读硕士。专注 LLM Agent (LangGraph)、本地 RAG (向量 + BM25 + RRF 混合检索)、飞书陪伴 Agent、Java 后端 (Spring Boot)；研究 OpenClaw / DeerFlow / Claude Code / Hermes 等开源 Agent 框架的源码与上下文压缩设计。';
+  '许君山 (Xu Junshan)，华北水利水电大学 (NCWU) 人工智能专业 2026 届本科生，拟进入杭州电子科技大学 (HDU) 攻读硕士。专注上下文感知 LLM Agent、Agentic RAG、OceanBase 混合检索、多模态记忆与 Go / Java 后端工程；开发 Feishuye（飞书叶）多模态记忆 Agent，并研究 OpenClaw、DeerFlow、Claude Code、Hermes 等开源 Agent 框架。';
 
 export const PERSON_SCHEMA = {
   '@context': 'https://schema.org',
@@ -14,7 +14,7 @@ export const PERSON_SCHEMA = {
   image: `${SITE_URL}/profile.jpg`,
   jobTitle: 'AI Application Developer / Backend Engineer',
   description:
-    'AI undergraduate (Class of 2026) at North China University of Water Resources and Electric Power and incoming postgraduate at Hangzhou Dianzi University, focused on LLM agents, local RAG systems, and Java backend engineering.',
+    'AI undergraduate (Class of 2026) at North China University of Water Resources and Electric Power and incoming postgraduate at Hangzhou Dianzi University, focused on context-aware LLM agents, Agentic RAG, multimodal memory, and Go / Java backend engineering.',
   disambiguatingDescription:
     'Software engineer and AI undergraduate based in China. Not affiliated with any homonymous academic researcher.',
   nationality: 'Chinese',
@@ -34,6 +34,8 @@ export const PERSON_SCHEMA = {
   email: 'mailto:yuaiccc@aliyun.com',
   knowsAbout: [
     'LLM Agent',
+    'Feishuye Agent',
+    '飞书叶',
     'LangGraph',
     'RAG',
     'Retrieval-Augmented Generation',
@@ -42,7 +44,11 @@ export const PERSON_SCHEMA = {
     'Vector Search',
     'LangChain',
     'Feishu Open Platform',
+    'OceanBase',
+    'DeepSeek',
+    'Ollama',
     'GraphRAG',
+    'Multimodal Memory',
     'Hugging Face',
     'PyTorch',
     'Dify',

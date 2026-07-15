@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useResumeLanguage } from './language';
 
 type VisitorInfo = {
   country?: string;
@@ -52,28 +53,24 @@ function parseOS(userAgent: string) {
 }
 
 export default function VisitorBadge() {
-  const [info, setInfo] = useState<VisitorInfo>(() => {
-    if (typeof window === 'undefined') {
-      return {
-        browser: 'Unknown Browser',
-        os: 'Unknown OS',
-        isLoadingLocation: true,
-      };
-    }
-
-    const userAgent = window.navigator.userAgent;
-
-    return {
-      browser: parseBrowser(userAgent),
-      os: parseOS(userAgent),
-      isLoadingLocation: true,
-    };
+  const zh = useResumeLanguage() === 'zh';
+  const [info, setInfo] = useState<VisitorInfo>({
+    browser: 'Unknown Browser',
+    os: 'Unknown OS',
+    isLoadingLocation: true,
   });
 
   useEffect(() => {
     const controller = new AbortController();
 
     const loadLocation = () => {
+      const userAgent = window.navigator.userAgent;
+      setInfo((current) => ({
+        ...current,
+        browser: parseBrowser(userAgent),
+        os: parseOS(userAgent),
+      }));
+
       fetch('https://ipapi.co/json/', { signal: controller.signal })
         .then((res) => res.json())
         .then((data) => {
@@ -89,7 +86,6 @@ export default function VisitorBadge() {
             return;
           }
 
-          console.error('Failed to fetch visitor info:', error);
           setInfo((current) => ({
             ...current,
             isLoadingLocation: false,
@@ -120,15 +116,15 @@ export default function VisitorBadge() {
   }, []);
 
   const location = info.isLoadingLocation
-    ? 'locating you...'
+    ? (zh ? '定位中...' : 'locating you...')
     : info.error || !info.country
-    ? 'Earth'
+    ? (zh ? '地球' : 'Earth')
     : `${info.country}${info.city ? ` ${info.city}` : ''}`;
 
   return (
     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow transition-shadow text-xs text-slate-600 dark:text-slate-300">
       <span className={info.isLoadingLocation ? 'animate-pulse' : 'animate-bounce'}>👋</span>
-      <span>Hello from <span className="font-bold text-blue-500 dark:text-blue-400">{location}</span>.</span>
+      <span>{zh ? '你好，来自' : 'Hello from'} <span className="font-bold text-blue-500 dark:text-blue-400">{location}</span>{zh ? '。' : '.'}</span>
       <span className="text-slate-400 dark:text-slate-500 ml-1">
         ({info.browser || 'Unknown Browser'} / {info.os || 'Unknown OS'})
       </span>
