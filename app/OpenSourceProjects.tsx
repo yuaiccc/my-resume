@@ -104,8 +104,7 @@ export default function OpenSourceProjects() {
           return (
             <article
               key={project.id}
-              data-spotlight-card
-              className="interactive-card p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group bg-slate-50 dark:bg-slate-800/50"
+              className="group rounded-lg border border-slate-200 bg-slate-50 p-5 transition-[border-color,box-shadow] duration-200 hover:border-slate-300 hover:shadow-sm dark:border-slate-700 dark:bg-slate-800/50 dark:hover:border-slate-600"
             >
               <button
                 type="button"
@@ -128,7 +127,7 @@ export default function OpenSourceProjects() {
               </button>
 
               <div className={`overflow-hidden transition-all duration-300 ${expanded ? 'max-h-[500px] opacity-100 mb-4' : 'max-h-0 opacity-0 m-0'}`}>
-                <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed bg-white dark:bg-gray-800 p-3 rounded border border-gray-100 dark:border-gray-700 shadow-inner">
+                <p className="border-t border-slate-200 pt-3 text-sm leading-relaxed text-gray-700 dark:border-slate-700 dark:text-gray-300">
                   {zh ? project.descriptionZh : project.description}
                 </p>
                 <div className="mt-3 text-right">

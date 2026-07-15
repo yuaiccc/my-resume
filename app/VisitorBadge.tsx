@@ -122,10 +122,10 @@ export default function VisitorBadge() {
     : `${info.country}${info.city ? ` ${info.city}` : ''}`;
 
   return (
-    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow transition-shadow text-xs text-slate-600 dark:text-slate-300">
-      <span className={info.isLoadingLocation ? 'animate-pulse' : 'animate-bounce'}>👋</span>
-      <span>{zh ? '你好，来自' : 'Hello from'} <span className="font-bold text-blue-500 dark:text-blue-400">{location}</span>{zh ? '。' : '.'}</span>
-      <span className="text-slate-400 dark:text-slate-500 ml-1">
+    <div className="flex min-h-9 w-full items-center justify-between gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs text-slate-600 shadow-sm dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 sm:w-auto sm:justify-start">
+      <span className={info.isLoadingLocation ? 'animate-pulse' : ''}>👋</span>
+      <span className="min-w-0">{zh ? '你好，来自' : 'Hello from'} <span className="font-bold text-blue-500 dark:text-blue-400">{location}</span>{zh ? '。' : '.'}</span>
+      <span className="shrink-0 text-[11px] text-slate-400 dark:text-slate-500">
         ({info.browser || 'Unknown Browser'} / {info.os || 'Unknown OS'})
       </span>
     </div>

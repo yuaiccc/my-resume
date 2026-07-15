@@ -47,10 +47,10 @@ a {
   text-underline-offset: 3px;
 }
 
-/* 衬线显示标题：H1/H2 用 Playfair Display，呼应 artificialanalysis.ai 的 editorial 风格 */
+/* 衬线显示标题，保持简历的编辑排版感。 */
 h1, h2 {
   font-family: var(--font-playfair), Georgia, "Songti SC", "STSong", serif;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 ::selection {
@@ -61,7 +61,7 @@ h1, h2 {
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -70,7 +70,7 @@ h1, h2 {
 }
 
 .animate-fade-in-up {
-  animation: fadeInUp 0.8s ease-out forwards;
+  animation: fadeInUp 0.45s ease-out forwards;
   opacity: 0;
 }
 
@@ -86,72 +86,6 @@ h1, h2 {
 .resume-card {
   -webkit-backdrop-filter: saturate(110%) blur(2px);
   backdrop-filter: saturate(110%) blur(2px);
-}
-
-.interactive-card {
-  position: relative;
-  overflow: hidden;
-  --spotlight-x: 50%;
-  --spotlight-y: 50%;
-}
-
-.interactive-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(
-      260px circle at var(--spotlight-x) var(--spotlight-y),
-      rgba(96, 165, 250, 0.18),
-      transparent 42%
-    );
-  opacity: 0;
-  transition: opacity 220ms ease;
-  pointer-events: none;
-}
-
-.interactive-card:hover::before {
-  opacity: 1;
-}
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.hero-avatar-glow {
-  position: relative;
-}
-
-.hero-avatar-glow::after {
-  content: "";
-  position: absolute;
-  inset: -10px;
-  z-index: -1;
-  border-radius: 1rem;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.38), transparent 68%);
-  filter: blur(12px);
-  opacity: 0.8;
-}
-
-@keyframes ambientFloat {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(0, -10px, 0) scale(1.04);
-  }
-}
-
-.ambient-orb {
-  animation: ambientFloat 8s ease-in-out infinite;
-}
-
-.ambient-orb-delayed {
-  animation: ambientFloat 10s ease-in-out infinite;
-  animation-delay: 1.5s;
 }
 
 /* 头部名字滚动条：横向无缝循环 + 边缘羽化 + hover 暂停 */
@@ -176,6 +110,11 @@ h1, h2 {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-up {
+    animation: none;
+    opacity: 1;
+  }
+
   .name-marquee-track {
     animation: none;
   }

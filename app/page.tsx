@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import FeishuContact from './FeishuContact';
-import InteractiveEffects from './InteractiveEffects';
 import LanguageToggle from './LanguageToggle';
 import OpenSourceProjects from './OpenSourceProjects';
 import ScrollProgress from './ScrollProgress';
@@ -99,7 +98,7 @@ const TECH_GROUPS: TechGroup[] = [
 
 const TechBadge = ({ name, icon, invertDark }: TechItem) => (
   <li className="group/list-item">
-    <span className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 transition-all duration-300 hover:scale-105 hover:border-slate-300 hover:shadow-sm dark:border-slate-700 dark:bg-slate-800 dark:hover:border-slate-600">
+    <span className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 transition-colors duration-200 hover:border-blue-200 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:hover:border-blue-800 dark:hover:bg-slate-800/80">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img 
         src={icon} 
@@ -178,14 +177,13 @@ export default function Resume() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_SCHEMA) }}
       />
       <ScrollProgress />
-      <InteractiveEffects />
-      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-8 px-4 sm:px-6 lg:px-8 font-sans text-gray-800 dark:text-gray-100 transition-colors duration-300">
-        <div className="resume-card relative max-w-4xl mx-auto bg-white dark:bg-gray-900 shadow-sm rounded-xl overflow-hidden transition-colors duration-300 ring-1 ring-slate-200 dark:ring-slate-800">
+      <div className="min-h-screen bg-slate-50 px-3 py-4 font-sans text-gray-800 transition-colors duration-300 dark:bg-slate-950 dark:text-gray-100 sm:px-6 sm:py-8 lg:px-8">
+        <div className="resume-card relative mx-auto max-w-4xl overflow-hidden rounded-lg bg-white shadow-sm ring-1 ring-slate-200 transition-colors duration-300 dark:bg-gray-900 dark:ring-slate-800">
           {/* === 头部信息 === */}
-          <header className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white p-6 md:p-8 transition-colors duration-300 border-b border-slate-100 dark:border-slate-800">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-              <div className="flex flex-col md:flex-row items-center gap-6">
-                <div className="hero-avatar-glow relative w-20 sm:w-24 aspect-[1290/1733] rounded-xl overflow-hidden flex-shrink-0 shadow-md ring-1 ring-slate-200 dark:ring-white/10">
+          <header className="border-b border-slate-100 bg-white p-5 text-slate-900 transition-colors duration-300 dark:border-slate-800 dark:bg-slate-900 dark:text-white sm:p-6 md:p-8">
+            <div className="flex flex-col items-center justify-between gap-5 md:flex-row">
+              <div className="flex flex-col items-center gap-5 md:flex-row">
+                <div className="relative aspect-[1290/1733] w-20 flex-shrink-0 overflow-hidden rounded-lg shadow-sm ring-1 ring-slate-200 dark:ring-white/10 sm:w-24">
                   <Image
                     src="/profile.jpg"
                     alt="Xu Junshan"
@@ -198,7 +196,7 @@ export default function Resume() {
                 <div className="text-center md:text-left">
                   <h1
                     title="许君山"
-                    className="text-4xl sm:text-5xl font-semibold bg-gradient-to-r from-cyan-600 via-blue-600 to-violet-600 bg-clip-text text-transparent bg-[length:300%_100%] animate-[gradientShift_6s_ease-in-out_infinite] cursor-help"
+                    className="cursor-help text-4xl font-semibold text-slate-950 dark:text-white"
                   >
                     Xu Junshan
                     <span lang="zh-CN" className="sr-only">（许君山）</span>
@@ -236,8 +234,8 @@ export default function Resume() {
             </div>
           </header>
 
-          <div className="p-6 sm:p-8 md:p-10 space-y-8">
-            <div className="flex flex-wrap items-center gap-3">
+          <div className="space-y-8 p-5 sm:p-8 md:p-10">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
               <LanguageToggle />
               <ThemeToggle />
               <VisitorBadge />
@@ -246,10 +244,7 @@ export default function Resume() {
             <section className="animate-fade-in-up delay-100">
               <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-l-[3px] border-blue-500 pl-3 mb-4">{zh ? '精选项目' : 'Selected Projects'}</h2>
 
-              <div
-                data-spotlight-card
-                className="interactive-card mb-4 p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group"
-              >
+              <div className="group mb-4 rounded-lg border border-slate-200 bg-white p-4 transition-[border-color,box-shadow] duration-200 hover:border-slate-300 hover:shadow-sm dark:border-slate-700 dark:bg-gray-900 dark:hover:border-slate-600 sm:p-5">
                 <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2 gap-2">
                   <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors flex items-center gap-2 flex-wrap">
                     <span>{zh ? '飞书叶 — 上下文感知多模态记忆智能体' : 'Feishuye — Context-Aware Multimodal Memory Agent'}</span>
@@ -264,7 +259,7 @@ export default function Resume() {
                       <span>yuaiccc/feishu-companion-bot</span>
                     </a>
                   </h3>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded mt-2 sm:mt-0">{zh ? '2026.06 - 至今' : 'Jun 2026 - Present'}</span>
+                  <span className="mt-2 self-start whitespace-nowrap rounded bg-gray-100 px-2 py-1 font-mono text-sm text-gray-500 dark:bg-gray-800 dark:text-gray-400 sm:mt-0">{zh ? '2026.06 - 至今' : 'Jun 2026 - Present'}</span>
                 </div>
                 <p className="text-sm text-blue-500 font-medium mb-3 flex flex-wrap items-center gap-x-2 gap-y-1">
                   <span className="w-2 h-2 rounded-full bg-blue-500" />
@@ -284,10 +279,7 @@ export default function Resume() {
                 </ul>
               </div>
 
-              <div
-                data-spotlight-card
-                className="interactive-card mb-4 p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group"
-              >
+              <div className="group mb-4 rounded-lg border border-slate-200 bg-white p-4 transition-[border-color,box-shadow] duration-200 hover:border-slate-300 hover:shadow-sm dark:border-slate-700 dark:bg-gray-900 dark:hover:border-slate-600 sm:p-5">
                 <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2 gap-2">
                   <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors flex items-center gap-2 flex-wrap">
                     <span>{zh ? 'KotobaFlow — 日语学习智能体' : 'KotobaFlow — Agentic Japanese Learning System'}</span>
@@ -321,7 +313,7 @@ export default function Resume() {
                       <span>v1.3.0</span>
                     </a>
                   </h3>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded mt-2 sm:mt-0">{zh ? '2026.05 - 至今' : 'May 2026 - Present'}</span>
+                  <span className="mt-2 self-start whitespace-nowrap rounded bg-gray-100 px-2 py-1 font-mono text-sm text-gray-500 dark:bg-gray-800 dark:text-gray-400 sm:mt-0">{zh ? '2026.05 - 至今' : 'May 2026 - Present'}</span>
                 </div>
                 <p className="text-sm text-blue-500 font-medium mb-3 flex flex-wrap items-center gap-x-2 gap-y-1">
                   <span className="w-2 h-2 rounded-full bg-blue-500" />
@@ -343,13 +335,10 @@ export default function Resume() {
                 </ul>
               </div>
 
-              <div
-                data-spotlight-card
-                className="interactive-card p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 group"
-              >
+              <div className="group rounded-lg border border-slate-200 bg-white p-4 transition-[border-color,box-shadow] duration-200 hover:border-slate-300 hover:shadow-sm dark:border-slate-700 dark:bg-gray-900 dark:hover:border-slate-600 sm:p-5">
                 <div className="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
                   <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-500 transition-colors">{zh ? 'StockFlow — 电商库存服务' : 'StockFlow — E-commerce Inventory Service'}</h3>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded mt-2 sm:mt-0">{zh ? '2026.01' : 'Jan 2026'}</span>
+                  <span className="mt-2 self-start whitespace-nowrap rounded bg-gray-100 px-2 py-1 font-mono text-sm text-gray-500 dark:bg-gray-800 dark:text-gray-400 sm:mt-0">{zh ? '2026.01' : 'Jan 2026'}</span>
                 </div>
                 <p className="text-sm text-blue-500 font-medium mb-3 flex flex-wrap items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-blue-500" />
@@ -368,11 +357,8 @@ export default function Resume() {
             <section className="animate-fade-in-up delay-200">
               <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-l-[3px] border-blue-500 pl-3 mb-4">{zh ? '亮点' : 'Highlights'}</h2>
               <div>
-                <div
-                  data-spotlight-card
-                  className="interactive-card bg-blue-50 dark:bg-blue-900/30 p-5 rounded-lg border border-blue-100 dark:border-blue-800 hover:shadow-md hover:-translate-y-1 transition-all duration-300"
-                >
-                  <h3 className="font-bold text-blue-700 dark:text-blue-300 mb-2">{zh ? '语言能力' : 'Languages'}</h3>
+                <div className="rounded-lg border border-slate-200 bg-slate-50/70 p-5 dark:border-slate-700 dark:bg-slate-800/40">
+                  <h3 className="mb-2 font-bold text-slate-900 dark:text-slate-100">{zh ? '语言能力' : 'Languages'}</h3>
                   <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
                     <GbFlag /> <span className="font-bold text-slate-900 dark:text-slate-100">{zh ? '英语 CET-6' : 'English CET-6'}</span>{zh ? '：可用于日常协作和技术讨论。' : ': comfortable using English in day-to-day collaboration and technical discussions.'}<br />
                     <JpFlag /> <span className="font-bold text-slate-900 dark:text-slate-100">{zh ? '日语 JLPT N3' : 'Japanese JLPT N3'}</span>{zh ? '：能够阅读基础技术资料并适应对日开发语境。' : ': able to read basic technical materials and adapt to Japan-facing development contexts.'}
@@ -383,10 +369,7 @@ export default function Resume() {
 
             <section className="animate-fade-in-up delay-300">
               <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-l-[3px] border-blue-500 pl-3 mb-4">{zh ? '技术栈' : 'Tech Stack'}</h2>
-              <div
-                data-spotlight-card
-                className="interactive-card bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-gray-200 dark:border-gray-800 space-y-4"
-              >
+              <div className="space-y-4 rounded-lg border border-gray-200 bg-slate-50 p-5 dark:border-gray-800 dark:bg-slate-900">
                 <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
                   {zh
                     ? '熟练使用 Claude Code、OpenAI Codex 等 Coding Agent，能够完成代码库接手、跨模块实现、测试调试与 Git 交付。'
@@ -409,8 +392,8 @@ export default function Resume() {
 
             <section className="animate-fade-in-up delay-400">
               <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-l-[3px] border-blue-500 pl-3 mb-4">{zh ? '教育经历' : 'Education'}</h2>
-              <div className="space-y-3">
-                <div className="p-5 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
+              <div className="divide-y divide-slate-200 dark:divide-slate-700">
+                <div className="px-1 py-5 sm:px-5">
                   <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-2 gap-2">
                     <div className="flex items-center gap-3">
                       <span className="inline-flex items-center rounded-md bg-slate-900 px-2 py-1 ring-1 ring-slate-800">
@@ -422,7 +405,7 @@ export default function Resume() {
                         <span className="block text-sm font-medium text-slate-500 dark:text-slate-400 mt-0.5">{zh ? 'Hangzhou Dianzi University（HDU）' : '杭州电子科技大学（HDU）'}</span>
                       </h3>
                     </div>
-                    <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">{zh ? '2026.09 -（预计）' : 'Sep 2026 - (expected)'}</span>
+                    <span className="self-start whitespace-nowrap rounded bg-gray-100 px-2 py-1 font-mono text-sm text-gray-500 dark:bg-gray-800 dark:text-gray-400">{zh ? '2026.09 -（预计）' : 'Sep 2026 - (expected)'}</span>
                   </div>
                   <p className="text-gray-700 dark:text-gray-300 mb-2">{zh ? '硕士研究生（拟入学）' : 'Postgraduate (Incoming)'}</p>
                   <p className="text-sm text-gray-600 dark:text-gray-400 bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 inline-block px-3 py-1 rounded-full border border-amber-100 dark:border-amber-800">
@@ -430,7 +413,7 @@ export default function Resume() {
                   </p>
                 </div>
 
-                <div className="p-5 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-gray-700">
+                <div className="px-1 py-5 sm:px-5">
                   <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-2 gap-2">
                     <div className="flex items-center gap-3">
                       <span className="inline-flex items-center rounded-md bg-slate-900 px-2 py-1 ring-1 ring-slate-800">
@@ -442,7 +425,7 @@ export default function Resume() {
                         <span className="block text-sm font-medium text-slate-500 dark:text-slate-400 mt-0.5">{zh ? 'North China University of Water Resources and Electric Power（NCWU）' : '华北水利水电大学（NCWU）'}</span>
                       </h3>
                     </div>
-                    <span className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">{zh ? '2022.09 - 2026.06' : 'Sep 2022 - Jun 2026'}</span>
+                    <span className="self-start whitespace-nowrap rounded bg-gray-100 px-2 py-1 font-mono text-sm text-gray-500 dark:bg-gray-800 dark:text-gray-400">{zh ? '2022.09 - 2026.06' : 'Sep 2022 - Jun 2026'}</span>
                   </div>
                   <p className="text-gray-700 dark:text-gray-300 mb-2">{zh ? '人工智能工学学士' : 'B.Eng. in Artificial Intelligence'} / <span className="font-medium text-blue-500">GPA: 3.16</span></p>
                   <p className="text-sm text-gray-600 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 inline-block px-3 py-1 rounded-full border border-blue-100 dark:border-blue-800">
