@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useResumeLanguage, type ResumeLanguage } from './language';
 
 type SearchResult = {
   id: string;
@@ -14,7 +15,11 @@ type SearchResult = {
 };
 
 const DEBOUNCE_MS = 300;
-const MIN_QUERY_LEN = 2;
+// Chinese carries far more info per character; drop the floor so single-char
+// filters like "记" or "语" still get a chance to fire while EN still needs 2.
+const MIN_QUERY_LEN: Record<ResumeLanguage, number> = { en: 2, zh: 1 };
+// Same reasoning for the summary preview line.
+const CONTENT_TRUNCATE: Record<ResumeLanguage, number> = { en: 180, zh: 90 };
 
 const CATEGORY_STYLES: Record<string, string> = {
   'Selected Project': 'bg-blue-50 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300',
@@ -25,12 +30,41 @@ const CATEGORY_STYLES: Record<string, string> = {
   Language: 'bg-rose-50 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300',
 };
 
+const CATEGORY_LABEL_ZH: Record<string, string> = {
+  'Selected Project': '精选项目',
+  'Open Source': '开源',
+  Experience: '经历',
+  Education: '教育',
+  Capability: '能力',
+  Language: '语言',
+};
+
+// UI copy, keyed by language.
+const COPY = {
+  en: {
+    placeholder: 'Search my projects and skills…  (semantic, powered by Jina)',
+    ariaLabel: 'Search my resume',
+    searching: 'Searching…',
+    searchFailed: 'Search failed.',
+    noMatches: (q: string) => `No matches for “${q}”.`,
+  },
+  zh: {
+    placeholder: '搜索我的项目和技能…（语义搜索，由 Jina 提供）',
+    ariaLabel: '搜索我的简历',
+    searching: '搜索中…',
+    searchFailed: '搜索失败。',
+    noMatches: (q: string) => `没有匹配 “${q}” 的结果。`,
+  },
+} as const;
+
 function truncate(s: string, n: number): string {
   if (!s) return '';
   return s.length <= n ? s : s.slice(0, n).trimEnd() + '…';
 }
 
 export default function ResumeSearch() {
+  const language = useResumeLanguage();
+  const t = COPY[language];
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<SearchResult[] | null>(null);
   const [status, setStatus] = useState<'idle' | 'loading' | 'error'>('idle');
@@ -41,16 +75,17 @@ export default function ResumeSearch() {
   const abortRef = useRef<AbortController | null>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const runSearch = useCallback(async (q: string) => {
+  const runSearch = useCallback(async (q: string, lang: ResumeLanguage) => {
     abortRef.current?.abort();
     const ctrl = new AbortController();
     abortRef.current = ctrl;
     setStatus('loading');
     setErrorMsg(null);
     try {
-      const res = await fetch(`/api/search?q=${encodeURIComponent(q)}&k=5`, {
-        signal: ctrl.signal,
-      });
+      const res = await fetch(
+        `/api/search?q=${encodeURIComponent(q)}&k=5&lang=${lang}`,
+        { signal: ctrl.signal },
+      );
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
         throw new Error(body?.error || `search failed (${res.status})`);
@@ -66,21 +101,22 @@ export default function ResumeSearch() {
     }
   }, []);
 
-  // Debounced trigger.
+  // Debounced trigger — re-fires when either the query OR the language changes,
+  // so switching EN↔中 with a live query hits the right vector pool.
   useEffect(() => {
     if (debounceRef.current) clearTimeout(debounceRef.current);
     const trimmed = query.trim();
-    if (trimmed.length < MIN_QUERY_LEN) {
+    if (trimmed.length < MIN_QUERY_LEN[language]) {
       setResults(null);
       setStatus('idle');
       setErrorMsg(null);
       return;
     }
-    debounceRef.current = setTimeout(() => runSearch(trimmed), DEBOUNCE_MS);
+    debounceRef.current = setTimeout(() => runSearch(trimmed, language), DEBOUNCE_MS);
     return () => {
       if (debounceRef.current) clearTimeout(debounceRef.current);
     };
-  }, [query, runSearch]);
+  }, [query, language, runSearch]);
 
   // ⌘K / Ctrl+K focus, Esc to close.
   useEffect(() => {
@@ -110,7 +146,7 @@ export default function ResumeSearch() {
 
   const showDropdown =
     open &&
-    query.trim().length >= MIN_QUERY_LEN &&
+    query.trim().length >= MIN_QUERY_LEN[language] &&
     (status !== 'idle' || results !== null);
 
   return (
@@ -141,8 +177,9 @@ export default function ResumeSearch() {
                 setOpen(true);
               }}
               onFocus={() => setOpen(true)}
-              placeholder="Search my projects and skills…  (semantic, powered by Jina)"
-              aria-label="Search my resume"
+              placeholder={t.placeholder}
+              aria-label={t.ariaLabel}
+              lang={language === 'zh' ? 'zh-CN' : 'en'}
               className="flex-1 bg-transparent py-2 pr-2 text-sm text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none"
               spellCheck={false}
               autoComplete="off"
@@ -158,18 +195,18 @@ export default function ResumeSearch() {
               className="absolute left-0 right-0 mt-2 max-h-[min(70vh,32rem)] overflow-y-auto rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-lg ring-1 ring-black/5 dark:ring-white/5"
             >
               {status === 'loading' && (
-                <div className="p-4 text-sm text-slate-500 dark:text-slate-400">Searching…</div>
+                <div className="p-4 text-sm text-slate-500 dark:text-slate-400">{t.searching}</div>
               )}
 
               {status === 'error' && (
                 <div className="p-4 text-sm text-rose-600 dark:text-rose-400">
-                  {errorMsg || 'Search failed.'}
+                  {errorMsg || t.searchFailed}
                 </div>
               )}
 
               {status === 'idle' && results && results.length === 0 && (
                 <div className="p-4 text-sm text-slate-500 dark:text-slate-400">
-                  No matches for “{query.trim()}”.
+                  {t.noMatches(query.trim())}
                 </div>
               )}
 
@@ -179,6 +216,10 @@ export default function ResumeSearch() {
                     const badgeClass =
                       CATEGORY_STYLES[r.category] ??
                       'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300';
+                    const badgeLabel =
+                      language === 'zh'
+                        ? (CATEGORY_LABEL_ZH[r.category] ?? r.category)
+                        : r.category;
                     const Wrapper: React.ElementType = r.link ? 'a' : 'div';
                     const wrapperProps = r.link
                       ? {
@@ -198,7 +239,7 @@ export default function ResumeSearch() {
                               <span
                                 className={`inline-flex items-center rounded px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide ${badgeClass}`}
                               >
-                                {r.category}
+                                {badgeLabel}
                               </span>
                               <span className="font-semibold text-sm text-slate-900 dark:text-slate-100 truncate">
                                 {r.title}
@@ -215,7 +256,7 @@ export default function ResumeSearch() {
                             </div>
                           )}
                           <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                            {truncate(r.content, 180)}
+                            {truncate(r.content, CONTENT_TRUNCATE[language])}
                           </p>
                         </Wrapper>
                       </li>

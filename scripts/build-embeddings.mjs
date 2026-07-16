@@ -67,11 +67,18 @@ function parseCsv(text) {
     .map((r) => Object.fromEntries(header.map((h, idx) => [h, r[idx]])));
 }
 
-function passageText(row) {
-  const bits = [row.title];
-  if (row.tech && row.tech.trim()) bits.push(`(${row.tech})`);
-  bits.push(row.content);
+function passageText(title, tech, content) {
+  const bits = [title];
+  if (tech && tech.trim()) bits.push(`(${tech})`);
+  bits.push(content);
   return bits.filter(Boolean).join('\n');
+}
+
+function pickZh(row, key) {
+  // fall back to the en field if the zh column is blank, so the index stays
+  // symmetric (each language always has 17 vectors) and search never 404s
+  const zh = (row[`${key}_zh`] || '').trim();
+  return zh || row[key] || '';
 }
 
 function embed(text) {
@@ -114,24 +121,49 @@ function main() {
   const records = [];
   let resolvedModel = MODEL;
   let dimensions = 0;
+  const total = rows.length * 2; // en + zh
+  let step = 0;
   for (let i = 0; i < rows.length; i++) {
     const row = rows[i];
-    const passage = passageText(row);
-    process.stdout.write(`  [${(i + 1).toString().padStart(2)}/${rows.length}] ${row.id.padEnd(24)} ... `);
-    const { vector, resolvedModel: m } = embed(passage);
-    resolvedModel = m;
-    dimensions = vector.length;
+
+    // --- en pass ---
+    step += 1;
+    const enPassage = passageText(row.title, row.tech, row.content);
+    process.stdout.write(`  [${step.toString().padStart(2)}/${total}] ${row.id.padEnd(24)} en ... `);
+    const { vector: enVec, resolvedModel: m1 } = embed(enPassage);
+    resolvedModel = m1;
+    dimensions = enVec.length;
+    console.log(`ok (${enVec.length}d)`);
+
+    // --- zh pass ---
+    step += 1;
+    const zhTitle = pickZh(row, 'title');
+    const zhTech = pickZh(row, 'tech');
+    const zhContent = pickZh(row, 'content');
+    const zhPassage = passageText(zhTitle, zhTech, zhContent);
+    process.stdout.write(`  [${step.toString().padStart(2)}/${total}] ${row.id.padEnd(24)} zh ... `);
+    const { vector: zhVec } = embed(zhPassage);
+    console.log(`ok (${zhVec.length}d)`);
+
     records.push({
       id: row.id,
       category: row.category,
-      title: row.title,
-      period: row.period,
-      tech: row.tech,
       link: row.link,
-      content: row.content,
-      embedding: vector,
+      en: {
+        title: row.title,
+        period: row.period,
+        tech: row.tech,
+        content: row.content,
+        embedding: enVec,
+      },
+      zh: {
+        title: zhTitle,
+        period: pickZh(row, 'period'),
+        tech: zhTech,
+        content: zhContent,
+        embedding: zhVec,
+      },
     });
-    console.log(`ok (${vector.length}d)`);
   }
 
   const index = {

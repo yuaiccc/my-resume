@@ -6,15 +6,22 @@ import indexData from '@/data/resume_index.json';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-type Record = {
-  id: string;
-  category: string;
+type Lang = 'en' | 'zh';
+
+type LangFields = {
   title: string;
   period: string;
   tech: string;
-  link: string;
   content: string;
   embedding: number[];
+};
+
+type Record = {
+  id: string;
+  category: string;
+  link: string;
+  en: LangFields;
+  zh: LangFields;
 };
 
 type Index = {
@@ -27,11 +34,12 @@ type Index = {
 
 const INDEX = indexData as unknown as Index;
 
-// Pre-normalize the passage vectors once so /search is just a dot product.
-const NORMALIZED: { record: Record; norm: number[] }[] = INDEX.records.map((r) => ({
-  record: r,
-  norm: normalize(r.embedding),
-}));
+// Pre-normalize both language pools once so /search is just a dot product.
+type NormRecord = { record: Record; norm: number[] };
+const POOLS: Readonly<{ en: NormRecord[]; zh: NormRecord[] }> = {
+  en: INDEX.records.map((r) => ({ record: r, norm: normalize(r.en.embedding) })),
+  zh: INDEX.records.map((r) => ({ record: r, norm: normalize(r.zh.embedding) })),
+};
 
 function normalize(vec: number[]): number[] {
   let sumSq = 0;
@@ -47,6 +55,10 @@ function dot(a: number[], b: number[]): number {
   const n = Math.min(a.length, b.length);
   for (let i = 0; i < n; i++) s += a[i] * b[i];
   return s;
+}
+
+function parseLang(raw: string | null): Lang {
+  return raw === 'zh' ? 'zh' : 'en';
 }
 
 async function embedQuery(query: string, apiKey: string): Promise<number[]> {
@@ -75,6 +87,7 @@ async function embedQuery(query: string, apiKey: string): Promise<number[]> {
 
 export async function GET(request: NextRequest) {
   const query = (request.nextUrl.searchParams.get('q') || '').trim();
+  const lang = parseLang(request.nextUrl.searchParams.get('lang'));
   const topK = Math.min(
     Math.max(Number(request.nextUrl.searchParams.get('k') || '5') | 0, 1),
     10,
@@ -86,7 +99,8 @@ export async function GET(request: NextRequest) {
   if (query.length > 400) {
     return NextResponse.json({ error: 'query too long (max 400 chars)' }, { status: 400 });
   }
-  if (NORMALIZED.length === 0) {
+  const pool = POOLS[lang];
+  if (pool.length === 0) {
     return NextResponse.json(
       { error: 'index is empty — run `npm run build:index` first' },
       { status: 503 },
@@ -112,21 +126,25 @@ export async function GET(request: NextRequest) {
   }
   const q = normalize(queryVec);
 
-  const scored = NORMALIZED.map(({ record, norm }) => ({
-    id: record.id,
-    category: record.category,
-    title: record.title,
-    period: record.period,
-    tech: record.tech,
-    link: record.link,
-    content: record.content,
-    score: dot(q, norm),
-  }));
+  const scored = pool.map(({ record, norm }) => {
+    const fields = record[lang];
+    return {
+      id: record.id,
+      category: record.category,
+      title: fields.title,
+      period: fields.period,
+      tech: fields.tech,
+      link: record.link,
+      content: fields.content,
+      score: dot(q, norm),
+    };
+  });
   scored.sort((a, b) => b.score - a.score);
 
   return NextResponse.json(
     {
       query,
+      lang,
       model: INDEX.model,
       results: scored.slice(0, topK),
     },
