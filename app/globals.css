@@ -74,6 +74,12 @@ h1, h2 {
   opacity: 0;
 }
 
+/* 搜索加载态：不确定进度条，一段高亮从左往右滑 */
+@keyframes loading {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
+}
+
 /* 用于错开动画时间的工具类 */
 .delay-100 { animation-delay: 100ms; }
 .delay-200 { animation-delay: 200ms; }

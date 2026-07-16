@@ -61,6 +61,66 @@ function parseLang(raw: string | null): Lang {
   return raw === 'zh' ? 'zh' : 'en';
 }
 
+// ---- in-memory query-embedding cache (LRU by insertion order) ----
+// The query embedding is language-independent (task=retrieval.query), so the
+// cache key is just the raw query text; EN and 中 searches share entries.
+// Lives per warm function instance — a best-effort hit layer, not a source of
+// truth. On a cold start it's simply empty.
+const EMBED_CACHE_MAX = 256;
+const embedCache = new Map<string, number[]>(); // stores the *normalized* vector
+
+function cacheGet(key: string): number[] | undefined {
+  const v = embedCache.get(key);
+  if (v) {
+    embedCache.delete(key);
+    embedCache.set(key, v); // bump to most-recently-used
+  }
+  return v;
+}
+
+function cacheSet(key: string, val: number[]): void {
+  if (embedCache.has(key)) embedCache.delete(key);
+  embedCache.set(key, val);
+  while (embedCache.size > EMBED_CACHE_MAX) {
+    const oldest = embedCache.keys().next().value;
+    if (oldest === undefined) break;
+    embedCache.delete(oldest);
+  }
+}
+
+// ---- in-memory per-IP rate limiter (fixed window) ----
+// NOTE: serverless instances do NOT share memory, so a determined attacker
+// spread across instances can exceed this. It only reliably stops a single
+// client hammering one warm instance. For hard guarantees use Vercel Firewall
+// or a shared store (Upstash).
+const RATE_LIMIT = 20; // requests
+const RATE_WINDOW_MS = 10_000; // per 10s per IP
+const rateHits = new Map<string, { count: number; resetAt: number }>();
+
+function clientIp(request: NextRequest): string {
+  const fwd = request.headers.get('x-forwarded-for');
+  if (fwd) return fwd.split(',')[0].trim();
+  return request.headers.get('x-real-ip') || 'unknown';
+}
+
+function rateLimit(ip: string): { ok: boolean; retryAfter: number } {
+  const now = Date.now();
+  const entry = rateHits.get(ip);
+  if (!entry || now >= entry.resetAt) {
+    rateHits.set(ip, { count: 1, resetAt: now + RATE_WINDOW_MS });
+    // opportunistic cleanup so the map can't grow unbounded
+    if (rateHits.size > 10_000) {
+      for (const [k, v] of rateHits) if (now >= v.resetAt) rateHits.delete(k);
+    }
+    return { ok: true, retryAfter: 0 };
+  }
+  if (entry.count >= RATE_LIMIT) {
+    return { ok: false, retryAfter: Math.ceil((entry.resetAt - now) / 1000) };
+  }
+  entry.count += 1;
+  return { ok: true, retryAfter: 0 };
+}
+
 async function embedQuery(query: string, apiKey: string): Promise<number[]> {
   const res = await fetch('https://api.jina.ai/v1/embeddings', {
     method: 'POST',
@@ -99,6 +159,15 @@ export async function GET(request: NextRequest) {
   if (query.length > 400) {
     return NextResponse.json({ error: 'query too long (max 400 chars)' }, { status: 400 });
   }
+
+  // Guard the expensive Jina call behind a per-IP rate limit.
+  const rl = rateLimit(clientIp(request));
+  if (!rl.ok) {
+    return NextResponse.json(
+      { error: 'too many requests' },
+      { status: 429, headers: { 'Retry-After': String(rl.retryAfter) } },
+    );
+  }
   const pool = POOLS[lang];
   if (pool.length === 0) {
     return NextResponse.json(
@@ -115,16 +184,24 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  let queryVec: number[];
-  try {
-    queryVec = await embedQuery(query, apiKey);
-  } catch (err) {
-    return NextResponse.json(
-      { error: err instanceof Error ? err.message : 'embed failed' },
-      { status: 502 },
-    );
+  // Reuse the normalized query vector if a warm instance has seen this exact
+  // query before — skips the ~800ms Jina round-trip entirely.
+  let q = cacheGet(query);
+  let cached = true;
+  if (!q) {
+    cached = false;
+    let queryVec: number[];
+    try {
+      queryVec = await embedQuery(query, apiKey);
+    } catch (err) {
+      return NextResponse.json(
+        { error: err instanceof Error ? err.message : 'embed failed' },
+        { status: 502 },
+      );
+    }
+    q = normalize(queryVec);
+    cacheSet(query, q);
   }
-  const q = normalize(queryVec);
 
   const scored = pool.map(({ record, norm }) => {
     const fields = record[lang];
@@ -145,6 +222,7 @@ export async function GET(request: NextRequest) {
     {
       query,
       lang,
+      cached,
       model: INDEX.model,
       results: scored.slice(0, topK),
     },

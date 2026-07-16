@@ -46,6 +46,7 @@ const COPY = {
     ariaLabel: 'Search my resume',
     searching: 'Searching…',
     searchFailed: 'Search failed.',
+    rateLimited: 'Too many searches — give it a few seconds.',
     noMatches: (q: string) => `No matches for “${q}”.`,
   },
   zh: {
@@ -53,6 +54,7 @@ const COPY = {
     ariaLabel: '搜索我的简历',
     searching: '搜索中…',
     searchFailed: '搜索失败。',
+    rateLimited: '搜索太频繁了，请稍等几秒。',
     noMatches: (q: string) => `没有匹配 “${q}” 的结果。`,
   },
 } as const;
@@ -74,6 +76,9 @@ export default function ResumeSearch() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const abortRef = useRef<AbortController | null>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Client-side result cache keyed by `lang:query`. Re-typing or toggling back
+  // to a seen query is instant with zero network. Complements the server LRU.
+  const cacheRef = useRef<Map<string, SearchResult[]>>(new Map());
 
   const runSearch = useCallback(async (q: string, lang: ResumeLanguage) => {
     abortRef.current?.abort();
@@ -86,18 +91,29 @@ export default function ResumeSearch() {
         `/api/search?q=${encodeURIComponent(q)}&k=5&lang=${lang}`,
         { signal: ctrl.signal },
       );
+      if (res.status === 429) {
+        setStatus('error');
+        setErrorMsg(COPY[lang].rateLimited);
+        return; // keep any previous results on screen
+      }
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
         throw new Error(body?.error || `search failed (${res.status})`);
       }
       const data = (await res.json()) as { results: SearchResult[] };
+      const cache = cacheRef.current;
+      cache.set(`${lang}:${q}`, data.results);
+      if (cache.size > 100) {
+        const oldest = cache.keys().next().value;
+        if (oldest !== undefined) cache.delete(oldest);
+      }
       setResults(data.results);
       setStatus('idle');
     } catch (err) {
       if ((err as Error).name === 'AbortError') return;
       setStatus('error');
       setErrorMsg((err as Error).message);
-      setResults(null);
+      // keep old results so the dropdown doesn't blank out on a transient error
     }
   }, []);
 
@@ -108,6 +124,15 @@ export default function ResumeSearch() {
     const trimmed = query.trim();
     if (trimmed.length < MIN_QUERY_LEN[language]) {
       setResults(null);
+      setStatus('idle');
+      setErrorMsg(null);
+      return;
+    }
+    // Instant path: serve from the client cache, skip debounce + network.
+    const hit = cacheRef.current.get(`${language}:${trimmed}`);
+    if (hit) {
+      abortRef.current?.abort();
+      setResults(hit);
       setStatus('idle');
       setErrorMsg(null);
       return;
@@ -195,7 +220,9 @@ export default function ResumeSearch() {
               className="absolute left-0 right-0 mt-2 max-h-[min(70vh,32rem)] overflow-y-auto rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-lg ring-1 ring-black/5 dark:ring-white/5"
             >
               {status === 'loading' && (
-                <div className="p-4 text-sm text-slate-500 dark:text-slate-400">{t.searching}</div>
+                <div className="h-0.5 w-full overflow-hidden">
+                  <div className="h-full w-1/3 animate-[loading_1s_ease-in-out_infinite] rounded-full bg-blue-400/80 dark:bg-blue-500/80" />
+                </div>
               )}
 
               {status === 'error' && (
@@ -204,13 +231,17 @@ export default function ResumeSearch() {
                 </div>
               )}
 
+              {status === 'loading' && !results && (
+                <div className="p-4 text-sm text-slate-500 dark:text-slate-400">{t.searching}</div>
+              )}
+
               {status === 'idle' && results && results.length === 0 && (
                 <div className="p-4 text-sm text-slate-500 dark:text-slate-400">
                   {t.noMatches(query.trim())}
                 </div>
               )}
 
-              {status === 'idle' && results && results.length > 0 && (
+              {results && results.length > 0 && (
                 <ul className="divide-y divide-slate-100 dark:divide-slate-800">
                   {results.map((r) => {
                     const badgeClass =
