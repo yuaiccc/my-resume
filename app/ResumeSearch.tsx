@@ -42,14 +42,14 @@ const CATEGORY_LABEL_ZH: Record<string, string> = {
 // UI copy, keyed by language.
 const COPY = {
   en: {
-    placeholder: 'Search my projects and skills…  (semantic, powered by Jina)',
+    placeholder: 'Search my projects and skills…',
     ariaLabel: 'Search my resume',
     searching: 'Searching…',
     searchFailed: 'Search failed.',
     noMatches: (q: string) => `No matches for “${q}”.`,
   },
   zh: {
-    placeholder: '搜索我的项目和技能…（语义搜索，由 Jina 提供）',
+    placeholder: '搜索我的项目和技能…',
     ariaLabel: '搜索我的简历',
     searching: '搜索中…',
     searchFailed: '搜索失败。',
