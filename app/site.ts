@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://yuaiccc.github.io';
+export const SITE_URL = 'https://xj3.tech';
 export const SITE_NAME = '许君山 Xu Junshan · 华北水利水电大学 AI 本科 · 个人主页';
 export const SITE_DESCRIPTION =
   '许君山 (Xu Junshan)，华北水利水电大学 (NCWU) 人工智能专业本科生，拟进入杭州电子科技大学 (HDU) 攻读硕士。专注上下文感知 LLM Agent、Agentic RAG、OceanBase 混合检索、多模态记忆与 Go / Java 后端工程；开发 Feishuye（飞书叶）多模态记忆 Agent，并熟练使用 Claude Code、OpenAI Codex 等 Coding Agent。';
