@@ -64,6 +64,56 @@ function truncate(s: string, n: number): string {
   return s.length <= n ? s : s.slice(0, n).trimEnd() + '…';
 }
 
+// ---- Client-side fallback search (for GitHub Pages static export) ----
+type IndexRecord = {
+  id: string;
+  category: string;
+  link: string;
+  en: { title: string; period: string; tech: string; content: string };
+  zh: { title: string; period: string; tech: string; content: string };
+};
+
+let _indexCache: IndexRecord[] | null = null;
+
+async function loadIndex(): Promise<IndexRecord[]> {
+  if (_indexCache) return _indexCache;
+  const data = await import('@/data/resume_index.json');
+  _indexCache = (data.default?.records ?? data.records ?? []) as IndexRecord[];
+  return _indexCache!;
+}
+
+async function clientSideSearch(q: string, lang: ResumeLanguage): Promise<SearchResult[]> {
+  const records = await loadIndex();
+  const tokens = q.toLowerCase().split(/\s+/).filter(Boolean);
+  if (tokens.length === 0) return [];
+
+  const scored = records
+    .map((r) => {
+      const fields = r[lang];
+      let score = 0;
+      for (const t of tokens) {
+        if (fields.title.toLowerCase().includes(t)) score += 3;
+        if (fields.tech.toLowerCase().includes(t)) score += 2;
+        if (fields.content.toLowerCase().includes(t)) score += 1;
+      }
+      return score > 0 ? { r, score, fields } : null;
+    })
+    .filter((x): x is NonNullable<typeof x> => x !== null)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 5);
+
+  return scored.map(({ r, score, fields }) => ({
+    id: r.id,
+    category: r.category,
+    title: fields.title,
+    period: fields.period,
+    tech: fields.tech,
+    link: r.link,
+    content: fields.content,
+    score: score / (tokens.length * 3),
+  }));
+}
+
 export default function ResumeSearch() {
   const language = useResumeLanguage();
   const t = COPY[language];
@@ -87,10 +137,20 @@ export default function ResumeSearch() {
     setStatus('loading');
     setErrorMsg(null);
     try {
+      const basePath = process.env.__NEXT_ROUTER_BASEPATH || '';
       const res = await fetch(
-        `/api/search?q=${encodeURIComponent(q)}&k=5&lang=${lang}`,
+        `${basePath}/api/search?q=${encodeURIComponent(q)}&k=5&lang=${lang}`,
         { signal: ctrl.signal },
       );
+      // Static export (GitHub Pages) has no API — fall back to client-side search.
+      if (res.status === 404) {
+        const fallbackResults = await clientSideSearch(q, lang);
+        if (!ctrl.signal.aborted) {
+          setResults(fallbackResults);
+          setStatus('idle');
+        }
+        return;
+      }
       if (res.status === 429) {
         setStatus('error');
         setErrorMsg(COPY[lang].rateLimited);
